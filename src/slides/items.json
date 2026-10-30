@@ -1,10 +1,19 @@
 [
   {
-    "id": "item-agpgorz",
+    "id": "item-wjlbgp0",
     "kind": "web",
     "src": "https://www.gionatannese.com",
-    "x": 6967,
-    "y": 1697,
+    "x": 9365,
+    "y": 1431,
+    "width": 1280,
+    "height": 800
+  },
+  {
+    "id": "item-um5g5g7",
+    "kind": "web",
+    "src": "google.pl",
+    "x": 7998,
+    "y": 1161,
     "width": 1280,
     "height": 800
   }

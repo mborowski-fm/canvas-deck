@@ -79,7 +79,7 @@ function NamePrompt({ onDone }: { onDone: (m: Me) => void }) {
 }
 
 function Presenting({ room, me }: { room: string; me: Me }) {
-  const { active, activeTs, play, playAnim, setActive, peers, sendCursor, layout, moveSlides } = useRoom(room, me, baseSlides.length)
+  const { active, activeTs, play, playAnim, setActive, peers, sendCursor, layout, moveSlides, views, sendView } = useRoom(room, me, baseSlides.length)
   // registry positions + shared edits from the room
   const slides = useMemo(
     () => baseSlides.map((s) => (layout[s.id] ? { ...s, x: layout[s.id].x, y: layout[s.id].y } : s)),
@@ -102,6 +102,12 @@ function Presenting({ room, me }: { room: string; me: Me }) {
   // free canvas elements: local to this presenter (not synced), saved to items.json in dev
   const [items, setItems] = useState<CanvasItem[]>(baseItems)
   const [adding, setAdding] = useState(false)
+  // follow mode: track another presenter's camera (click their avatar), like in Figma
+  const [following, setFollowing] = useState<string | null>(null)
+  const leader = peers.find((p) => p.id === following)
+  useEffect(() => {
+    if (following && !leader) setFollowing(null) // they left
+  }, [following, leader])
   const centerRef = useRef<() => { x: number; y: number }>(() => ({ x: 0, y: 0 }))
   const ch = useRef<BroadcastChannel | null>(null)
   const st = useRef({ active, edit, selected, slides, items })
@@ -222,25 +228,29 @@ function Presenting({ room, me }: { room: string; me: Me }) {
       if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement).tagName)) return
       const { active: a, edit: ed, selected: sel } = st.current
       const arrows: Record<string, [number, number]> = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] }
-      if (ed) {
-        if (arrows[e.key] && sel.length) {
-          e.preventDefault()
-          const nudge = e.shiftKey ? 100 : 10
-          const [dx, dy] = arrows[e.key]
-          commit(objects().filter((o) => sel.includes(o.id)).map((o) => ({ id: o.id, x: o.x + dx * nudge, y: o.y + dy * nudge })))
-        } else if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); step(e.shiftKey ? 'redo' : 'undo') }
+      // Left/Right always change the slide, in every mode, like the arrow buttons in the toolbar.
+      // In edit mode Alt+arrows nudge the selection (Shift = 100 px); Space is reserved for panning.
+      if (ed && e.altKey && arrows[e.key] && sel.length) {
+        e.preventDefault()
+        const nudge = e.shiftKey ? 100 : 10
+        const [dx, dy] = arrows[e.key]
+        commit(objects().filter((o) => sel.includes(o.id)).map((o) => ({ id: o.id, x: o.x + dx * nudge, y: o.y + dy * nudge })))
+      } else if (['ArrowRight', 'PageDown'].includes(e.key) || (!ed && e.key === ' ')) { e.preventDefault(); setActive(a + 1) }
+      else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); setActive(a - 1) }
+      else if (ed) {
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); step(e.shiftKey ? 'redo' : 'undo') }
         else if ((e.metaKey || e.ctrlKey) && e.key === 'y') { e.preventDefault(); step('redo') }
         else if (e.key === 'Escape') setSelected([])
         else if ((e.metaKey || e.ctrlKey) && e.key === 'a') { e.preventDefault(); setSelected(objects().map((o) => o.id)) }
         else if (e.key === 'Delete' || e.key === 'Backspace') { e.preventDefault(); deleteSelected() }
-      } else if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); setActive(a + 1) }
-      else if (['ArrowLeft', 'PageUp'].includes(e.key)) setActive(a - 1)
+      }
       if (e.metaKey || e.ctrlKey) return
       if (e.key === 'o') fitView('all')
       else if (e.key === 'f') fitView('active')
       else if (e.key === 'n') openNotes()
       else if (e.key === 'e') setEdit((v) => !v)
       else if (e.key === 'r') replay()
+      else if (e.key === 'Escape') setFollowing(null)
     }
     window.addEventListener('keydown', k)
     return () => window.removeEventListener('keydown', k)
@@ -271,6 +281,9 @@ function Presenting({ room, me }: { room: string; me: Me }) {
         edit={edit}
         selected={selected}
         onSelected={setSelected}
+        onView={sendView}
+        follow={following ? views[following] ?? null : null}
+        onUserMove={() => following && setFollowing(null)}
         onMove={apply}
         onChangeStart={record}
       />
@@ -299,12 +312,26 @@ function Presenting({ room, me }: { room: string; me: Me }) {
             {me.name[0]?.toUpperCase()}
           </span>
           {peers.map((p) => (
-            <span key={p.id} className="avatar" style={{ background: p.color }} title={p.name}>
+            <button
+              key={p.id}
+              className={'avatar' + (following === p.id ? ' following' : '')}
+              style={{ background: p.color, ['--ring' as string]: p.color }}
+              title={following === p.id ? `Stop following ${p.name}` : `Follow ${p.name}`}
+              onClick={() => setFollowing(following === p.id ? null : p.id)}
+            >
               {p.name[0]?.toUpperCase()}
-            </span>
+            </button>
           ))}
         </div>
       </div>
+      {leader && (
+        <div className="follow-frame" style={{ ['--ring' as string]: leader.color }}>
+          <button className="follow-pill" style={{ background: leader.color }} onClick={() => setFollowing(null)} title="Stop following (Esc)">
+            Following {leader.name}
+            <Icon name="close" />
+          </button>
+        </div>
+      )}
       {edit && (
         <AlignBar
           count={selected.length}

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 import { Icon } from '../Icon'
 import { embedUrl, itemLabel, type CanvasItem } from '../items'
 import type { Slide, SlideProps } from '../slides/types'
-import type { Peer } from '../sync'
+import type { Peer, ViewMsg } from '../sync'
 import type { Box, Pos } from './align'
 
 interface Cam { x: number; y: number; z: number }
@@ -38,6 +38,12 @@ interface Props {
   play: SlideProps['play']
   /** 1, 2, 3 buttons on slides with several animations */
   onPlay: (anim: number) => void
+  /** this presenter's camera changed (throttled), for others to follow */
+  onView: (v: ViewMsg) => void
+  /** follow mode: the camera of the presenter being followed (null = free camera) */
+  follow: ViewMsg | null
+  /** the user moved the camera themselves (stops following) */
+  onUserMove: () => void
 }
 
 type Hit = { type: 'slide'; index: number; id: string } | { type: 'item'; id: string }
@@ -48,10 +54,15 @@ type Drag =
   | { kind: 'resize'; sx: number; sy: number; id: string; w: number; h: number; ratio: number | null; started?: boolean }
   | { kind: 'marquee'; sx: number; sy: number; base: string[] }
 
-export function Canvas({ slides, items, active, onActive, peers, onCursor, view, edit, selected, onSelected, onMove, onChangeStart, onResize, onDrop, centerRef, play, onPlay }: Props) {
+export function Canvas({ slides, items, active, onActive, peers, onCursor, view, edit, selected, onSelected, onMove, onChangeStart, onResize, onDrop, centerRef, play, onPlay, onView, follow, onUserMove }: Props) {
   const ref = useRef<HTMLDivElement>(null)
   const [cam, setCam] = useState<Cam>({ x: 0, y: 0, z: 0.3 })
   const [animate, setAnimate] = useState(false)
+  const [following, setFollowing] = useState(false) // short linear transition while tracking a leader
+  const followRef = useRef(follow)
+  followRef.current = follow
+  const userMoveRef = useRef(onUserMove)
+  userMoveRef.current = onUserMove
   const [box, setBox] = useState<{ x: number; y: number; w: number; h: number } | null>(null)
   const [space, setSpace] = useState(false)
   // A live web page is a whole website running inside the canvas and makes panning stutter,
@@ -92,9 +103,36 @@ export function Canvas({ slides, items, active, onActive, peers, onCursor, view,
   // Depends on `active` only: moving slides in edit mode must not move the camera.
   useLayoutEffect(() => {
     const s = slidesRef.current[active]
-    if (s) fit([s], 100)
+    if (s && !followRef.current) fit([s], 100) // when following, the leader's camera decides
     setLive(null)
   }, [active, fit])
+
+  // Follow mode: show the leader's world rect, fitted to this viewport.
+  useEffect(() => {
+    const el = ref.current
+    if (!follow || !el) return setFollowing(false)
+    const { width: vw, height: vh } = el.getBoundingClientRect()
+    const z = Math.min(vw / follow.w, vh / follow.h, MAX_Z)
+    setAnimate(follow.fly)
+    setFollowing(!follow.fly)
+    setCam({ z, x: vw / 2 - follow.cx * z, y: vh / 2 - follow.cy * z })
+  }, [follow])
+
+  // Share this camera (throttled) so others can follow it.
+  const viewTimer = useRef(0)
+  const animRef = useRef(animate)
+  animRef.current = animate
+  useEffect(() => {
+    if (viewTimer.current) return
+    viewTimer.current = window.setTimeout(() => {
+      viewTimer.current = 0
+      const el = ref.current
+      if (!el) return
+      const { width: vw, height: vh } = el.getBoundingClientRect()
+      const c = camRef.current
+      onView({ cx: (vw / 2 - c.x) / c.z, cy: (vh / 2 - c.y) / c.z, w: vw / c.z, h: vh / c.z, fly: animRef.current })
+    }, 60)
+  }, [cam, onView])
 
   useEffect(() => {
     if (!live) return
@@ -122,6 +160,7 @@ export function Canvas({ slides, items, active, onActive, peers, onCursor, view,
     const onWheel = (e: WheelEvent) => {
       e.preventDefault()
       setAnimate(false)
+      userMoveRef.current()
       const c = camRef.current
       if (e.ctrlKey || e.metaKey) {
         const r = el.getBoundingClientRect()
@@ -214,6 +253,7 @@ export function Canvas({ slides, items, active, onActive, peers, onCursor, view,
       d.moved += Math.abs(dx) + Math.abs(dy)
       d.lx = e.clientX
       d.ly = e.clientY
+      if (d.moved > 4) userMoveRef.current()
       setCam((c) => ({ ...c, x: c.x + dx, y: c.y + dy }))
     } else if (d.kind === 'move') {
       const dx = (e.clientX - d.sx) / camRef.current.z
@@ -270,7 +310,7 @@ export function Canvas({ slides, items, active, onActive, peers, onCursor, view,
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
-      onDoubleClick={onDoubleClick}
+      onDoubleClick={(e) => { userMoveRef.current(); onDoubleClick(e) }}
       onPointerLeave={() => onCursor(undefined, undefined)}
       onDragOver={(e) => edit && e.preventDefault()}
       onDrop={(e) => {
@@ -284,7 +324,7 @@ export function Canvas({ slides, items, active, onActive, peers, onCursor, view,
         style={{
           ['--px' as string]: `${1 / z}px`,
           transform: `translate(${cam.x}px, ${cam.y}px) scale(${z})`,
-          transition: animate ? 'transform 0.6s cubic-bezier(.2,.8,.2,1)' : 'none',
+          transition: animate ? 'transform 0.6s cubic-bezier(.2,.8,.2,1)' : following ? 'transform 0.12s linear' : 'none',
         }}
         // After a fly-to the browser keeps the slides rasterized at an in-between scale (blurry).
         // A tiny non-animated scale change makes it re-raster sharp at the final zoom.

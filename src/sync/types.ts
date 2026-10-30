@@ -11,6 +11,9 @@ export type LayoutMsg = { items: LayoutItem[] }
 /** Last (re)played animation, shared: slide id + animation index. Last write wins. */
 export type PlayState = { slide: string; anim: number; ts: number; by: string }
 
+/** A presenter's camera: the world rect it shows. `fly` = an animated camera move (fly-to). For follow mode. */
+export type ViewMsg = { cx: number; cy: number; w: number; h: number; fly: boolean }
+
 export type Me = {
   name: string
   color: string
@@ -47,6 +50,8 @@ export interface Sync {
   sendStateTo(id: string, s: SharedState): void
   sendLayout(items: LayoutItem[], to?: string): void
   sendPlay(p: PlayState, to?: string): void
+  sendView(v: ViewMsg, to?: string): void
+  onView(cb: (v: ViewMsg, from: string) => void): void
   onPlay(cb: (p: PlayState) => void): void
   onLayout(cb: (items: LayoutItem[]) => void): void
   leave(): void

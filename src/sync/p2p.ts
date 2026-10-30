@@ -1,5 +1,5 @@
 import { joinRoom, selfId } from 'trystero'
-import type { CursorMsg, LayoutMsg, Me, PlayState, SharedState, Sync } from './types'
+import type { CursorMsg, LayoutMsg, Me, PlayState, SharedState, Sync, ViewMsg } from './types'
 
 const APP_ID = 'futuremind-canvas-deck'
 
@@ -10,6 +10,7 @@ export function createP2PSync(roomId: string): Sync {
   const cursor = room.makeAction<CursorMsg>('cursor')
   const layout = room.makeAction<LayoutMsg>('layout')
   const play = room.makeAction<PlayState>('play')
+  const view = room.makeAction<ViewMsg>('view')
 
   const ids = new Set<string>()
   let peersCb: (ids: string[]) => void = () => {}
@@ -35,6 +36,8 @@ export function createP2PSync(roomId: string): Sync {
     onLayout: (cb) => (layout.onMessage = (d) => cb(d.items)),
     sendPlay: (p, to) => void play.send(p, to ? { target: to } : undefined),
     onPlay: (cb) => (play.onMessage = (d) => cb(d)),
+    sendView: (v, to) => void view.send(v, to ? { target: to } : undefined),
+    onView: (cb) => (view.onMessage = (d, { peerId }) => cb(d, peerId)),
     sendCursor: (c) => void cursor.send(c),
     onState: (cb) => (state.onMessage = (d, { peerId }) => cb(d, peerId)),
     onCursor: (cb) => (cursor.onMessage = (d, { peerId }) => cb(d, peerId)),

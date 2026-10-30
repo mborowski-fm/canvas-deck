@@ -32,7 +32,7 @@ Multi-presenter presentation tool. One big pan/zoom canvas, each slide is an art
 
 ## Edit mode (toggle `E`, default off)
 - View mode: click a slide = make it active for everyone, drag = pan. Double click a slide (any mode) = focus it (fly to it, make it active).
-- Edit mode: undo/redo (Cmd+Z, Cmd+Shift+Z, local history of layout moves), grid arrange of the selection, click/shift-click/marquee selects, drag moves selected slides, arrows nudge (Shift = 100), Space+drag pans, Cmd/Ctrl+A selects all. Align/distribute bar at the bottom. Edit mode is per person, but moves are shared live (`LayoutItem`, last write wins per slide) via `moveSlides` in `src/useRoom.ts`.
+- Edit mode: undo/redo (Cmd+Z, Cmd+Shift+Z, local history of layout moves), grid arrange of the selection, click/shift-click/marquee selects, drag moves selected slides, Alt+arrows nudge (Shift = 100; plain Left/Right always change the slide), Space+drag pans, Cmd/Ctrl+A selects all. Align/distribute bar at the bottom. Edit mode is per person, but moves are shared live (`LayoutItem`, last write wins per slide) via `moveSlides` in `src/useRoom.ts`.
 - Edit bar: undo/redo, an "Align" popover (align, distribute, grid; needs 2+ selected), reset layout (back to the positions from the files at load, undoable), and Save layout.
 - Save layout exists only in `npm run dev`: the `deck-save` Vite plugin (`vite.config.ts`, `POST /__deck/save`, client `src/save.ts`) writes `src/slides/layout.json`, which overrides `meta.x/y`. Its own writes skip HMR. On the deployed site layout edits stay in the room only.
 - Speaker notes are not editable in the app: Marcin sends them in chat and the agent writes them into `src/slides/<id>/notes.md`.
@@ -47,13 +47,17 @@ Multi-presenter presentation tool. One big pan/zoom canvas, each slide is an art
 - Web pages are heavy (a whole website running inside the transformed canvas makes panning stutter), so they render as a light card; "Show live page" mounts the iframe for that one page. It unmounts on Esc, the close button, a click on the background or a slide change; at most one page is live. Keep it that way.
 - View mode: videos and live pages take their own clicks (controls, scrolling). Some sites refuse to be embedded and show an empty frame; the label above each element links to the source.
 
+## Follow mode
+- Click another presenter's avatar to follow their camera (like Figma): your view tracks theirs (fly-tos animate, panning tracks with a short linear transition), with a frame in their color and a "Following ..." pill. Stops on Esc, clicking the avatar or pill again, or when you pan/zoom/double click yourself.
+- Every presenter broadcasts their camera as a world rect (`ViewMsg`, throttled ~60 ms, `sendView` in `useRoom`); the follower fits that rect to its own viewport, so different screen sizes work. While following, the follower does not auto-fit on slide change (the leader's camera decides).
+
 ## Commands
 - `npm run dev` local dev server (test multiplayer with two tabs and the same `#/r/<room>`)
 - `npm run build` typecheck + production build to `dist/`
 - `npm run new-slide -- my-name` scaffold the next slide folder
 
 ## Keys
-Arrows/Space/PageUp/PageDown: prev/next. `O` overview. `F` re-fit active slide (local). `N` open notes window. `E` toggle edit mode.
+Left/Right and PageUp/PageDown: prev/next slide in every mode (Space too, outside edit mode). Esc stops following. `O` overview. `F` re-fit active slide (local). `N` open notes window. `E` toggle edit mode.
 
 ## Rules for changes
 - Add a slide = add a folder. Do not edit the registry or App for it.

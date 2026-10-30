@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { createSync, type LayoutItem, type Me, type Peer, type PlayState, type SharedState, type Sync } from './sync'
+import { createSync, type LayoutItem, type Me, type Peer, type PlayState, type SharedState, type Sync, type ViewMsg } from './sync'
 
 const newer = (a: SharedState, b: SharedState) =>
   a.ts > b.ts || (a.ts === b.ts && a.by > b.by)
@@ -23,6 +23,8 @@ export function useRoom(roomId: string, me: Me, slideCount: number) {
   const [layout, setLayout] = useState<Record<string, LayoutItem>>({})
   const layoutRef = useRef(layout)
   const [play, setPlay] = useState<PlayState | null>(null)
+  const [views, setViews] = useState<Record<string, ViewMsg>>({})
+  const myView = useRef<ViewMsg | null>(null)
   const playRef = useRef(play)
   const lastTs = useRef(0)
   const sync = useRef<Sync | null>(null)
@@ -46,6 +48,7 @@ export function useRoom(roomId: string, me: Me, slideCount: number) {
       const next = mergeLww(layoutRef.current, items)
       if (next) setLayout((layoutRef.current = next))
     })
+    s.onView((v, from) => setViews((all) => ({ ...all, [from]: v })))
     s.onPlay((p) => {
       const cur = playRef.current
       if (!cur || p.ts > cur.ts || (p.ts === cur.ts && p.by > cur.by)) setPlay((playRef.current = p))
@@ -61,6 +64,7 @@ export function useRoom(roomId: string, me: Me, slideCount: number) {
       const all = Object.values(layoutRef.current)
       if (all.length) s.sendLayout(all, id)
       if (playRef.current) s.sendPlay(playRef.current, id)
+      if (myView.current) s.sendView({ ...myView.current, fly: false }, id)
       announce()
     })
     const beat = setInterval(announce, 4000)
@@ -96,6 +100,12 @@ export function useRoom(roomId: string, me: Me, slideCount: number) {
     sync.current?.sendLayout(stamped)
   }, [])
 
+  /** Broadcast this presenter's camera, so others can follow it (follow mode). */
+  const sendView = useCallback((v: ViewMsg) => {
+    myView.current = v
+    sync.current?.sendView(v)
+  }, [])
+
   /** (Re)play an animation of a slide for everyone. */
   const playAnim = useCallback((slide: string, anim: number) => {
     const p = { slide, anim, ts: Math.max(Date.now(), (playRef.current?.ts ?? 0) + 1), by: sync.current?.selfId ?? '' }
@@ -108,5 +118,5 @@ export function useRoom(roomId: string, me: Me, slideCount: number) {
     announce()
   }, [announce])
 
-  return { active: shared.active, activeTs: shared.ts, play, playAnim, setActive, peers: Object.values(peers), sendCursor, layout, moveSlides }
+  return { active: shared.active, activeTs: shared.ts, play, playAnim, setActive, peers: Object.values(peers), sendCursor, layout, moveSlides, views, sendView }
 }
