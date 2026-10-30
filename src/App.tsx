@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { AlignBar } from './canvas/AlignBar'
 import { align, type AlignOp, type Pos } from './canvas/align'
-import { Canvas, type ViewReq } from './canvas/Canvas'
+import { Canvas, type CamView, type ViewReq } from './canvas/Canvas'
 import { channelName, type ChannelMsg } from './channel'
 import { NotesWindow } from './notes/NotesWindow'
 import { slides as baseSlides } from './slides/registry'
@@ -85,16 +85,28 @@ function Presenting({ room, me }: { room: string; me: Me }) {
     () => baseSlides.map((s) => (layout[s.id] ? { ...s, x: layout[s.id].x, y: layout[s.id].y } : s)),
     [layout],
   )
-  // Animation of the active slide, the same for everyone: the last shared (re)play of this slide,
-  // else autoplay on entering a slide with exactly one animation (or idle loop).
+  // follow mode: see another presenter's view (camera, active slide, animation); click their avatar
+  const [following, setFollowing] = useState<string | null>(null)
+  const lead = following ? views[following] ?? null : null
+  // Animation of the active slide: when following, the leader's; else the last (re)play of this
+  // slide, or autoplay on entering a slide with exactly one animation (or idle loop).
   const activeSlide = slides[active]
-  const activePlay = useMemo(() => {
+  const ownPlay = useMemo(() => {
     if (!activeSlide?.animations.length) return null
-    if (play && play.slide === activeSlide.id && play.ts > activeTs) return { anim: play.anim, key: `${play.ts}:${play.by}` }
+    if (play && play.slide === activeSlide.id && play.ts > activeTs) return { anim: play.anim, key: `play:${play.ts}` }
     return activeSlide.animations.length === 1 ? { anim: 0, key: `enter:${activeTs}` } : null
   }, [activeSlide, play, activeTs])
+  const activePlay = lead ? lead.play : ownPlay
+  useEffect(() => {
+    if (lead && lead.active !== active) setActive(lead.active) // mirror the leader's slide, locally
+  }, [lead, active, setActive])
   const replay = () => activeSlide?.animations.length && playAnim(activeSlide.id, activePlay?.anim ?? 0)
-  const goTo = (i: number) => i !== active && setActive(i)
+  // navigating yourself (click, keys, toolbar, notes window) stops following
+  const navigate = (i: number) => {
+    setFollowing(null)
+    setActive(i)
+  }
+  const goTo = (i: number) => i !== active && navigate(i)
   const [view, setView] = useState<ViewReq>({ n: 0, mode: 'all' })
   const [edit, setEdit] = useState(false)
   const [selected, setSelected] = useState<string[]>([])
@@ -102,9 +114,19 @@ function Presenting({ room, me }: { room: string; me: Me }) {
   // free canvas elements: local to this presenter (not synced), saved to items.json in dev
   const [items, setItems] = useState<CanvasItem[]>(baseItems)
   const [adding, setAdding] = useState(false)
-  // follow mode: track another presenter's camera (click their avatar), like in Figma
-  const [following, setFollowing] = useState<string | null>(null)
   const leader = peers.find((p) => p.id === following)
+  // share this presenter's view (camera + slide + animation) for anyone following
+  const lastCam = useRef<CamView | null>(null)
+  const viewState = useRef({ active, activePlay })
+  viewState.current = { active, activePlay }
+  const shareView = () => {
+    if (lastCam.current) sendView({ ...lastCam.current, active: viewState.current.active, play: viewState.current.activePlay })
+  }
+  useEffect(() => {
+    if (lastCam.current) lastCam.current = { ...lastCam.current, fly: false }
+    shareView()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active, activePlay?.key])
   useEffect(() => {
     if (following && !leader) setFollowing(null) // they left
   }, [following, leader])
@@ -120,7 +142,7 @@ function Presenting({ room, me }: { room: string; me: Me }) {
     const say = () => c.postMessage({ type: 'active', active: st.current.active } satisfies ChannelMsg)
     c.onmessage = (e: MessageEvent<ChannelMsg>) => {
       if (e.data.type === 'hello') say()
-      if (e.data.type === 'goto') setActive(e.data.index)
+      if (e.data.type === 'goto') navigate(e.data.index)
     }
     return () => c.close()
   }, [room, setActive])
@@ -235,8 +257,8 @@ function Presenting({ room, me }: { room: string; me: Me }) {
         const nudge = e.shiftKey ? 100 : 10
         const [dx, dy] = arrows[e.key]
         commit(objects().filter((o) => sel.includes(o.id)).map((o) => ({ id: o.id, x: o.x + dx * nudge, y: o.y + dy * nudge })))
-      } else if (['ArrowRight', 'PageDown'].includes(e.key) || (!ed && e.key === ' ')) { e.preventDefault(); setActive(a + 1) }
-      else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); setActive(a - 1) }
+      } else if (['ArrowRight', 'PageDown'].includes(e.key) || (!ed && e.key === ' ')) { e.preventDefault(); navigate(a + 1) }
+      else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); navigate(a - 1) }
       else if (ed) {
         if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); step(e.shiftKey ? 'redo' : 'undo') }
         else if ((e.metaKey || e.ctrlKey) && e.key === 'y') { e.preventDefault(); step('redo') }
@@ -281,8 +303,8 @@ function Presenting({ room, me }: { room: string; me: Me }) {
         edit={edit}
         selected={selected}
         onSelected={setSelected}
-        onView={sendView}
-        follow={following ? views[following] ?? null : null}
+        onView={(cam) => { lastCam.current = cam; shareView() }}
+        follow={lead}
         onUserMove={() => following && setFollowing(null)}
         onMove={apply}
         onChangeStart={record}
@@ -290,10 +312,10 @@ function Presenting({ room, me }: { room: string; me: Me }) {
       <div className="hud top-right">
         <div className="toolbar">
           <div className="connected">
-            <button title="Previous slide (Left)" onClick={() => setActive(active - 1)} disabled={active === 0}>
+            <button title="Previous slide (Left)" onClick={() => navigate(active - 1)} disabled={active === 0}>
               <Icon name="arrow_back" />
             </button>
-            <button title="Next slide (Right)" onClick={() => setActive(active + 1)} disabled={active >= slides.length - 1}>
+            <button title="Next slide (Right)" onClick={() => navigate(active + 1)} disabled={active >= slides.length - 1}>
               <Icon name="arrow_forward" />
             </button>
           </div>
@@ -316,7 +338,8 @@ function Presenting({ room, me }: { room: string; me: Me }) {
               key={p.id}
               className={'avatar' + (following === p.id ? ' following' : '')}
               style={{ background: p.color, ['--ring' as string]: p.color }}
-              title={following === p.id ? `Stop following ${p.name}` : `Follow ${p.name}`}
+              data-tip={following === p.id ? 'Przestań śledzić' : `Śledź ${p.name}`}
+              aria-label={following === p.id ? `Przestań śledzić ${p.name}` : `Śledź ${p.name}`}
               onClick={() => setFollowing(following === p.id ? null : p.id)}
             >
               {p.name[0]?.toUpperCase()}
@@ -325,12 +348,16 @@ function Presenting({ room, me }: { room: string; me: Me }) {
         </div>
       </div>
       {leader && (
-        <div className="follow-frame" style={{ ['--ring' as string]: leader.color }}>
-          <button className="follow-pill" style={{ background: leader.color }} onClick={() => setFollowing(null)} title="Stop following (Esc)">
-            Following {leader.name}
-            <Icon name="close" />
-          </button>
-        </div>
+        <>
+          <div className="follow-frame" style={{ ['--ring' as string]: leader.color }} />
+          <div className={'hud follow-bar' + (edit ? ' above-edit' : '')}>
+            <span className="avatar" style={{ background: leader.color }}>{leader.name[0]?.toUpperCase()}</span>
+            Śledzisz <b>{leader.name}</b>
+            <button className="cta" onClick={() => setFollowing(null)} title="Esc">
+              Przestań
+            </button>
+          </div>
+        </>
       )}
       {edit && (
         <AlignBar

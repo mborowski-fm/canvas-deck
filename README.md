@@ -3,7 +3,7 @@
 Presentation tool for several simultaneous presenters. One large canvas, every slide is an artboard that can hold images, video or fully coded elements (animated SVG, React, anything).
 
 - Many presenters at once, everyone sees everyone's cursor (like Figma)
-- Equal rights: the active slide is shared, whoever changes it changes it for all
+- Presenters do not get in each other's way: everyone navigates on their own; click someone's avatar to follow their view (like in Figma)
 - Presenter window with notes per slide, so you can share one window and keep notes in the other
 - Runs in the browser, hosted on GitHub Pages, no server (P2P over WebRTC)
 
@@ -17,7 +17,7 @@ Open the printed URL. You land in a random room (`#/r/abc123`). Click **Copy inv
 ## Controls
 | Action | How |
 |---|---|
-| Next / previous slide (for everyone) | Arrows, Space, PageUp/Down, or click a slide |
+| Next / previous slide | Arrows, Space, PageUp/Down, or click a slide |
 | Pan | Scroll or drag the background |
 | Zoom | Ctrl/Cmd + scroll, or pinch |
 | Overview of all slides | `O` |

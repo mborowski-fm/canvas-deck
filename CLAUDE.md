@@ -4,8 +4,8 @@ Multi-presenter presentation tool. One big pan/zoom canvas, each slide is an art
 
 ## How it works (read this first)
 - **Slides** = folders in `src/slides/<NN>-<name>/` with `slide.tsx` (default export React component, optional `export const meta`) and optional `notes.md`. Auto-discovered by `src/slides/registry.ts` via `import.meta.glob`, ordered by folder name. Artboard is 1920x1080 world px. Default layout is a horizontal row; override with `meta.x/y/width/height`.
-- **Canvas** (`src/canvas/Canvas.tsx`): local camera (pan = wheel/drag, zoom = ctrl+wheel/pinch). The camera is NOT shared, every presenter can look around freely. The **active slide is shared**: when it changes, every camera flies to it.
-- **Shared state** is only `{active, ts, by}`, last write wins. Hook: `src/useRoom.ts`. Cursors/presence travel as `CursorMsg` in canvas world coordinates, so everyone sees them on the same spot.
+- **Canvas** (`src/canvas/Canvas.tsx`): local camera (pan = wheel/drag, zoom = ctrl+wheel/pinch). The camera flies to the active slide when it changes. Camera and active slide are local to each presenter (see Multiplayer model).
+- **Room** hook: `src/useRoom.ts`. Cursors/presence travel as `CursorMsg` in canvas world coordinates, so everyone sees them on the same spot.
 - **Sync layer** (`src/sync/`): `types.ts` defines the `Sync` interface, `p2p.ts` implements it with Trystero (WebRTC, peers find each other through public Nostr relays, no server). To use a WebSocket server instead (e.g. Cloudflare Durable Object), implement `Sync` and change the export in `src/sync/index.ts`. Nothing else changes.
 - **Rooms**: hash routes. `#/r/<room>` = main window, `#/r/<room>/notes` = presenter notes window. No hash = random room is created. Whoever has the link joins as a presenter (name prompt, saved in localStorage).
 - **Notes window** (`src/notes/`): a second browser window opened from the main one (key N). Talks to the main window through `BroadcastChannel` (`src/channel.ts`), so it only works in the same browser. It shows notes for the active slide, next slide, a timer, and can drive slides. Share the main window, keep the notes window to yourself.
@@ -21,8 +21,8 @@ Multi-presenter presentation tool. One big pan/zoom canvas, each slide is an art
 - Animations (only on the active slide, synced for everyone):
   - Declare them in the slide's `meta.animations` (`{ description, loop? }[]`). Descriptions are appended to the speaker notes automatically ("## Animation").
   - The component gets `play: { anim, key } | null` (`SlideProps`). `null` = slide not active: render the rest pose. A new `key` = (re)start animation `anim` from t=0.
-  - One animation: it autoplays when the slide becomes active (or loops if `loop: true`). Several: small 1, 2, 3 buttons appear in the active slide's bottom-left corner. The Replay button (top bar, key `R`) restarts the current one for everyone (`PlayState` in the sync layer, last write wins).
-  - Write animations as a pure function of time since `play.key` changed (see `02-percepcja/eye.ts`), so every presenter sees the same frame. No cursor-driven animations.
+  - One animation: it autoplays when the slide becomes active (or loops if `loop: true`). Several: small 1, 2, 3 buttons appear in the active slide's bottom-left corner. The Replay button (top bar, key `R`) restarts the current one (local; followers see it through your view).
+  - Write animations as a pure function of time since `play.key` changed (see `02-percepcja/eye.ts`), so a follower sees the same motion. No cursor-driven animations.
   - Use the helpers in `src/slides/motion.ts` (`spring`, `wobble`, `runTimeline`) for natural motion: springs with a little overshoot, anticipation before a move, follow-through after; avoid linear or plain smoothstep tweens.
   - Layers: group what you animate inside `slide.svg` (e.g. `<g id="Iris">`), reach them by `[id="<slug>__<layer>"]` from a `useEffect` in `slide.tsx` (wrap `<SvgSlide>` in a div with a ref). Put clip-paths on a wrapper group, not on the group you move.
   - `06-podswiadomy-porzadek`: loop (`bricks.ts`): knock-out as a chain reaction (each brick starts only when the one below hits it: `pushedBy`, `CONTACT`; hit bricks start fast and ease out, the hitter recoils), hold still, rebuild top first, neat pause, repeat. Bricks are rigid and heavy: stiff springs (damping ~0.9), tiny lift, no float or wobble, short hard knocks on neighbors. Match motion to the material.
@@ -47,9 +47,10 @@ Multi-presenter presentation tool. One big pan/zoom canvas, each slide is an art
 - Web pages are heavy (a whole website running inside the transformed canvas makes panning stutter), so they render as a light card; "Show live page" mounts the iframe for that one page. It unmounts on Esc, the close button, a click on the background or a slide change; at most one page is live. Keep it that way.
 - View mode: videos and live pages take their own clicks (controls, scrolling). Some sites refuse to be embedded and show an empty frame; the label above each element links to the source.
 
-## Follow mode
-- Click another presenter's avatar to follow their camera (like Figma): your view tracks theirs (fly-tos animate, panning tracks with a short linear transition), with a frame in their color and a "Following ..." pill. Stops on Esc, clicking the avatar or pill again, or when you pan/zoom/double click yourself.
-- Every presenter broadcasts their camera as a world rect (`ViewMsg`, throttled ~60 ms, `sendView` in `useRoom`); the follower fits that rect to its own viewport, so different screen sizes work. While following, the follower does not auto-fit on slide change (the leader's camera decides).
+## Multiplayer model: presenters do not get in each other's way
+- Local to each presenter: active slide, animations (replay, 1/2/3), camera, canvas elements. Another presenter's click never moves you.
+- Shared: cursors and avatars (presence), slide positions from edit mode, and every presenter's view (`ViewMsg`: camera world rect + active slide + playing animation, throttled ~60 ms, `sendView` in `useRoom`).
+- Follow mode: click another presenter's avatar (hover shows "Śledź <name>") to see the deck through their eyes: their camera (fitted to your viewport), their active slide and animation. Their avatar is highlighted, the screen gets a frame in their color and a bottom bar "Śledzisz <name>" with "Przestań". It stops on that button, Esc, clicking the avatar again, or when you navigate or move the camera yourself.
 
 ## Commands
 - `npm run dev` local dev server (test multiplayer with two tabs and the same `#/r/<room>`)
@@ -63,9 +64,9 @@ Left/Right and PageUp/PageDown: prev/next slide in every mode (Space too, outsid
 - Add a slide = add a folder. Do not edit the registry or App for it.
 - Slide assets (images, video, svg) live in the slide folder and are imported.
 - Keep the networking behind the `Sync` interface. Do not import `trystero` outside `src/sync/p2p.ts`.
-- Keep shared state minimal. Anything shared must be added to `SharedState`/`useRoom` and be conflict-safe (last write wins).
+- Keep shared state minimal: presenters must not move each other. Anything shared goes through `useRoom` and must be conflict-safe (last write wins).
 - P2P limits: WebRTC can be blocked by strict corporate networks/VPN, and room state is lost when everyone leaves. That is why `Sync` is swappable.
 - Deploy: push to `main`, GitHub Action builds and publishes to Pages. `vite.config.ts` uses `base: './'`, keep it.
 - Icons: Google Material Symbols Sharp (filled) via `<Icon name="..." />` (`src/Icon.tsx`). The font URL in `index.html` lists only the used icon names (alphabetical); add new ones there.
 - Main controls live in the top-right toolbar (prev/next, edit toggle, notes) next to the presenter avatars; the edit bar sits bottom-center. Overview (`O`) and focus (`F`) are keyboard only; the invite link is the page URL.
-- Language: UI and docs in English. Never use em dashes in docs.
+- Language: UI and docs in English, except the follow-mode strings ("Śledź", "Śledzisz", "Przestań"), which Marcin asked for in Polish. Never use em dashes in docs.

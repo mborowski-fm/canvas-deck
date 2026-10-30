@@ -139,10 +139,16 @@ button.pill.on { background: var(--neutral-paper); }
 .web-close { position: absolute; top: 24px; right: 24px; width: 88px; height: 88px; padding: 0; background: var(--neutral-paper); color: var(--text-primary); box-shadow: 0 2px 12px rgba(0,0,0,.2); }
 .web-close .msr { font-size: 48px; }
 
-/* Follow mode: avatars are buttons; while following, the screen gets a frame in the leader's color */
-button.avatar { padding: 0; height: 40px; font: inherit; font-weight: 600; cursor: pointer; transition: transform .25s var(--spring); }
-button.avatar:hover { transform: translateY(-2px); }
-button.avatar.following { box-shadow: 0 0 0 3px var(--neutral-paper), 0 0 0 6px var(--ring); }
+/* Follow mode: avatars are buttons with a tooltip; the followed one is highlighted; a frame in the
+   leader's color and a bottom bar "Śledzisz …" while following */
+button.avatar { position: relative; padding: 0; height: 40px; font: inherit; font-weight: 600; cursor: pointer; transition: transform .25s var(--spring), box-shadow .2s var(--ease); }
+button.avatar:hover { transform: translateY(-2px) scale(1.06); z-index: 2; box-shadow: 0 0 0 3px var(--neutral-paper), 0 0 0 5px color-mix(in srgb, var(--ring) 50%, transparent); }
+button.avatar.following { z-index: 1; box-shadow: 0 0 0 3px var(--neutral-paper), 0 0 0 6px var(--ring); }
+button.avatar::before { display: none; }
+button.avatar::after { content: attr(data-tip); position: absolute; top: calc(100% + 10px); left: 50%; transform: translate(-50%, -4px); padding: 6px 10px; border-radius: 8px; background: var(--color-ink); color: var(--text-inverse); font-size: 12px; font-weight: 500; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .15s var(--ease), transform .2s var(--spring); }
+button.avatar:hover::after { opacity: 1; transform: translate(-50%, 0); }
 .follow-frame { position: fixed; inset: 0; z-index: 15; pointer-events: none; box-shadow: inset 0 0 0 4px var(--ring); }
-.follow-pill { pointer-events: auto; position: absolute; top: 0; left: 50%; transform: translateX(-50%); border-radius: 0 0 14px 14px; height: 36px; padding: 0 10px 0 16px; color: var(--text-inverse); font-size: 13px; font-weight: 600; gap: 6px; }
-.follow-pill .msr { font-size: 18px; }
+.follow-bar { bottom: 20px; left: 50%; transform: translateX(-50%); gap: 10px; height: 56px; padding: 0 8px 0 10px; background: var(--bar); color: var(--text-primary); border-radius: 999px; font-size: 14px; white-space: nowrap; animation: rise .45s var(--spring); }
+.follow-bar.above-edit { bottom: 96px; }
+.follow-bar .avatar { width: 36px; height: 36px; border-width: 2px; margin: 0; font-size: 14px; }
+.follow-bar button.cta { height: 40px; padding: 0 18px; }

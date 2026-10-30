@@ -11,6 +11,8 @@ const MAX_Z = 4
 const MIN_ITEM = 80 // px, smallest element size when resizing
 
 export type ViewReq = { n: number; mode: 'all' | 'active' }
+/** the camera part of a ViewMsg */
+export type CamView = Pick<ViewMsg, 'cx' | 'cy' | 'w' | 'h' | 'fly'>
 
 interface Props {
   slides: Slide[]
@@ -39,7 +41,7 @@ interface Props {
   /** 1, 2, 3 buttons on slides with several animations */
   onPlay: (anim: number) => void
   /** this presenter's camera changed (throttled), for others to follow */
-  onView: (v: ViewMsg) => void
+  onView: (v: CamView) => void
   /** follow mode: the camera of the presenter being followed (null = free camera) */
   follow: ViewMsg | null
   /** the user moved the camera themselves (stops following) */
