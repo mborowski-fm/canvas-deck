@@ -56,8 +56,12 @@ export function App() {
 
 function Deck({ room }: { room: string }) {
   const [me, setMe] = useState<Me | null>(loadMe())
-  if (!me) return <NamePrompt onDone={(m) => { localStorage.setItem('canvas-deck:me', JSON.stringify(m)); setMe(m) }} />
-  return <Presenting room={room} me={me} />
+  const save = (m: Me) => {
+    try { localStorage.setItem('canvas-deck:me', JSON.stringify(m)) } catch { /* private mode */ }
+    setMe(m)
+  }
+  if (!me) return <NamePrompt onDone={save} />
+  return <Presenting room={room} me={me} onRename={(name) => save({ ...me, name })} />
 }
 
 function NamePrompt({ onDone }: { onDone: (m: Me) => void }) {
@@ -79,7 +83,7 @@ function NamePrompt({ onDone }: { onDone: (m: Me) => void }) {
   )
 }
 
-function Presenting({ room, me }: { room: string; me: Me }) {
+function Presenting({ room, me, onRename }: { room: string; me: Me; onRename: (name: string) => void }) {
   const { active, activeTs, play, playAnim, setActive, peers, sendCursor, layout, moveSlides, views, sendView } = useRoom(room, me, baseSlides.length)
   // registry positions + shared edits from the room
   const slides = useMemo(
@@ -115,6 +119,7 @@ function Presenting({ room, me }: { room: string; me: Me }) {
   // free canvas elements: local to this presenter (not synced), saved to items.json in dev
   const [items, setItems] = useState<CanvasItem[]>(baseItems)
   const [adding, setAdding] = useState(false)
+  const [renaming, setRenaming] = useState(false)
   const leader = peers.find((p) => p.id === following)
   // share this presenter's view (camera + slide + animation) for anyone following
   const lastCam = useRef<CamView | null>(null)
@@ -332,9 +337,15 @@ function Presenting({ room, me }: { room: string; me: Me }) {
           </button>
         </div>
         <div className="avatars">
-          <span className="avatar" style={{ background: me.color }} title={`${me.name} (you)`}>
+          <button
+            className="avatar me"
+            style={{ background: me.color, ['--ring' as string]: me.color }}
+            data-tip={`${me.name} (Ty) · Zmień imię`}
+            aria-label="Zmień imię"
+            onClick={() => setRenaming(true)}
+          >
             {me.name[0]?.toUpperCase()}
-          </span>
+          </button>
           {peers.map((p) => (
             <button
               key={p.id}
@@ -377,6 +388,13 @@ function Presenting({ room, me }: { room: string; me: Me }) {
           canDelete={selected.some((id) => !isSlide(id))}
         />
       )}
+      {renaming && (
+        <RenameDialog
+          name={me.name}
+          onClose={() => setRenaming(false)}
+          onSave={(name) => { setRenaming(false); onRename(name) }}
+        />
+      )}
       {adding && (
         <AddDialog
           canUpload={canSave}
@@ -386,5 +404,27 @@ function Presenting({ room, me }: { room: string; me: Me }) {
         />
       )}
     </>
+  )
+}
+
+/** Change your display name (click your own avatar). */
+function RenameDialog({ name, onSave, onClose }: { name: string; onSave: (name: string) => void; onClose: () => void }) {
+  const [value, setValue] = useState(name)
+  return (
+    <div className="modal scrim" onPointerDown={(e) => e.target === e.currentTarget && onClose()}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault()
+          if (value.trim()) onSave(value.trim())
+        }}
+      >
+        <h2>Zmień imię</h2>
+        <input autoFocus value={value} onChange={(e) => setValue(e.target.value)} onFocus={(e) => e.target.select()} />
+        <div className="actions">
+          <button type="button" className="text" onClick={onClose}>Anuluj</button>
+          <button type="submit" disabled={!value.trim()}>Zapisz</button>
+        </div>
+      </form>
+    </div>
   )
 }

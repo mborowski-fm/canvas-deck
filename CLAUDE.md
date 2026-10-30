@@ -72,4 +72,4 @@ Left/Right and PageUp/PageDown: prev/next slide in every mode (Space too, outsid
 - Deploy: push to `main`, GitHub Action builds and publishes to Pages. `vite.config.ts` uses `base: './'`, keep it.
 - Icons: Google Material Symbols Sharp (filled) via `<Icon name="..." />` (`src/Icon.tsx`). The font URL in `index.html` lists only the used icon names (alphabetical); add new ones there.
 - Main controls live in the top-right toolbar (prev/next, edit toggle, notes) next to the presenter avatars; the edit bar sits bottom-center. Overview (`O`) and focus (`F`) are keyboard only; the invite link is the page URL.
-- Language: UI and docs in English, except the follow-mode strings ("Śledź", "Śledzisz", "Przestań"), which Marcin asked for in Polish. Never use em dashes in docs.
+- Language: UI and docs in English, except the follow-mode strings ("Śledź", "Śledzisz", "Przestań"), and the rename dialog (click your own avatar: "Zmień imię", "Anuluj", "Zapisz"), which Marcin asked for in Polish. Never use em dashes in docs.
