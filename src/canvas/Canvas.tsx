@@ -22,11 +22,13 @@ interface Props {
   selected: string[]
   onSelected: (ids: string[]) => void
   onMove: (items: Pos[]) => void
+  /** Called once when a drag actually starts moving, with the original positions (for undo). */
+  onMoveStart: (orig: Pos[]) => void
 }
 
 type Drag =
   | { kind: 'pan'; lx: number; ly: number; moved: number; hit: number | null }
-  | { kind: 'move'; sx: number; sy: number; orig: Pos[]; moved: number; hit: string; shift: boolean; wasSel: boolean }
+  | { kind: 'move'; sx: number; sy: number; orig: Pos[]; moved: number; hit: string; shift: boolean; wasSel: boolean; started?: boolean }
   | { kind: 'marquee'; sx: number; sy: number; base: string[] }
 
 const hitOf = (t: EventTarget | null) => {
@@ -34,7 +36,7 @@ const hitOf = (t: EventTarget | null) => {
   return v == null ? null : Number(v)
 }
 
-export function Canvas({ slides, active, onActive, peers, onCursor, view, edit, selected, onSelected, onMove }: Props) {
+export function Canvas({ slides, active, onActive, peers, onCursor, view, edit, selected, onSelected, onMove, onMoveStart }: Props) {
   const ref = useRef<HTMLDivElement>(null)
   const [cam, setCam] = useState<Cam>({ x: 0, y: 0, z: 0.3 })
   const [animate, setAnimate] = useState(false)
@@ -165,6 +167,7 @@ export function Canvas({ slides, active, onActive, peers, onCursor, view, edit, 
       const dx = (e.clientX - d.sx) / camRef.current.z
       const dy = (e.clientY - d.sy) / camRef.current.z
       d.moved = Math.abs(e.clientX - d.sx) + Math.abs(e.clientY - d.sy)
+      if (d.moved >= 4 && !d.started) { d.started = true; onMoveStart(d.orig) }
       if (d.moved >= 4) onMove(d.orig.map((o) => ({ id: o.id, x: Math.round(o.x + dx), y: Math.round(o.y + dy) })))
     } else {
       const x = Math.min(d.sx, p.x), y = Math.min(d.sy, p.y)
@@ -225,7 +228,7 @@ export function Canvas({ slides, active, onActive, peers, onCursor, view, edit, 
               className={'frame' + (sel ? ' selected' : '') + (s.index === active ? ' active' : '')}
               style={{ left: s.x, top: s.y, width: s.width, height: s.height }}
             >
-              <div className="frame-label" style={{ transform: `scale(${1 / z})` }}>
+              <div className="frame-label" style={{ transform: `scale(${1 / z})`, maxWidth: s.width * z }}>
                 {s.title}
               </div>
               <div className="artboard">

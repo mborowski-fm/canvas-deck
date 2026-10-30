@@ -1,0 +1,602 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g>
+<g id="01. Percepcja">
+<rect width="1920" height="1080" rx="16" fill="#FFFFF5"/>
+<text id="Bohater?" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="160" font-weight="600" letter-spacing="-0.04em"><tspan x="128" y="240">Bohater?</tspan></text>
+<g id="Frame 1236">
+<circle id="Ellipse 9" cx="1888" cy="32" r="16" fill="#C7F3F8"/>
+</g>
+<rect id="Rectangle 97" x="128" y="381" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 98" x="246.857" y="381" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 99" x="365.714" y="381" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 100" x="484.571" y="381" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 101" x="603.429" y="381" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 102" x="722.286" y="381" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 110" x="128" y="499.857" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 109" x="246.857" y="499.857" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 108" x="365.714" y="499.857" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 107" x="484.571" y="499.857" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 106" x="603.429" y="499.857" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 105" x="722.286" y="499.857" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 111" x="128" y="618.714" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 112" x="246.857" y="618.714" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 113" x="365.714" y="618.714" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 114" x="484.571" y="618.714" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 115" x="603.429" y="618.714" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 116" x="722.286" y="618.714" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 118" x="128" y="737.571" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 119" x="246.857" y="737.571" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 120" x="365.714" y="737.571" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 121" x="484.571" y="737.571" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 122" x="603.429" y="737.571" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<rect id="Rectangle 123" x="722.286" y="737.571" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+<g id="Pattern / Rectangle 98">
+<mask id="mask0_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1110" y="381" width="88" height="87">
+<rect id="Rectangle 98_2" x="1110.86" y="381" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask0_104_158)">
+<g id="Pattern">
+<g id="Pattern tiles" clip-path="url(#clip0_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1110.86 381)" fill="#FF7036"/>
+<g id="Tile / hstripes" clip-path="url(#clip1_104_158)">
+<rect width="43.43" height="86.86" transform="translate(1110.86 381)" fill="#F1FBE3"/>
+<path id="Vector" d="M1110.86 402.71H1154.29V424.42H1110.86V402.71ZM1110.86 446.14H1154.29V467.85H1110.86V446.14Z" fill="#0E5C36"/>
+</g>
+<g id="Tile / blocks" clip-path="url(#clip2_104_158)">
+<rect width="43.43" height="86.86" transform="translate(1154.29 381)" fill="#0E5C36"/>
+<path id="Vector_2" d="M1154.29 381H1197.72V424.43H1154.29V381Z" fill="#F1FBE3"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 99">
+<mask id="mask1_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1229" y="381" width="88" height="87">
+<rect id="Rectangle 99_2" x="1229.71" y="381" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask1_104_158)">
+<g id="Pattern_2">
+<g id="Pattern tiles_2" clip-path="url(#clip3_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1229.71 381)" fill="#FF7036"/>
+<g id="Tile / checker" clip-path="url(#clip4_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1229.71 381)" fill="#9A62EE"/>
+<path id="Vector_3" d="M1229.71 381H1273.14V424.43H1229.71V381ZM1273.14 424.43H1316.57V467.86H1273.14V424.43Z" fill="#6BE395"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 100">
+<mask id="mask2_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1348" y="381" width="88" height="87">
+<rect id="Rectangle 100_2" x="1348.57" y="381" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask2_104_158)">
+<g id="Pattern_3">
+<g id="Pattern tiles_3" clip-path="url(#clip5_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1348.57 381)" fill="#FF7036"/>
+<g id="Tile / hstripes_2" clip-path="url(#clip6_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1348.57 381)" fill="#9A62EE"/>
+<path id="Vector_4" d="M1348.57 391.86H1435.43V402.72H1348.57V391.86ZM1348.57 413.57H1435.43V424.43H1348.57V413.57ZM1348.57 435.29H1435.43V446.15H1348.57V435.29ZM1348.57 457H1435.43V467.86H1348.57V457Z" fill="#F1FBE3"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 101">
+<mask id="mask3_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1467" y="381" width="88" height="87">
+<rect id="Rectangle 101_2" x="1467.43" y="381" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask3_104_158)">
+<g id="Pattern_4">
+<g id="Pattern tiles_4" clip-path="url(#clip7_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1467.43 381)" fill="#FF7036"/>
+<g id="Tile / gridlines" clip-path="url(#clip8_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1467.43 381)" fill="#F1FBE3"/>
+<path id="Vector_5" d="M1473.92 381H1475.42V467.86H1473.92V381ZM1488.39 381H1489.89V467.86H1488.39V381ZM1502.87 381H1504.37V467.86H1502.87V381ZM1517.35 381H1518.85V467.86H1517.35V381ZM1531.82 381H1533.32V467.86H1531.82V381ZM1546.3 381H1547.8V467.86H1546.3V381ZM1467.43 387.49H1554.29V388.99H1467.43V387.49ZM1467.43 401.96H1554.29V403.46H1467.43V401.96ZM1467.43 416.44H1554.29V417.94H1467.43V416.44ZM1467.43 430.92H1554.29V432.42H1467.43V430.92ZM1467.43 445.39H1554.29V446.89H1467.43V445.39ZM1467.43 459.87H1554.29V461.37H1467.43V459.87Z" fill="#C99ED0"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 102">
+<mask id="mask4_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1586" y="381" width="88" height="87">
+<rect id="Rectangle 102_2" x="1586.29" y="381" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask4_104_158)">
+<g id="Pattern_5">
+<g id="Pattern tiles_5" clip-path="url(#clip9_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1586.29 381)" fill="#FF7036"/>
+<g id="Tile / hstripes_3" clip-path="url(#clip10_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1586.29 381)" fill="#0E5C36"/>
+<path id="Vector_6" d="M1586.29 395.48H1673.15V409.96H1586.29V395.48ZM1586.29 424.43H1673.15V438.91H1586.29V424.43ZM1586.29 453.38H1673.15V467.86H1586.29V453.38Z" fill="#EC5A2E"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 103">
+<mask id="mask5_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1705" y="381" width="87" height="87">
+<rect id="Rectangle 103" x="1705.14" y="381" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask5_104_158)">
+<g id="Pattern_6">
+<g id="Pattern tiles_6" clip-path="url(#clip11_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1705.14 381)" fill="#FF7036"/>
+<g id="Tile / hstripes_4" clip-path="url(#clip12_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1705.14 381)" fill="#F1FBE3"/>
+<path id="Vector_7" d="M1705.14 402.71H1792V424.42H1705.14V402.71ZM1705.14 446.14H1792V467.85H1705.14V446.14Z" fill="#E84ACF"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 109">
+<mask id="mask6_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1110" y="499" width="88" height="88">
+<rect id="Rectangle 109_2" x="1110.86" y="499.857" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask6_104_158)">
+<g id="Pattern_7">
+<g id="Pattern tiles_7" clip-path="url(#clip13_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1110.86 499.857)" fill="#FF7036"/>
+<g id="Tile / gridlines_2" clip-path="url(#clip14_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1110.86 499.857)" fill="#FF7036"/>
+<path id="Vector_8" d="M1115.54 499.857H1117.04V586.717H1115.54V499.857ZM1126.4 499.857H1127.9V586.717H1126.4V499.857ZM1137.25 499.857H1138.75V586.717H1137.25V499.857ZM1148.11 499.857H1149.61V586.717H1148.11V499.857ZM1158.97 499.857H1160.47V586.717H1158.97V499.857ZM1169.82 499.857H1171.32V586.717H1169.82V499.857ZM1180.68 499.857H1182.18V586.717H1180.68V499.857ZM1191.54 499.857H1193.04V586.717H1191.54V499.857ZM1110.86 504.537H1197.72V506.037H1110.86V504.537ZM1110.86 515.397H1197.72V516.897H1110.86V515.397ZM1110.86 526.247H1197.72V527.747H1110.86V526.247ZM1110.86 537.107H1197.72V538.607H1110.86V537.107ZM1110.86 547.967H1197.72V549.467H1110.86V547.967ZM1110.86 558.817H1197.72V560.317H1110.86V558.817ZM1110.86 569.677H1197.72V571.177H1110.86V569.677ZM1110.86 580.537H1197.72V582.037H1110.86V580.537Z" fill="#F1FBE3"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 108">
+<mask id="mask7_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1229" y="499" width="88" height="88">
+<rect id="Rectangle 108_2" x="1229.71" y="499.857" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask7_104_158)">
+<g id="Pattern_8">
+<g id="Pattern tiles_8" clip-path="url(#clip15_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1229.71 499.857)" fill="#FF7036"/>
+<g id="Tile / blocks_2" clip-path="url(#clip16_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1229.71 499.857)" fill="#F1FBE3"/>
+<path id="Vector_9" d="M1229.71 499.857H1251.42V586.717H1229.71V499.857ZM1273.14 499.857H1294.85V586.717H1273.14V499.857Z" fill="#C99ED0"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 107">
+<mask id="mask8_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1348" y="499" width="88" height="88">
+<rect id="Rectangle 107_2" x="1348.57" y="499.857" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask8_104_158)">
+<g id="Pattern_9">
+<g id="Pattern tiles_9" clip-path="url(#clip17_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1348.57 499.857)" fill="#FF7036"/>
+<g id="Tile / checker_2" clip-path="url(#clip18_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1348.57 499.857)" fill="#731D1E"/>
+<path id="Vector_10" d="M1348.57 499.857H1370.28V521.567H1348.57V499.857ZM1392 499.857H1413.71V521.567H1392V499.857ZM1370.28 521.567H1391.99V543.277H1370.28V521.567ZM1413.71 521.567H1435.42V543.277H1413.71V521.567ZM1348.57 543.287H1370.28V564.997H1348.57V543.287ZM1392 543.287H1413.71V564.997H1392V543.287ZM1370.28 564.997H1391.99V586.707H1370.28V564.997ZM1413.71 564.997H1435.42V586.707H1413.71V564.997Z" fill="#C7F3F8"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 106">
+<mask id="mask9_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1467" y="499" width="88" height="88">
+<rect id="Rectangle 106_2" x="1467.43" y="499.857" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask9_104_158)">
+<g id="Pattern_10">
+<g id="Pattern tiles_10" clip-path="url(#clip19_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1467.43 499.857)" fill="#FF7036"/>
+<g id="Tile / gridlines_3" clip-path="url(#clip20_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1467.43 499.857)" fill="#C7F3F8"/>
+<path id="Vector_11" d="M1473.92 499.857H1475.42V586.717H1473.92V499.857ZM1488.39 499.857H1489.89V586.717H1488.39V499.857ZM1502.87 499.857H1504.37V586.717H1502.87V499.857ZM1517.35 499.857H1518.85V586.717H1517.35V499.857ZM1531.82 499.857H1533.32V586.717H1531.82V499.857ZM1546.3 499.857H1547.8V586.717H1546.3V499.857ZM1467.43 506.347H1554.29V507.847H1467.43V506.347ZM1467.43 520.817H1554.29V522.317H1467.43V520.817ZM1467.43 535.297H1554.29V536.797H1467.43V535.297ZM1467.43 549.777H1554.29V551.277H1467.43V549.777ZM1467.43 564.247H1554.29V565.747H1467.43V564.247ZM1467.43 578.727H1554.29V580.227H1467.43V578.727Z" fill="#3BAFEA"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 105">
+<mask id="mask10_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1586" y="499" width="88" height="88">
+<rect id="Rectangle 105_2" x="1586.29" y="499.857" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask10_104_158)">
+<g id="Pattern_11">
+<g id="Pattern tiles_11" clip-path="url(#clip21_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1586.29 499.857)" fill="#FF7036"/>
+<g id="Tile / vstripes" clip-path="url(#clip22_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1586.29 499.857)" fill="#E84ACF"/>
+<path id="Vector_12" d="M1600.77 499.857H1615.25V586.717H1600.77V499.857ZM1629.72 499.857H1644.2V586.717H1629.72V499.857ZM1658.67 499.857H1673.15V586.717H1658.67V499.857Z" fill="#F1FBE3"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 104">
+<mask id="mask11_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1705" y="499" width="87" height="88">
+<rect id="Rectangle 104" x="1705.14" y="499.857" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask11_104_158)">
+<g id="Pattern_12">
+<g id="Pattern tiles_12" clip-path="url(#clip23_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1705.14 499.857)" fill="#FF7036"/>
+<g id="Tile / gridlines_4" clip-path="url(#clip24_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1705.14 499.857)" fill="#F1FBE3"/>
+<path id="Vector_13" d="M1709.82 499.857H1711.32V586.717H1709.82V499.857ZM1720.68 499.857H1722.18V586.717H1720.68V499.857ZM1731.53 499.857H1733.03V586.717H1731.53V499.857ZM1742.39 499.857H1743.89V586.717H1742.39V499.857ZM1753.25 499.857H1754.75V586.717H1753.25V499.857ZM1764.1 499.857H1765.6V586.717H1764.1V499.857ZM1774.96 499.857H1776.46V586.717H1774.96V499.857ZM1785.82 499.857H1787.32V586.717H1785.82V499.857ZM1705.14 504.537H1792V506.037H1705.14V504.537ZM1705.14 515.397H1792V516.897H1705.14V515.397ZM1705.14 526.247H1792V527.747H1705.14V526.247ZM1705.14 537.107H1792V538.607H1705.14V537.107ZM1705.14 547.967H1792V549.467H1705.14V547.967ZM1705.14 558.817H1792V560.317H1705.14V558.817ZM1705.14 569.677H1792V571.177H1705.14V569.677ZM1705.14 580.537H1792V582.037H1705.14V580.537Z" fill="#6BE395"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 112">
+<mask id="mask12_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1110" y="618" width="88" height="88">
+<rect id="Rectangle 112_2" x="1110.86" y="618.714" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask12_104_158)">
+<g id="Pattern_13">
+<g id="Pattern tiles_13" clip-path="url(#clip25_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1110.86 618.714)" fill="#FF7036"/>
+<g id="Tile / vstripes_2" clip-path="url(#clip26_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1110.86 618.714)" fill="#C7F3F8"/>
+<path id="Vector_14" d="M1132.57 618.714H1154.28V705.574H1132.57V618.714ZM1176 618.714H1197.71V705.574H1176V618.714Z" fill="#4F4FF7"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 113">
+<mask id="mask13_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1229" y="618" width="88" height="88">
+<rect id="Rectangle 113_2" x="1229.71" y="618.714" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask13_104_158)">
+<g id="Pattern_14">
+<g id="Pattern tiles_14" clip-path="url(#clip27_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1229.71 618.714)" fill="#FF7036"/>
+<g id="Tile / vstripes_3" clip-path="url(#clip28_104_158)">
+<rect width="43.43" height="43.43" transform="translate(1229.71 618.714)" fill="#B38C1A"/>
+<path id="Vector_15" d="M1244.19 618.714H1258.67V662.144H1244.19V618.714Z" fill="#F1FBE3"/>
+</g>
+<g id="Tile / blocks_3" clip-path="url(#clip29_104_158)">
+<rect width="43.43" height="43.43" transform="translate(1229.71 662.143)" fill="#9A62EE"/>
+<path id="Vector_16" d="M1229.71 662.143H1273.14V705.573H1229.71V662.143Z" fill="#F1FBE3"/>
+</g>
+<g id="Tile / hstripes_5" clip-path="url(#clip30_104_158)">
+<rect width="43.43" height="86.86" transform="translate(1273.14 618.714)" fill="#F1FBE3"/>
+<path id="Vector_17" d="M1273.14 629.574H1316.57V640.434H1273.14V629.574ZM1273.14 673.004H1316.57V683.864H1273.14V673.004Z" fill="#6BE395"/>
+<path id="Vector_18" d="M1273.14 651.284H1316.57V662.144H1273.14V651.284ZM1273.14 694.714H1316.57V705.574H1273.14V694.714Z" fill="#3BAFEA"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 114">
+<mask id="mask14_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1348" y="618" width="88" height="88">
+<rect id="Rectangle 114_2" x="1348.57" y="618.714" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask14_104_158)">
+<g id="Pattern_15">
+<g id="Pattern tiles_15" clip-path="url(#clip31_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1348.57 618.714)" fill="#FF7036"/>
+<g id="Tile / vstripes_4" clip-path="url(#clip32_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1348.57 618.714)" fill="#6BE395"/>
+<path id="Vector_19" d="M1363.05 618.714H1377.53V705.574H1363.05V618.714ZM1392 618.714H1406.48V705.574H1392V618.714ZM1420.95 618.714H1435.43V705.574H1420.95V618.714Z" fill="#F1FBE3"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 115">
+<mask id="mask15_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1467" y="618" width="88" height="88">
+<rect id="Rectangle 115_2" x="1467.43" y="618.714" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask15_104_158)">
+<g id="Pattern_16">
+<g id="Pattern tiles_16" clip-path="url(#clip33_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1467.43 618.714)" fill="#FF7036"/>
+<g id="Tile / hstripes_6" clip-path="url(#clip34_104_158)">
+<rect width="43.43" height="86.86" transform="translate(1467.43 618.714)" fill="#FF7036"/>
+<path id="Vector_20" d="M1467.43 640.424H1510.86V662.134H1467.43V640.424ZM1467.43 683.854H1510.86V705.564H1467.43V683.854Z" fill="#F1FBE3"/>
+</g>
+<g id="Tile / checker_3" clip-path="url(#clip35_104_158)">
+<rect width="43.43" height="86.86" transform="translate(1510.86 618.714)" fill="#FF7036"/>
+<path id="Vector_21" d="M1510.86 618.714H1554.29V662.144H1510.86V618.714Z" fill="#F1FBE3"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 116">
+<mask id="mask16_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1586" y="618" width="88" height="88">
+<rect id="Rectangle 116_2" x="1586.29" y="618.714" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask16_104_158)">
+<g id="Pattern_17">
+<g id="Pattern tiles_17" clip-path="url(#clip36_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1586.29 618.714)" fill="#FF7036"/>
+<g id="Tile / halfcircle" clip-path="url(#clip37_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1586.29 618.714)" fill="#F1FBE3"/>
+<path id="Vector_22" d="M1673.15 699.494C1693.77 699.494 1710.5 682.772 1710.5 662.144C1710.5 641.516 1693.77 624.794 1673.15 624.794C1652.52 624.794 1635.8 641.516 1635.8 662.144C1635.8 682.772 1652.52 699.494 1673.15 699.494Z" fill="#3BAFEA"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 117">
+<mask id="mask17_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1705" y="618" width="87" height="88">
+<rect id="Rectangle 117" x="1705.14" y="618.714" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask17_104_158)">
+<g id="Pattern_18">
+<g id="Pattern tiles_18" clip-path="url(#clip38_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1705.14 618.714)" fill="#FF7036"/>
+<g id="Tile / gridlines_5" clip-path="url(#clip39_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1705.14 618.714)" fill="#C99ED0"/>
+<path id="Vector_23" d="M1709.82 618.714H1711.32V705.574H1709.82V618.714ZM1720.68 618.714H1722.18V705.574H1720.68V618.714ZM1731.53 618.714H1733.03V705.574H1731.53V618.714ZM1742.39 618.714H1743.89V705.574H1742.39V618.714ZM1753.25 618.714H1754.75V705.574H1753.25V618.714ZM1764.1 618.714H1765.6V705.574H1764.1V618.714ZM1774.96 618.714H1776.46V705.574H1774.96V618.714ZM1785.82 618.714H1787.32V705.574H1785.82V618.714ZM1705.14 623.394H1792V624.894H1705.14V623.394ZM1705.14 634.254H1792V635.754H1705.14V634.254ZM1705.14 645.104H1792V646.604H1705.14V645.104ZM1705.14 655.964H1792V657.464H1705.14V655.964ZM1705.14 666.824H1792V668.324H1705.14V666.824ZM1705.14 677.674H1792V679.174H1705.14V677.674ZM1705.14 688.534H1792V690.034H1705.14V688.534ZM1705.14 699.394H1792V700.894H1705.14V699.394Z" fill="#F1FBE3"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 119">
+<mask id="mask18_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1110" y="737" width="88" height="88">
+<rect id="Rectangle 119_2" x="1110.86" y="737.571" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask18_104_158)">
+<g id="Pattern_19">
+<g id="Pattern tiles_19" clip-path="url(#clip40_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1110.86 737.571)" fill="#FF7036"/>
+<g id="Tile / hstripes_7" clip-path="url(#clip41_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1110.86 737.571)" fill="#0E5C36"/>
+<path id="Vector_24" d="M1110.86 759.281H1197.72V780.991H1110.86V759.281ZM1110.86 802.711H1197.72V824.421H1110.86V802.711Z" fill="#F1FBE3"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 120">
+<mask id="mask19_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1229" y="737" width="88" height="88">
+<rect id="Rectangle 120_2" x="1229.71" y="737.571" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask19_104_158)">
+<g id="Pattern_20">
+<g id="Pattern tiles_20" clip-path="url(#clip42_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1229.71 737.571)" fill="#FF7036"/>
+<g id="Tile / checker_4" clip-path="url(#clip43_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1229.71 737.571)" fill="#FF7036"/>
+<path id="Vector_25" d="M1229.71 737.571H1258.66V766.521H1229.71V737.571ZM1287.61 737.571H1316.56V766.521H1287.61V737.571ZM1258.66 766.521H1287.61V795.471H1258.66V766.521ZM1229.71 795.471H1258.66V824.421H1229.71V795.471ZM1287.61 795.471H1316.56V824.421H1287.61V795.471Z" fill="#F1FBE3"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 121">
+<mask id="mask20_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1348" y="737" width="88" height="88">
+<rect id="Rectangle 121_2" x="1348.57" y="737.571" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask20_104_158)">
+<g id="Pattern_21">
+<g id="Pattern tiles_21" clip-path="url(#clip44_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1348.57 737.571)" fill="#FF7036"/>
+<g id="Tile / blocks_4" clip-path="url(#clip45_104_158)">
+<rect width="86.86" height="43.43" transform="translate(1348.57 737.571)" fill="#C3B9FF"/>
+<path id="Vector_26" d="M1348.57 737.571H1392V759.281H1348.57V737.571ZM1392 759.281H1435.43V780.991H1392V759.281Z" fill="#F1FBE3"/>
+</g>
+<g id="Tile / hstripes_8" clip-path="url(#clip46_104_158)">
+<rect width="86.86" height="43.43" transform="translate(1348.57 781)" fill="#E2F79A"/>
+<path id="Vector_27" d="M1348.57 795.48H1435.43V809.96H1348.57V795.48Z" fill="#B38C1A"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 122">
+<mask id="mask21_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1467" y="737" width="88" height="88">
+<rect id="Rectangle 122_2" x="1467.43" y="737.571" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask21_104_158)">
+<g id="Pattern_22">
+<g id="Pattern tiles_22" clip-path="url(#clip47_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1467.43 737.571)" fill="#FF7036"/>
+<g id="Tile / checker_5" clip-path="url(#clip48_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1467.43 737.571)" fill="#E2F79A"/>
+<path id="Vector_28" d="M1467.43 737.571H1510.86V781.001H1467.43V737.571ZM1510.86 781.001H1554.29V824.431H1510.86V781.001Z" fill="#E84ACF"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 123">
+<mask id="mask22_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1586" y="737" width="88" height="88">
+<rect id="Rectangle 123_2" x="1586.29" y="737.571" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask22_104_158)">
+<g id="Pattern_23">
+<g id="Pattern tiles_23" clip-path="url(#clip49_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1586.29 737.571)" fill="#FF7036"/>
+<g id="Tile / halfcircle_2" clip-path="url(#clip50_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1586.29 737.571)" fill="#EC5A2E"/>
+<path id="Vector_29" d="M1629.72 861.781C1650.34 861.781 1667.07 845.059 1667.07 824.431C1667.07 803.803 1650.34 787.081 1629.72 787.081C1609.09 787.081 1592.37 803.803 1592.37 824.431C1592.37 845.059 1609.09 861.781 1629.72 861.781Z" fill="#F1FBE3"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 124">
+<mask id="mask23_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1705" y="737" width="87" height="88">
+<rect id="Rectangle 124" x="1705.14" y="737.571" width="86.8571" height="86.8571" rx="43.4286" fill="#F1F1DC"/>
+</mask>
+<g mask="url(#mask23_104_158)">
+<g id="Pattern_24">
+<g id="Pattern tiles_24" clip-path="url(#clip51_104_158)">
+<rect width="86.8571" height="86.8571" transform="translate(1705.14 737.571)" fill="#FF7036"/>
+<g id="Tile / halfcircle_3" clip-path="url(#clip52_104_158)">
+<rect width="86.86" height="86.86" transform="translate(1705.14 737.571)" fill="#9A62EE"/>
+<path id="Vector_30" d="M1792 818.351C1812.63 818.351 1829.35 801.629 1829.35 781.001C1829.35 760.374 1812.63 743.651 1792 743.651C1771.37 743.651 1754.65 760.374 1754.65 781.001C1754.65 801.629 1771.37 818.351 1792 818.351Z" fill="#F1FBE3"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<line id="Line 2" x1="962" y1="-8.74228e-08" x2="962" y2="1080" stroke="#F1F1DC" stroke-width="4" stroke-dasharray="16 16"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1110.86 381)"/>
+</clipPath>
+<clipPath id="clip1_104_158">
+<rect width="43.43" height="86.86" fill="white" transform="translate(1110.86 381)"/>
+</clipPath>
+<clipPath id="clip2_104_158">
+<rect width="43.43" height="86.86" fill="white" transform="translate(1154.29 381)"/>
+</clipPath>
+<clipPath id="clip3_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1229.71 381)"/>
+</clipPath>
+<clipPath id="clip4_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1229.71 381)"/>
+</clipPath>
+<clipPath id="clip5_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1348.57 381)"/>
+</clipPath>
+<clipPath id="clip6_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1348.57 381)"/>
+</clipPath>
+<clipPath id="clip7_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1467.43 381)"/>
+</clipPath>
+<clipPath id="clip8_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1467.43 381)"/>
+</clipPath>
+<clipPath id="clip9_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1586.29 381)"/>
+</clipPath>
+<clipPath id="clip10_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1586.29 381)"/>
+</clipPath>
+<clipPath id="clip11_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1705.14 381)"/>
+</clipPath>
+<clipPath id="clip12_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1705.14 381)"/>
+</clipPath>
+<clipPath id="clip13_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1110.86 499.857)"/>
+</clipPath>
+<clipPath id="clip14_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1110.86 499.857)"/>
+</clipPath>
+<clipPath id="clip15_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1229.71 499.857)"/>
+</clipPath>
+<clipPath id="clip16_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1229.71 499.857)"/>
+</clipPath>
+<clipPath id="clip17_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1348.57 499.857)"/>
+</clipPath>
+<clipPath id="clip18_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1348.57 499.857)"/>
+</clipPath>
+<clipPath id="clip19_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1467.43 499.857)"/>
+</clipPath>
+<clipPath id="clip20_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1467.43 499.857)"/>
+</clipPath>
+<clipPath id="clip21_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1586.29 499.857)"/>
+</clipPath>
+<clipPath id="clip22_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1586.29 499.857)"/>
+</clipPath>
+<clipPath id="clip23_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1705.14 499.857)"/>
+</clipPath>
+<clipPath id="clip24_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1705.14 499.857)"/>
+</clipPath>
+<clipPath id="clip25_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1110.86 618.714)"/>
+</clipPath>
+<clipPath id="clip26_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1110.86 618.714)"/>
+</clipPath>
+<clipPath id="clip27_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1229.71 618.714)"/>
+</clipPath>
+<clipPath id="clip28_104_158">
+<rect width="43.43" height="43.43" fill="white" transform="translate(1229.71 618.714)"/>
+</clipPath>
+<clipPath id="clip29_104_158">
+<rect width="43.43" height="43.43" fill="white" transform="translate(1229.71 662.143)"/>
+</clipPath>
+<clipPath id="clip30_104_158">
+<rect width="43.43" height="86.86" fill="white" transform="translate(1273.14 618.714)"/>
+</clipPath>
+<clipPath id="clip31_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1348.57 618.714)"/>
+</clipPath>
+<clipPath id="clip32_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1348.57 618.714)"/>
+</clipPath>
+<clipPath id="clip33_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1467.43 618.714)"/>
+</clipPath>
+<clipPath id="clip34_104_158">
+<rect width="43.43" height="86.86" fill="white" transform="translate(1467.43 618.714)"/>
+</clipPath>
+<clipPath id="clip35_104_158">
+<rect width="43.43" height="86.86" fill="white" transform="translate(1510.86 618.714)"/>
+</clipPath>
+<clipPath id="clip36_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1586.29 618.714)"/>
+</clipPath>
+<clipPath id="clip37_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1586.29 618.714)"/>
+</clipPath>
+<clipPath id="clip38_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1705.14 618.714)"/>
+</clipPath>
+<clipPath id="clip39_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1705.14 618.714)"/>
+</clipPath>
+<clipPath id="clip40_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1110.86 737.571)"/>
+</clipPath>
+<clipPath id="clip41_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1110.86 737.571)"/>
+</clipPath>
+<clipPath id="clip42_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1229.71 737.571)"/>
+</clipPath>
+<clipPath id="clip43_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1229.71 737.571)"/>
+</clipPath>
+<clipPath id="clip44_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1348.57 737.571)"/>
+</clipPath>
+<clipPath id="clip45_104_158">
+<rect width="86.86" height="43.43" fill="white" transform="translate(1348.57 737.571)"/>
+</clipPath>
+<clipPath id="clip46_104_158">
+<rect width="86.86" height="43.43" fill="white" transform="translate(1348.57 781)"/>
+</clipPath>
+<clipPath id="clip47_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1467.43 737.571)"/>
+</clipPath>
+<clipPath id="clip48_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1467.43 737.571)"/>
+</clipPath>
+<clipPath id="clip49_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1586.29 737.571)"/>
+</clipPath>
+<clipPath id="clip50_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1586.29 737.571)"/>
+</clipPath>
+<clipPath id="clip51_104_158">
+<rect width="86.8571" height="86.8571" fill="white" transform="translate(1705.14 737.571)"/>
+</clipPath>
+<clipPath id="clip52_104_158">
+<rect width="86.86" height="86.86" fill="white" transform="translate(1705.14 737.571)"/>
+</clipPath>
+</defs>
+</svg>

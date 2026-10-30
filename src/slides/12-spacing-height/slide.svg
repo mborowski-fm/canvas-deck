@@ -1,0 +1,36 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g>
+<g id="01. Percepcja">
+<rect width="1920" height="1080" rx="16" fill="#FFFFF5"/>
+<line id="Line 7" x1="992" y1="667" x2="1792" y2="667" stroke="#F1F1DC" stroke-width="4" stroke-dasharray="8 8"/>
+<line id="Line 8" x1="992" y1="710" x2="1792" y2="710" stroke="#F1F1DC" stroke-width="4" stroke-dasharray="8 8"/>
+<line id="Line 9" x1="992" y1="753" x2="1792" y2="753" stroke="#F1F1DC" stroke-width="4" stroke-dasharray="8 8"/>
+<line id="Line 10" x1="992" y1="796" x2="1792" y2="796" stroke="#F1F1DC" stroke-width="4" stroke-dasharray="8 8"/>
+<line id="Line 11" x1="992" y1="839" x2="1792" y2="839" stroke="#F1F1DC" stroke-width="4" stroke-dasharray="8 8"/>
+<text id="Spacing, height itd." fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="160" font-weight="600" letter-spacing="-0.04em"><tspan x="128" y="240">Spacing, height itd.</tspan></text>
+<g id="Frame 1236">
+<path id="Vector" d="M1903.64 16L1904 23.5044H1903.1C1902.92 22.1829 1902.69 21.2389 1902.39 20.6726C1901.9 19.7601 1901.24 19.0914 1900.42 18.6667C1899.61 18.2262 1898.54 18.0059 1897.21 18.0059H1892.68V42.4543C1892.68 44.4208 1892.9 45.648 1893.32 46.1357C1893.92 46.7965 1894.85 47.1268 1896.1 47.1268H1897.21V48H1883.57V47.1268H1884.71C1886.07 47.1268 1887.04 46.7178 1887.61 45.8997C1887.95 45.3963 1888.13 44.2478 1888.13 42.4543V18.0059H1884.26C1882.76 18.0059 1881.69 18.116 1881.06 18.3363C1880.23 18.6352 1879.53 19.2094 1878.95 20.059C1878.36 20.9086 1878.01 22.057 1877.9 23.5044H1877L1877.38 16H1903.64Z" fill="#731D1E"/>
+</g>
+<text id="The quick brown fox jumps over the lazy dog, and what happened next was a spectacular tumble as the fox completely misjudged the distance and landed face-first into a massive pile of autumn leaves." fill="black" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="32" letter-spacing="0em"><tspan x="1104.81" y="665.4">The quick brown fox jumps over the lazy </tspan><tspan x="1135.41" y="708.4">dog,&#xa0;and what happened next was a </tspan><tspan x="1097.03" y="751.4">spectacular tumble as the fox completely </tspan><tspan x="1100.03" y="794.4">misjudged the distance and landed face-</tspan><tspan x="1099.36" y="837.4">first into a massive pile of autumn leaves.</tspan></text>
+<text id="The quick brown fox jumps over the lazy dog, and what happened next was a spectacular tumble as the fox completely misjudged the distance and landed face-first into a massive pile of autumn leaves._2" fill="black" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="32" letter-spacing="0em"><tspan x="240.812" y="601.4">The quick brown fox jumps over the lazy </tspan><tspan x="271.406" y="633.4">dog,&#xa0;and what happened next was a </tspan><tspan x="233.031" y="665.4">spectacular tumble as the fox completely </tspan><tspan x="236.031" y="697.4">misjudged the distance and landed face-</tspan><tspan x="235.359" y="729.4">first into a massive pile of autumn leaves.</tspan></text>
+<g id="Pattern / Vector">
+<mask id="mask0_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse">
+<g id="Vector_2">
+</g>
+</mask>
+<g mask="url(#mask0_104_158)">
+</g>
+</g>
+<g id="Pattern / Vector_2">
+<mask id="mask1_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse">
+<g id="Vector_3">
+</g>
+</mask>
+<g mask="url(#mask1_104_158)">
+</g>
+</g>
+<line id="Line 5" x1="992" y1="630" x2="1792" y2="630" stroke="#FF7036" stroke-width="8"/>
+<line id="Line 6" x1="992" y1="578" x2="1792" y2="578" stroke="#FF7036" stroke-width="8"/>
+</g>
+</g>
+</svg>

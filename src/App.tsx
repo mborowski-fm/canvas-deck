@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { AlignBar } from './canvas/AlignBar'
-import { align, type AlignOp } from './canvas/align'
+import { align, type AlignOp, type Pos } from './canvas/align'
 import { Canvas, type ViewReq } from './canvas/Canvas'
 import { channelName, type ChannelMsg } from './channel'
 import { NotesWindow } from './notes/NotesWindow'
 import { slides as baseSlides } from './slides/registry'
 import type { Me } from './sync'
+import { Icon } from './Icon'
 import { useRoom } from './useRoom'
 
 const COLORS = ['#e5484d', '#f76b15', '#30a46c', '#0091ff', '#8e4ec6', '#d6409f', '#12a594']
@@ -104,9 +105,33 @@ function Presenting({ room, me }: { room: string; me: Me }) {
   const flash = (k: 'link' | 'layout') => { setCopied(k); setTimeout(() => setCopied(null), 1500) }
   const fitView = (mode: 'all' | 'active') => setView((v) => ({ n: v.n + 1, mode }))
 
+  // Undo/redo for layout edits (local to this presenter; the moves themselves are shared).
+  const hist = useRef<{ undo: Pos[][]; redo: Pos[][] }>({ undo: [], redo: [] })
+  const [, setHistTick] = useState(0)
+  const snapshot = (ids: string[]) =>
+    st.current.slides.filter((s) => ids.includes(s.id)).map((s) => ({ id: s.id, x: s.x, y: s.y }))
+  const record = (before: Pos[]) => {
+    if (!before.length) return
+    hist.current.undo.push(before)
+    hist.current.redo = []
+    setHistTick((n) => n + 1)
+  }
+  const commit = (items: Pos[]) => {
+    record(snapshot(items.map((i) => i.id)))
+    moveSlides(items)
+  }
+  const step = (from: 'undo' | 'redo') => {
+    const h = hist.current
+    const items = h[from].pop()
+    if (!items) return
+    h[from === 'undo' ? 'redo' : 'undo'].push(snapshot(items.map((i) => i.id)))
+    moveSlides(items)
+    setHistTick((n) => n + 1)
+  }
+
   const doAlign = (op: AlignOp) => {
     const { slides: sl, selected: sel } = st.current
-    moveSlides(align(sl.filter((s) => sel.includes(s.id)), op))
+    commit(align(sl.filter((s) => sel.includes(s.id)), op))
   }
 
   useEffect(() => {
@@ -117,10 +142,12 @@ function Presenting({ room, me }: { room: string; me: Me }) {
       if (ed) {
         if (arrows[e.key] && sel.length) {
           e.preventDefault()
-          const step = e.shiftKey ? 100 : 10
+          const nudge = e.shiftKey ? 100 : 10
           const [dx, dy] = arrows[e.key]
-          moveSlides(sl.filter((s) => sel.includes(s.id)).map((s) => ({ id: s.id, x: s.x + dx * step, y: s.y + dy * step })))
-        } else if (e.key === 'Escape') setSelected([])
+          commit(sl.filter((s) => sel.includes(s.id)).map((s) => ({ id: s.id, x: s.x + dx * nudge, y: s.y + dy * nudge })))
+        } else if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); step(e.shiftKey ? 'redo' : 'undo') }
+        else if ((e.metaKey || e.ctrlKey) && e.key === 'y') { e.preventDefault(); step('redo') }
+        else if (e.key === 'Escape') setSelected([])
         else if ((e.metaKey || e.ctrlKey) && e.key === 'a') { e.preventDefault(); setSelected(sl.map((s) => s.id)) }
       } else if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); setActive(a + 1) }
       else if (['ArrowLeft', 'PageUp'].includes(e.key)) setActive(a - 1)
@@ -157,6 +184,7 @@ function Presenting({ room, me }: { room: string; me: Me }) {
         selected={selected}
         onSelected={setSelected}
         onMove={moveSlides}
+        onMoveStart={record}
       />
       <div className="hud top-left">
         <div className="file">
@@ -165,6 +193,27 @@ function Presenting({ room, me }: { room: string; me: Me }) {
         </div>
       </div>
       <div className="hud top-right">
+        <div className="toolbar">
+          <button className="icon" title="Previous slide (Left)" onClick={() => setActive(active - 1)} disabled={active === 0}>
+            <Icon name="chevron_left" />
+          </button>
+          <button className="icon" title="Next slide (Right)" onClick={() => setActive(active + 1)} disabled={active >= slides.length - 1}>
+            <Icon name="chevron_right" />
+          </button>
+          <i className="sep" />
+          <button className="icon" title="Overview (O)" onClick={() => fitView('all')}>
+            <Icon name="zoom_out_map" />
+          </button>
+          <button className="icon" title="Focus active slide (F)" onClick={() => fitView('active')}>
+            <Icon name="center_focus_strong" />
+          </button>
+          <button className={'icon' + (edit ? ' on' : '')} aria-pressed={edit} title="Edit canvas (E)" onClick={() => setEdit((v) => !v)}>
+            <Icon name="edit" />
+          </button>
+          <button className="icon" title="Presenter notes (N)" onClick={openNotes}>
+            <Icon name="speaker_notes" />
+          </button>
+        </div>
         <div className="avatars">
           <span className="avatar" style={{ background: me.color }} title={`${me.name} (you)`}>
             {me.name[0]?.toUpperCase()}
@@ -177,22 +226,18 @@ function Presenting({ room, me }: { room: string; me: Me }) {
         </div>
         <button className="primary" onClick={copyLink}>{copied === 'link' ? 'Link copied' : 'Share'}</button>
       </div>
-      {edit && <AlignBar count={selected.length} onAlign={doAlign} onCopyLayout={copyLayout} copied={copied === 'layout'} />}
-      <div className="hud bottom toolbar">
-        <button className="icon" title="Previous" onClick={() => setActive(active - 1)} disabled={active === 0}>&lsaquo;</button>
-        <span className="counter">{active + 1} / {slides.length}</span>
-        <button className="icon" title="Next" onClick={() => setActive(active + 1)} disabled={active >= slides.length - 1}>&rsaquo;</button>
-        <i className="sep" />
-        <button className="text" title="Fit all slides (O)" onClick={() => fitView('all')}>Overview</button>
-        <button className="text" title="Fit active slide (F)" onClick={() => fitView('active')}>Focus</button>
-        <i className="sep" />
-        <button className={'switch' + (edit ? ' on' : '')} role="switch" aria-checked={edit} title="Edit canvas (E)" onClick={() => setEdit((v) => !v)}>
-          <span className="track"><span className="knob" /></span>
-          Edit
-        </button>
-        <i className="sep" />
-        <button className="text" title="Open presenter notes (N)" onClick={openNotes}>Notes</button>
-      </div>
+      {edit && (
+        <AlignBar
+          count={selected.length}
+          onAlign={doAlign}
+          onCopyLayout={copyLayout}
+          copied={copied === 'layout'}
+          onUndo={() => step('undo')}
+          onRedo={() => step('redo')}
+          canUndo={hist.current.undo.length > 0}
+          canRedo={hist.current.redo.length > 0}
+        />
+      )}
     </>
   )
 }

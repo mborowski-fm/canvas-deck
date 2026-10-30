@@ -1,0 +1,44 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g>
+<g id="01. Percepcja">
+<rect width="1920" height="1080" rx="16" fill="#FFFFF5"/>
+<line id="Line 14" x1="179" y1="498" x2="439" y2="498" stroke="#F1F1DC" stroke-width="4" stroke-dasharray="16 16"/>
+<line id="Line 15" x1="1481" y1="498" x2="1741" y2="498" stroke="#F1F1DC" stroke-width="4" stroke-dasharray="16 16"/>
+<text id="Emocje, ton, tempo" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="160" font-weight="600" letter-spacing="-0.04em"><tspan x="128" y="240">Emocje, ton, tempo</tspan></text>
+<g id="Frame 1236">
+<path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M1880.76 44.9355L1872 16L1900.94 24.7641L1893.18 32.5163L1904 43.3333L1899.33 48L1888.52 37.1829L1880.76 44.9355Z" fill="#6BE395"/>
+</g>
+<line id="Line 6" x1="128" y1="950" x2="1792" y2="950" stroke="#4E4C47" stroke-width="4" stroke-dasharray="16 16"/>
+<path id="Rectangle 97" d="M704 376.5C781.044 376.5 843.5 438.956 843.5 516C843.5 593.044 781.044 655.5 704 655.5C626.956 655.5 564.5 593.044 564.5 516C564.5 438.956 626.956 376.5 704 376.5Z" stroke="#6BE395"/>
+<path id="Rectangle 100" d="M1216 376.5C1293.04 376.5 1355.5 438.956 1355.5 516C1355.5 593.044 1293.04 655.5 1216 655.5C1138.96 655.5 1076.5 593.044 1076.5 516C1076.5 438.956 1138.96 376.5 1216 376.5Z" stroke="#F1F1DC"/>
+<path id="Rectangle 98" d="M704 440.5C781.044 440.5 843.5 502.956 843.5 580C843.5 657.044 781.044 719.5 704 719.5C626.956 719.5 564.5 657.044 564.5 580C564.5 502.956 626.956 440.5 704 440.5Z" stroke="#EC5A2E"/>
+<path id="Rectangle 103" d="M704 504.5C781.044 504.5 843.5 566.956 843.5 644C843.5 721.044 781.044 783.5 704 783.5C626.956 783.5 564.5 721.044 564.5 644C564.5 566.956 626.956 504.5 704 504.5Z" stroke="#F5F25C"/>
+<path id="Rectangle 105" d="M704 568.5C781.044 568.5 843.5 630.956 843.5 708C843.5 785.044 781.044 847.5 704 847.5C626.956 847.5 564.5 785.044 564.5 708C564.5 630.956 626.956 568.5 704 568.5Z" stroke="#C99ED0"/>
+<path id="Rectangle 107" d="M704 632.5C781.044 632.5 843.5 694.956 843.5 772C843.5 849.044 781.044 911.5 704 911.5C626.956 911.5 564.5 849.044 564.5 772C564.5 694.956 626.956 632.5 704 632.5Z" stroke="#C3B9FF"/>
+<path id="Rectangle 101" d="M1216 440.5C1293.04 440.5 1355.5 502.956 1355.5 580C1355.5 657.044 1293.04 719.5 1216 719.5C1138.96 719.5 1076.5 657.044 1076.5 580C1076.5 502.956 1138.96 440.5 1216 440.5Z" stroke="#F1F1DC"/>
+<path id="Rectangle 104" d="M1216 504.5C1293.04 504.5 1355.5 566.956 1355.5 644C1355.5 721.044 1293.04 783.5 1216 783.5C1138.96 783.5 1076.5 721.044 1076.5 644C1076.5 566.956 1138.96 504.5 1216 504.5Z" stroke="#F1F1DC"/>
+<path id="Rectangle 106" d="M1216 568.5C1293.04 568.5 1355.5 630.956 1355.5 708C1355.5 785.044 1293.04 847.5 1216 847.5C1138.96 847.5 1076.5 785.044 1076.5 708C1076.5 630.956 1138.96 568.5 1216 568.5Z" stroke="#F1F1DC"/>
+<path id="Rectangle 108" d="M1216 632.5C1293.04 632.5 1355.5 694.956 1355.5 772C1355.5 849.044 1293.04 911.5 1216 911.5C1138.96 911.5 1076.5 849.044 1076.5 772C1076.5 694.956 1138.96 632.5 1216 632.5Z" stroke="#F1F1DC"/>
+<path id="Rectangle 102" d="M1076 812C1076 734.68 1138.68 672 1216 672C1293.32 672 1356 734.68 1356 812C1356 889.32 1293.32 952 1216 952C1138.68 952 1076 889.32 1076 812Z" fill="#44441A"/>
+<path id="Rectangle 99" d="M564 857C564 804.533 626.68 762 704 762C781.32 762 844 804.533 844 857C844 909.467 781.32 952 704 952C626.68 952 564 909.467 564 857Z" fill="#E84ACF"/>
+<path id="Vector 18" d="M179 673L249.149 435.448C251.309 428.134 261.507 427.703 264.276 434.81L292.108 506.243C294.559 512.533 303.217 513.147 306.532 507.267L322.165 479.532C325.077 474.367 332.399 474.053 335.742 478.951L347.625 496.361C349.115 498.545 351.588 499.851 354.232 499.851H439" stroke="#E84ACF" stroke-width="16"/>
+<path id="Vector 19" d="M1481 673L1742 496.5" stroke="#44441A" stroke-width="16"/>
+<g id="Frame 1241">
+<rect width="74" height="33" transform="translate(309 597)" fill="#E2F79A"/>
+<text id="8FPS" transform="translate(317 605)" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="0" y="16.8">8FPS</tspan></text>
+</g>
+<g id="Frame 1242">
+<rect width="88" height="33" transform="translate(309 636)" fill="#E2F79A"/>
+<text id="24FPS" transform="translate(317 644)" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="0" y="16.8">24FPS</tspan></text>
+</g>
+<g id="Frame 1243">
+<rect width="88" height="33" transform="translate(309 675)" fill="#E2F79A"/>
+<text id="60FPS" transform="translate(317 683)" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="0" y="16.8">60FPS</tspan></text>
+</g>
+<g id="Frame 1244">
+<rect width="98" height="33" transform="translate(309 714)" fill="#E2F79A"/>
+<text id="120FPS" transform="translate(317 722)" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="0" y="16.8">120FPS</tspan></text>
+</g>
+</g>
+</g>
+</svg>

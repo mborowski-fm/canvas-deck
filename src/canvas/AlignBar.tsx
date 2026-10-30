@@ -1,14 +1,16 @@
+import { Icon } from '../Icon'
 import type { AlignOp } from './align'
 
-const ICONS: Record<AlignOp, React.ReactNode> = {
-  left: <><path d="M2 1.5v13" /><rect x="4.5" y="3.5" width="9" height="3.5" /><rect x="4.5" y="9" width="5.5" height="3.5" /></>,
-  hcenter: <><path d="M8 1.5v13" /><rect x="3" y="3.5" width="10" height="3.5" /><rect x="5" y="9" width="6" height="3.5" /></>,
-  right: <><path d="M14 1.5v13" /><rect x="2.5" y="3.5" width="9" height="3.5" /><rect x="6" y="9" width="5.5" height="3.5" /></>,
-  top: <><path d="M1.5 2h13" /><rect x="3.5" y="4.5" width="3.5" height="9" /><rect x="9" y="4.5" width="3.5" height="5.5" /></>,
-  vcenter: <><path d="M1.5 8h13" /><rect x="3.5" y="3" width="3.5" height="10" /><rect x="9" y="5" width="3.5" height="6" /></>,
-  bottom: <><path d="M1.5 14h13" /><rect x="3.5" y="2.5" width="3.5" height="9" /><rect x="9" y="6" width="3.5" height="5.5" /></>,
-  disth: <><path d="M2 1.5v13M14 1.5v13" /><rect x="6" y="4" width="4" height="8" /></>,
-  distv: <><path d="M1.5 2h13M1.5 14h13" /><rect x="4" y="6" width="8" height="4" /></>,
+const ICONS: Record<AlignOp, string> = {
+  left: 'align_horizontal_left',
+  hcenter: 'align_horizontal_center',
+  right: 'align_horizontal_right',
+  top: 'align_vertical_top',
+  vcenter: 'align_vertical_center',
+  bottom: 'align_vertical_bottom',
+  disth: 'horizontal_distribute',
+  distv: 'vertical_distribute',
+  grid: 'grid_view',
 }
 
 const GROUPS: { op: AlignOp; label: string; min: number }[][] = [
@@ -25,24 +27,36 @@ const GROUPS: { op: AlignOp; label: string; min: number }[][] = [
   [
     { op: 'disth', label: 'Distribute horizontal spacing', min: 3 },
     { op: 'distv', label: 'Distribute vertical spacing', min: 3 },
+    { op: 'grid', label: 'Arrange in grid', min: 2 },
   ],
 ]
 
-export function AlignBar({ count, onAlign, onCopyLayout, copied }: {
+
+export function AlignBar({ count, onAlign, onCopyLayout, copied, onUndo, onRedo, canUndo, canRedo }: {
   count: number
+  onUndo: () => void
+  onRedo: () => void
+  canUndo: boolean
+  canRedo: boolean
   onAlign: (op: AlignOp) => void
   onCopyLayout: () => void
   copied: boolean
 }) {
   return (
     <div className="hud align-bar">
+      <div className="group">
+        <button className="icon" title="Undo (Cmd+Z)" disabled={!canUndo} onClick={onUndo}>
+          <Icon name="undo" />
+        </button>
+        <button className="icon" title="Redo (Cmd+Shift+Z)" disabled={!canRedo} onClick={onRedo}>
+          <Icon name="redo" />
+        </button>
+      </div>
       {GROUPS.map((g, gi) => (
         <div className="group" key={gi}>
           {g.map((b) => (
             <button key={b.op} className="icon" title={b.label} disabled={count < b.min} onClick={() => onAlign(b.op)}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2">
-                {ICONS[b.op]}
-              </svg>
+              <Icon name={ICONS[b.op]} />
             </button>
           ))}
         </div>

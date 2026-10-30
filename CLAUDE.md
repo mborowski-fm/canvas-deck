@@ -10,9 +10,17 @@ Multi-presenter presentation tool. One big pan/zoom canvas, each slide is an art
 - **Rooms**: hash routes. `#/r/<room>` = main window, `#/r/<room>/notes` = presenter notes window. No hash = random room is created. Whoever has the link joins as a presenter (name prompt, saved in localStorage).
 - **Notes window** (`src/notes/`): a second browser window opened from the main one (key N). Talks to the main window through `BroadcastChannel` (`src/channel.ts`), so it only works in the same browser. It shows notes for the active slide, next slide, a timer, and can drive slides. Share the main window, keep the notes window to yourself.
 
+## Slides from Figma (current deck)
+- Source: Figma file `TVxGtPg72Xpe38wLHXTiaS` ("UI-Prezentacja storyboard"), section node `139:359`. Each slide folder's `slide.tsx` names its source frame id.
+- Each frame is exported as SVG (Figma MCP `download_assets`, `defaultFormat: svg`) into `slide.svg`. The export includes the parent section background: strip the first `<rect fill="#E2E0DA">` and the two section `<path d="M-...">` lines, and drop `<mask>` attributes with `inf`/`nan` values.
+- `src/slides/SvgSlide.tsx` inlines the SVG (vector-sharp at any zoom) and prefixes every id with the slide id, so slides do not clash. The SVG keeps the Figma layer tree (`<g id="Layer name">`), so every layer is its own animatable DOM element.
+- Text is live `<text>`, not curves: edit the words directly in `slide.svg`. The download export outlines text, so texts were swapped in from a plugin export (`exportAsync({format:'SVG_STRING', svgOutlineText:false, svgIdAttribute:true})`), matched by layer id. Fonts (Figtree, Inter) load from Google Fonts in `index.html`.
+- Figma layer names become ids: animate a layer with `[id="<slug>__<Layer name>"]` (e.g. from a `useEffect` in that slide's `slide.tsx`). For heavier animation, rebuild that slide as React/SVG using the Figma variables (Figtree, colors like `color/tangerine #ff7036`, `text/primary #44441a`).
+- `src/slides/layout.json` mirrors the Figma positions (frame x/y minus the first frame's 680/431).
+
 ## Edit mode (toggle `E`, default off)
 - View mode: click a slide = make it active for everyone, drag = pan. Double click a slide (any mode) = focus it (fly to it, make it active).
-- Edit mode: click/shift-click/marquee selects, drag moves selected slides, arrows nudge (Shift = 100), Space+drag pans, Cmd/Ctrl+A selects all. Align/distribute bar at the top. Edit mode is per person, but moves are shared live (`LayoutItem`, last write wins per slide) via `moveSlides` in `src/useRoom.ts`.
+- Edit mode: undo/redo (Cmd+Z, Cmd+Shift+Z, local history of layout moves), grid arrange of the selection, click/shift-click/marquee selects, drag moves selected slides, arrows nudge (Shift = 100), Space+drag pans, Cmd/Ctrl+A selects all. Align/distribute bar at the top. Edit mode is per person, but moves are shared live (`LayoutItem`, last write wins per slide) via `moveSlides` in `src/useRoom.ts`.
 - Shared layout lives only in the room. To keep it, press "Copy layout" and paste into `src/slides/layout.json` (`{ "<slide-folder>": {x, y} }`), which overrides `meta.x/y`.
 - Align math is in `src/canvas/align.ts` (pure functions).
 - UI style: Figma light (canvas #e5e5e5, white panels, blue #0d99ff). Frame labels and selection outlines are screen-constant via the `--px` CSS variable on `.world`.
@@ -32,4 +40,6 @@ Arrows/Space/PageUp/PageDown: prev/next. `O` overview. `F` re-fit active slide (
 - Keep shared state minimal. Anything shared must be added to `SharedState`/`useRoom` and be conflict-safe (last write wins).
 - P2P limits: WebRTC can be blocked by strict corporate networks/VPN, and room state is lost when everyone leaves. That is why `Sync` is swappable.
 - Deploy: push to `main`, GitHub Action builds and publishes to Pages. `vite.config.ts` uses `base: './'`, keep it.
+- Icons: Google Material Symbols Rounded via `<Icon name="..." />` (`src/Icon.tsx`). The font URL in `index.html` lists only the used icon names (alphabetical); add new ones there.
+- Main controls live in the top-right toolbar (prev/next, overview, focus, edit toggle, notes); the edit bar sits bottom-center.
 - Language: UI and docs in English. Never use em dashes in docs.

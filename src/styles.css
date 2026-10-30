@@ -17,13 +17,14 @@ button.primary:hover:not(:disabled) { background: #0b87e0; }
 .canvas:not(.edit) { cursor: grab; }
 .canvas:not(.edit):active, .canvas.space { cursor: grab; }
 .world { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
-.frame { position: absolute; background: #fff; }
+.frame { position: absolute; }
+.svg-slide, .svg-slide > svg { display: block; width: 100%; height: 100%; }
 .frame .artboard { position: absolute; inset: 0; overflow: hidden; }
 .canvas.edit .artboard * { pointer-events: none; }
 .frame::after { content: ''; position: absolute; inset: 0; pointer-events: none; }
 .frame:hover::after { outline: var(--px) solid var(--blue); }
 .frame.active::after, .frame.selected::after { outline: calc(var(--px) * 2) solid var(--blue); }
-.frame-label { position: absolute; left: 0; bottom: 100%; padding-bottom: 6px; transform-origin: left bottom; color: #6b6b6b; font-size: 12px; white-space: nowrap; }
+.frame-label { position: absolute; left: 0; bottom: 100%; padding-bottom: 6px; transform-origin: left bottom; color: #6b6b6b; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .frame:hover .frame-label { color: var(--blue); }
 .frame.active .frame-label, .frame.selected .frame-label { color: var(--blue); font-weight: 500; }
 .handle { position: absolute; width: calc(var(--px) * 8); height: calc(var(--px) * 8); margin: calc(var(--px) * -4) 0 0 calc(var(--px) * -4); background: #fff; border: var(--px) solid var(--blue); pointer-events: none; z-index: 2; }
@@ -43,19 +44,14 @@ button.primary:hover:not(:disabled) { background: #0b87e0; }
 .avatar:first-child { margin-left: 0; }
 .top-right .primary { height: 30px; }
 
-.toolbar { bottom: 16px; left: 50%; transform: translateX(-50%); background: var(--panel); padding: 4px; border-radius: 10px; box-shadow: var(--shadow); gap: 2px; }
-.counter { min-width: 48px; text-align: center; color: var(--text); }
+.toolbar { display: flex; align-items: center; gap: 2px; background: var(--panel); padding: 4px; border-radius: 10px; box-shadow: var(--shadow); }
 .sep { width: 1px; height: 20px; background: var(--line); margin: 0 4px; }
-.switch .track { width: 26px; height: 14px; border-radius: 8px; background: #c7c7c7; position: relative; transition: background .15s; }
-.switch .knob { position: absolute; top: 2px; left: 2px; width: 10px; height: 10px; border-radius: 50%; background: #fff; transition: transform .15s; }
-.switch.on .track { background: var(--blue); }
-.switch.on .knob { transform: translateX(12px); }
-.switch.on { color: var(--blue); font-weight: 500; }
 
-.align-bar { top: 12px; left: 50%; transform: translateX(-50%); background: var(--panel); padding: 4px 6px; border-radius: 10px; box-shadow: var(--shadow); gap: 2px; }
+.align-bar { bottom: 16px; left: 50%; transform: translateX(-50%); background: var(--panel); padding: 4px 6px; border-radius: 10px; box-shadow: var(--shadow); gap: 2px; }
 .align-bar .group { display: flex; padding-right: 6px; margin-right: 4px; border-right: 1px solid var(--line); }
 .align-bar button.icon { font-size: inherit; width: 30px; height: 30px; }
-.align-bar .count { color: var(--muted); padding: 0 10px; min-width: 96px; }
+.align-bar button.text { white-space: nowrap; }
+.align-bar .count { color: var(--muted); padding: 0 10px; min-width: 96px; white-space: nowrap; }
 
 .modal { position: fixed; inset: 0; display: grid; place-items: center; background: var(--canvas); }
 .modal form { display: grid; gap: 12px; width: 300px; padding: 24px; background: var(--panel); border-radius: 12px; box-shadow: var(--shadow); }
@@ -74,3 +70,6 @@ button.primary:hover:not(:disabled) { background: #0b87e0; }
 .notes-body li { margin-left: 22px; }
 .notes-win .next { flex: 1; display: grid; text-align: center; }
 .muted { color: var(--muted); }
+
+.msr { font-family: 'Material Symbols Rounded'; font-size: 20px; line-height: 1; font-weight: normal; font-style: normal; letter-spacing: normal; text-transform: none; white-space: nowrap; direction: ltr; -webkit-font-smoothing: antialiased; font-feature-settings: 'liga'; }
+button.icon.on { background: #e5f4ff; color: var(--blue); }

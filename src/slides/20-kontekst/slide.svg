@@ -1,0 +1,196 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g>
+<g id="Template">
+<rect width="1920" height="1080" rx="16" fill="#C7F3F8"/>
+<path id="Rectangle 89" d="M1110.67 0H1577.33L1744 703H944L1110.67 0Z" fill="#E2F79A"/>
+<text id="Kontekst" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="160" font-weight="600" letter-spacing="-0.04em"><tspan x="128" y="240">Kontekst</tspan></text>
+<text id="Na koÅ„cu to nie Figma" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="96" font-weight="500" letter-spacing="-0.03em"><tspan x="128" y="952.2">Na ko&#x144;cu to nie Figma</tspan></text>
+<ellipse id="Ellipse 9" cx="1344" cy="720" rx="400" ry="120" fill="#731D1E"/>
+<g id="Pattern / Rectangle 90">
+<mask id="mask0_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1184" y="240" width="320" height="480">
+<rect id="Rectangle 90" x="1184" y="240" width="320" height="480" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_104_158)">
+<g id="Pattern">
+<g id="Pattern tiles" clip-path="url(#clip0_104_158)">
+<rect width="320" height="480" transform="translate(1184 240)" fill="#0E5C36"/>
+<g id="Tile / checker" clip-path="url(#clip1_104_158)">
+<rect width="80" height="80" transform="translate(1184 240)" fill="#F1FBE3"/>
+<path id="Vector" d="M1184 240H1197.33V253.33H1184V240ZM1210.67 240H1224V253.33H1210.67V240ZM1237.33 240H1250.66V253.33H1237.33V240ZM1197.33 253.33H1210.66V266.66H1197.33V253.33ZM1224 253.33H1237.33V266.66H1224V253.33ZM1250.67 253.33H1264V266.66H1250.67V253.33ZM1184 266.67H1197.33V280H1184V266.67ZM1210.67 266.67H1224V280H1210.67V266.67ZM1237.33 266.67H1250.66V280H1237.33V266.67ZM1197.33 280H1210.66V293.33H1197.33V280ZM1224 280H1237.33V293.33H1224V280ZM1250.67 280H1264V293.33H1250.67V280ZM1184 293.33H1197.33V306.66H1184V293.33ZM1210.67 293.33H1224V306.66H1210.67V293.33ZM1237.33 293.33H1250.66V306.66H1237.33V293.33ZM1197.33 306.67H1210.66V320H1197.33V306.67ZM1224 306.67H1237.33V320H1224V306.67ZM1250.67 306.67H1264V320H1250.67V306.67Z" fill="#E84ACF"/>
+</g>
+<g id="Tile / checker_2" clip-path="url(#clip2_104_158)">
+<rect width="80" height="80" transform="translate(1264 240)" fill="#0E5C36"/>
+<path id="Vector_2" d="M1264 240H1290.67V266.67H1264V240ZM1317.33 240H1344V266.67H1317.33V240ZM1290.67 266.67H1317.34V293.34H1290.67V266.67ZM1264 293.33H1290.67V320H1264V293.33ZM1317.33 293.33H1344V320H1317.33V293.33Z" fill="#F1FBE3"/>
+</g>
+<g id="Tile / checker_3" clip-path="url(#clip3_104_158)">
+<rect width="80" height="80" transform="translate(1344 240)" fill="#F1FBE3"/>
+<path id="Vector_3" d="M1344 240H1384V280H1344V240ZM1384 280H1424V320H1384V280Z" fill="#E84ACF"/>
+</g>
+<g id="Tile / checker_4" clip-path="url(#clip4_104_158)">
+<rect width="80" height="80" transform="translate(1424 240)" fill="#E84ACF"/>
+<path id="Vector_4" d="M1424 240H1444V260H1424V240ZM1464 240H1484V260H1464V240ZM1444 260H1464V280H1444V260ZM1484 260H1504V280H1484V260ZM1424 280H1444V300H1424V280ZM1464 280H1484V300H1464V280ZM1444 300H1464V320H1444V300ZM1484 300H1504V320H1484V300Z" fill="#F1FBE3"/>
+</g>
+<g id="Tile / checker_5" clip-path="url(#clip5_104_158)">
+<rect width="80" height="80" transform="translate(1184 320)" fill="#0E5C36"/>
+<path id="Vector_5" d="M1184 320H1210.67V346.67H1184V320ZM1237.33 320H1264V346.67H1237.33V320ZM1210.67 346.67H1237.34V373.34H1210.67V346.67ZM1184 373.33H1210.67V400H1184V373.33ZM1237.33 373.33H1264V400H1237.33V373.33Z" fill="#E84ACF"/>
+</g>
+<g id="Tile / checker_6" clip-path="url(#clip6_104_158)">
+<rect width="80" height="80" transform="translate(1264 320)" fill="#E84ACF"/>
+<path id="Vector_6" d="M1264 320H1304V360H1264V320ZM1304 360H1344V400H1304V360Z" fill="#F1FBE3"/>
+</g>
+<g id="Tile / checker_7" clip-path="url(#clip7_104_158)">
+<rect width="80" height="80" transform="translate(1344 320)" fill="#F5F25C"/>
+<path id="Vector_7" d="M1344 320H1357.33V333.33H1344V320ZM1370.67 320H1384V333.33H1370.67V320ZM1397.33 320H1410.66V333.33H1397.33V320ZM1357.33 333.33H1370.66V346.66H1357.33V333.33ZM1384 333.33H1397.33V346.66H1384V333.33ZM1410.67 333.33H1424V346.66H1410.67V333.33ZM1344 346.67H1357.33V360H1344V346.67ZM1370.67 346.67H1384V360H1370.67V346.67ZM1397.33 346.67H1410.66V360H1397.33V346.67ZM1357.33 360H1370.66V373.33H1357.33V360ZM1384 360H1397.33V373.33H1384V360ZM1410.67 360H1424V373.33H1410.67V360ZM1344 373.33H1357.33V386.66H1344V373.33ZM1370.67 373.33H1384V386.66H1370.67V373.33ZM1397.33 373.33H1410.66V386.66H1397.33V373.33ZM1357.33 386.67H1370.66V400H1357.33V386.67ZM1384 386.67H1397.33V400H1384V386.67ZM1410.67 386.67H1424V400H1410.67V386.67Z" fill="#E84ACF"/>
+</g>
+<g id="Tile / checker_8" clip-path="url(#clip8_104_158)">
+<rect width="80" height="80" transform="translate(1424 320)" fill="#0E5C36"/>
+<path id="Vector_8" d="M1424 320H1450.67V346.67H1424V320ZM1477.33 320H1504V346.67H1477.33V320ZM1450.67 346.67H1477.34V373.34H1450.67V346.67ZM1424 373.33H1450.67V400H1424V373.33ZM1477.33 373.33H1504V400H1477.33V373.33Z" fill="#F1FBE3"/>
+</g>
+<g id="Tile / checker_9" clip-path="url(#clip9_104_158)">
+<rect width="80" height="80" transform="translate(1184 400)" fill="#E84ACF"/>
+<path id="Vector_9" d="M1184 400H1224V440H1184V400ZM1224 440H1264V480H1224V440Z" fill="#F1FBE3"/>
+</g>
+<g id="Tile / checker_10" clip-path="url(#clip10_104_158)">
+<rect width="80" height="80" transform="translate(1264 400)" fill="#0E5C36"/>
+<path id="Vector_10" d="M1264 400H1277.33V413.33H1264V400ZM1290.67 400H1304V413.33H1290.67V400ZM1317.33 400H1330.66V413.33H1317.33V400ZM1277.33 413.33H1290.66V426.66H1277.33V413.33ZM1304 413.33H1317.33V426.66H1304V413.33ZM1330.67 413.33H1344V426.66H1330.67V413.33ZM1264 426.67H1277.33V440H1264V426.67ZM1290.67 426.67H1304V440H1290.67V426.67ZM1317.33 426.67H1330.66V440H1317.33V426.67ZM1277.33 440H1290.66V453.33H1277.33V440ZM1304 440H1317.33V453.33H1304V440ZM1330.67 440H1344V453.33H1330.67V440ZM1264 453.33H1277.33V466.66H1264V453.33ZM1290.67 453.33H1304V466.66H1290.67V453.33ZM1317.33 453.33H1330.66V466.66H1317.33V453.33ZM1277.33 466.67H1290.66V480H1277.33V466.67ZM1304 466.67H1317.33V480H1304V466.67ZM1330.67 466.67H1344V480H1330.67V466.67Z" fill="#E84ACF"/>
+</g>
+<g id="Tile / checker_11" clip-path="url(#clip11_104_158)">
+<rect width="80" height="80" transform="translate(1344 400)" fill="#E84ACF"/>
+<path id="Vector_11" d="M1344 400H1364V420H1344V400ZM1384 400H1404V420H1384V400ZM1364 420H1384V440H1364V420ZM1404 420H1424V440H1404V420ZM1344 440H1364V460H1344V440ZM1384 440H1404V460H1384V440ZM1364 460H1384V480H1364V460ZM1404 460H1424V480H1404V460Z" fill="#F1FBE3"/>
+</g>
+<g id="Tile / checker_12" clip-path="url(#clip12_104_158)">
+<rect width="80" height="80" transform="translate(1424 400)" fill="#0E5C36"/>
+<path id="Vector_12" d="M1424 400H1444V420H1424V400ZM1464 400H1484V420H1464V400ZM1444 420H1464V440H1444V420ZM1484 420H1504V440H1484V420ZM1424 440H1444V460H1424V440ZM1464 440H1484V460H1464V440ZM1444 460H1464V480H1444V460ZM1484 460H1504V480H1484V460Z" fill="#F1FBE3"/>
+</g>
+<g id="Tile / checker_13" clip-path="url(#clip13_104_158)">
+<rect width="80" height="80" transform="translate(1184 480)" fill="#F1FBE3"/>
+<path id="Vector_13" d="M1184 480H1204V500H1184V480ZM1224 480H1244V500H1224V480ZM1204 500H1224V520H1204V500ZM1244 500H1264V520H1244V500ZM1184 520H1204V540H1184V520ZM1224 520H1244V540H1224V520ZM1204 540H1224V560H1204V540ZM1244 540H1264V560H1244V540Z" fill="#E84ACF"/>
+</g>
+<g id="Tile / checker_14" clip-path="url(#clip14_104_158)">
+<rect width="80" height="80" transform="translate(1264 480)" fill="#E84ACF"/>
+<path id="Vector_14" d="M1264 480H1304V520H1264V480ZM1304 520H1344V560H1304V520Z" fill="#F5F25C"/>
+</g>
+<g id="Tile / checker_15" clip-path="url(#clip15_104_158)">
+<rect width="80" height="80" transform="translate(1344 480)" fill="#F1FBE3"/>
+<path id="Vector_15" d="M1344 480H1384V520H1344V480ZM1384 520H1424V560H1384V520Z" fill="#E84ACF"/>
+</g>
+<g id="Tile / checker_16" clip-path="url(#clip16_104_158)">
+<rect width="80" height="80" transform="translate(1424 480)" fill="#E84ACF"/>
+<path id="Vector_16" d="M1424 480H1437.33V493.33H1424V480ZM1450.67 480H1464V493.33H1450.67V480ZM1477.33 480H1490.66V493.33H1477.33V480ZM1437.33 493.33H1450.66V506.66H1437.33V493.33ZM1464 493.33H1477.33V506.66H1464V493.33ZM1490.67 493.33H1504V506.66H1490.67V493.33ZM1424 506.67H1437.33V520H1424V506.67ZM1450.67 506.67H1464V520H1450.67V506.67ZM1477.33 506.67H1490.66V520H1477.33V506.67ZM1437.33 520H1450.66V533.33H1437.33V520ZM1464 520H1477.33V533.33H1464V520ZM1490.67 520H1504V533.33H1490.67V520ZM1424 533.33H1437.33V546.66H1424V533.33ZM1450.67 533.33H1464V546.66H1450.67V533.33ZM1477.33 533.33H1490.66V546.66H1477.33V533.33ZM1437.33 546.67H1450.66V560H1437.33V546.67ZM1464 546.67H1477.33V560H1464V546.67ZM1490.67 546.67H1504V560H1490.67V546.67Z" fill="#F1FBE3"/>
+</g>
+<g id="Tile / checker_17" clip-path="url(#clip17_104_158)">
+<rect width="80" height="80" transform="translate(1184 560)" fill="#F1FBE3"/>
+<path id="Vector_17" d="M1184 560H1197.33V573.33H1184V560ZM1210.67 560H1224V573.33H1210.67V560ZM1237.33 560H1250.66V573.33H1237.33V560ZM1197.33 573.33H1210.66V586.66H1197.33V573.33ZM1224 573.33H1237.33V586.66H1224V573.33ZM1250.67 573.33H1264V586.66H1250.67V573.33ZM1184 586.67H1197.33V600H1184V586.67ZM1210.67 586.67H1224V600H1210.67V586.67ZM1237.33 586.67H1250.66V600H1237.33V586.67ZM1197.33 600H1210.66V613.33H1197.33V600ZM1224 600H1237.33V613.33H1224V600ZM1250.67 600H1264V613.33H1250.67V600ZM1184 613.33H1197.33V626.66H1184V613.33ZM1210.67 613.33H1224V626.66H1210.67V613.33ZM1237.33 613.33H1250.66V626.66H1237.33V613.33ZM1197.33 626.67H1210.66V640H1197.33V626.67ZM1224 626.67H1237.33V640H1224V626.67ZM1250.67 626.67H1264V640H1250.67V626.67Z" fill="#0E5C36"/>
+</g>
+<g id="Tile / checker_18" clip-path="url(#clip18_104_158)">
+<rect width="80" height="80" transform="translate(1264 560)" fill="#0E5C36"/>
+<path id="Vector_18" d="M1264 560H1304V600H1264V560ZM1304 600H1344V640H1304V600Z" fill="#F5F25C"/>
+</g>
+<g id="Tile / checker_19" clip-path="url(#clip19_104_158)">
+<rect width="80" height="80" transform="translate(1344 560)" fill="#0E5C36"/>
+<path id="Vector_19" d="M1344 560H1384V600H1344V560ZM1384 600H1424V640H1384V600Z" fill="#F1FBE3"/>
+</g>
+<g id="Tile / checker_20" clip-path="url(#clip20_104_158)">
+<rect width="80" height="80" transform="translate(1424 560)" fill="#F5F25C"/>
+<path id="Vector_20" d="M1424 560H1450.67V586.67H1424V560ZM1477.33 560H1504V586.67H1477.33V560ZM1450.67 586.67H1477.34V613.34H1450.67V586.67ZM1424 613.33H1450.67V640H1424V613.33ZM1477.33 613.33H1504V640H1477.33V613.33Z" fill="#E84ACF"/>
+</g>
+<g id="Tile / checker_21" clip-path="url(#clip21_104_158)">
+<rect width="80" height="80" transform="translate(1184 640)" fill="#E84ACF"/>
+<path id="Vector_21" d="M1184 640H1204V660H1184V640ZM1224 640H1244V660H1224V640ZM1204 660H1224V680H1204V660ZM1244 660H1264V680H1244V660ZM1184 680H1204V700H1184V680ZM1224 680H1244V700H1224V680ZM1204 700H1224V720H1204V700ZM1244 700H1264V720H1244V700Z" fill="#0E5C36"/>
+</g>
+<g id="Tile / checker_22" clip-path="url(#clip22_104_158)">
+<rect width="80" height="80" transform="translate(1264 640)" fill="#F1FBE3"/>
+<path id="Vector_22" d="M1264 640H1290.67V666.67H1264V640ZM1317.33 640H1344V666.67H1317.33V640ZM1290.67 666.67H1317.34V693.34H1290.67V666.67ZM1264 693.33H1290.67V720H1264V693.33ZM1317.33 693.33H1344V720H1317.33V693.33Z" fill="#0E5C36"/>
+</g>
+<g id="Tile / checker_23" clip-path="url(#clip23_104_158)">
+<rect width="80" height="80" transform="translate(1344 640)" fill="#0E5C36"/>
+<path id="Vector_23" d="M1344 640H1384V680H1344V640ZM1384 680H1424V720H1384V680Z" fill="#F1FBE3"/>
+</g>
+<g id="Tile / checker_24" clip-path="url(#clip24_104_158)">
+<rect width="80" height="80" transform="translate(1424 640)" fill="#F1FBE3"/>
+<path id="Vector_24" d="M1424 640H1437.33V653.33H1424V640ZM1450.67 640H1464V653.33H1450.67V640ZM1477.33 640H1490.66V653.33H1477.33V640ZM1437.33 653.33H1450.66V666.66H1437.33V653.33ZM1464 653.33H1477.33V666.66H1464V653.33ZM1490.67 653.33H1504V666.66H1490.67V653.33ZM1424 666.67H1437.33V680H1424V666.67ZM1450.67 666.67H1464V680H1450.67V666.67ZM1477.33 666.67H1490.66V680H1477.33V666.67ZM1437.33 680H1450.66V693.33H1437.33V680ZM1464 680H1477.33V693.33H1464V680ZM1490.67 680H1504V693.33H1490.67V680ZM1424 693.33H1437.33V706.66H1424V693.33ZM1450.67 693.33H1464V706.66H1450.67V693.33ZM1477.33 693.33H1490.66V706.66H1477.33V693.33ZM1437.33 706.67H1450.66V720H1437.33V706.67ZM1464 706.67H1477.33V720H1464V706.67ZM1490.67 706.67H1504V720H1490.67V706.67Z" fill="#0E5C36"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_104_158">
+<rect width="320" height="480" fill="white" transform="translate(1184 240)"/>
+</clipPath>
+<clipPath id="clip1_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1184 240)"/>
+</clipPath>
+<clipPath id="clip2_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1264 240)"/>
+</clipPath>
+<clipPath id="clip3_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1344 240)"/>
+</clipPath>
+<clipPath id="clip4_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1424 240)"/>
+</clipPath>
+<clipPath id="clip5_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1184 320)"/>
+</clipPath>
+<clipPath id="clip6_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1264 320)"/>
+</clipPath>
+<clipPath id="clip7_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1344 320)"/>
+</clipPath>
+<clipPath id="clip8_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1424 320)"/>
+</clipPath>
+<clipPath id="clip9_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1184 400)"/>
+</clipPath>
+<clipPath id="clip10_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1264 400)"/>
+</clipPath>
+<clipPath id="clip11_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1344 400)"/>
+</clipPath>
+<clipPath id="clip12_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1424 400)"/>
+</clipPath>
+<clipPath id="clip13_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1184 480)"/>
+</clipPath>
+<clipPath id="clip14_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1264 480)"/>
+</clipPath>
+<clipPath id="clip15_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1344 480)"/>
+</clipPath>
+<clipPath id="clip16_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1424 480)"/>
+</clipPath>
+<clipPath id="clip17_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1184 560)"/>
+</clipPath>
+<clipPath id="clip18_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1264 560)"/>
+</clipPath>
+<clipPath id="clip19_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1344 560)"/>
+</clipPath>
+<clipPath id="clip20_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1424 560)"/>
+</clipPath>
+<clipPath id="clip21_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1184 640)"/>
+</clipPath>
+<clipPath id="clip22_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1264 640)"/>
+</clipPath>
+<clipPath id="clip23_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1344 640)"/>
+</clipPath>
+<clipPath id="clip24_104_158">
+<rect width="80" height="80" fill="white" transform="translate(1424 640)"/>
+</clipPath>
+</defs>
+</svg>

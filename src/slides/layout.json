@@ -1,1 +1,98 @@
-{}
+{
+  "01-hej-ui": {
+    "x": 0,
+    "y": 0
+  },
+  "02-percepcja": {
+    "x": 0,
+    "y": 2680
+  },
+  "03-optyka-vs-linijka": {
+    "x": 2176,
+    "y": 2680
+  },
+  "04-do-czego-wyrownane": {
+    "x": 4352,
+    "y": 2680
+  },
+  "05-uklad-mowi": {
+    "x": 6528,
+    "y": 2680
+  },
+  "06-podswiadomy-porzadek": {
+    "x": 8704,
+    "y": 2680
+  },
+  "07-puste-miejsce": {
+    "x": 10880,
+    "y": 2680
+  },
+  "08-barwa-ma-sasiadow": {
+    "x": 13056,
+    "y": 2680
+  },
+  "09-typografia": {
+    "x": 0,
+    "y": 5360
+  },
+  "10-jest-wazna": {
+    "x": 2176,
+    "y": 5360
+  },
+  "11-tacy-sami": {
+    "x": 4352,
+    "y": 5360
+  },
+  "12-spacing-height": {
+    "x": 6528,
+    "y": 5360
+  },
+  "13-ruch-i-reakcja": {
+    "x": 0,
+    "y": 8040
+  },
+  "14-rozne-role": {
+    "x": 2176,
+    "y": 8040
+  },
+  "15-miedzy-cisza-a-cisza": {
+    "x": 4352,
+    "y": 8040
+  },
+  "16-nie-tylko-ekran": {
+    "x": 6528,
+    "y": 8040
+  },
+  "17-emocje-ton-tempo": {
+    "x": 8704,
+    "y": 8040
+  },
+  "18-znaj-umiar": {
+    "x": 10880,
+    "y": 8040
+  },
+  "19-ciezko-policzyc-animuj": {
+    "x": 13056,
+    "y": 8040
+  },
+  "20-kontekst": {
+    "x": 0,
+    "y": 10720
+  },
+  "21-ocen-kadr": {
+    "x": 2176,
+    "y": 10720
+  },
+  "22-bohater": {
+    "x": 4352,
+    "y": 10720
+  },
+  "23-tresc-sie-zmieni": {
+    "x": 6528,
+    "y": 10720
+  },
+  "24-sila-tresci": {
+    "x": 8704,
+    "y": 10720
+  }
+}

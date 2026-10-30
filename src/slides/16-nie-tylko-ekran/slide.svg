@@ -1,0 +1,61 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g>
+<g id="01. Percepcja">
+<g clip-path="url(#clip0_104_158)">
+<rect width="1920" height="1080" rx="16" fill="#FFFFF5"/>
+<text id="Nie tylko ekran" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="160" font-weight="600" letter-spacing="-0.04em"><tspan x="128" y="240">Nie tylko ekran</tspan></text>
+<g id="Frame 1236">
+<path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M1880.76 44.9355L1872 16L1900.94 24.7641L1893.18 32.5163L1904 43.3333L1899.33 48L1888.52 37.1829L1880.76 44.9355Z" fill="#6BE395"/>
+</g>
+<g id="Frame 1237">
+<path id="jagged line" d="M1276 828L1350 774.667L1276 721.333L1350 668L1276 614.667L1350 561.333L1276 508L1350 454.667L1276 401.333L1350 348" stroke="#6BE395" stroke-width="16"/>
+<path id="jagged line_2" d="M1382 868L1456 805.778L1382 743.556L1456 681.333L1382 619.111L1456 556.889L1382 494.667L1456 432.444L1382 370.222L1456 308" stroke="#0E5C36" stroke-width="16"/>
+<path id="jagged line_3" d="M1488 828L1562 774.667L1488 721.333L1562 668L1488 614.667L1562 561.333L1488 508L1562 454.667L1488 401.333L1562 348" stroke="#C3B9FF" stroke-width="16"/>
+</g>
+<g id="Frame 1238">
+<path id="jagged line_4" d="M358 828L432 774.667L358 721.333L432 668L358 614.667L432 561.333L358 508L432 454.667L358 401.333L432 348" stroke="#C3B9FF" stroke-width="16"/>
+<path id="jagged line_5" d="M464 868L538 805.778L464 743.556L538 681.333L464 619.111L538 556.889L464 494.667L538 432.444L464 370.222L538 308" stroke="#0E5C36" stroke-width="16"/>
+<path id="jagged line_6" d="M570 828.5L644 775.056L570 721.611L644 668.167L570 614.722L644 561.278L570 507.833L644 454.389L570 400.944L644 347.5" stroke="#6BE395" stroke-width="16"/>
+</g>
+<g id="Pattern / Ellipse 14">
+<mask id="mask0_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="720" y="388" width="480" height="480">
+<circle id="Ellipse 14" cx="960" cy="628" r="240" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_104_158)">
+<g id="Pattern">
+<g id="Pattern tiles" clip-path="url(#clip1_104_158)">
+<rect width="480" height="480" transform="translate(720 388)" fill="#FF7036"/>
+<g id="Tile / stripes" clip-path="url(#clip2_104_158)">
+<rect width="480" height="480" transform="translate(720 388)" fill="#EC5A2E"/>
+<path id="Vector_2" d="M840 268L120 988" stroke="#F5F25C" stroke-width="60"/>
+<path id="Vector_3" d="M960 268L240 988" stroke="#F5F25C" stroke-width="60"/>
+<path id="Vector_4" d="M1080 268L360 988" stroke="#F5F25C" stroke-width="60"/>
+<path id="Vector_5" d="M1200 268L480 988" stroke="#F5F25C" stroke-width="60"/>
+<path id="Vector_6" d="M1320 268L600 988" stroke="#F5F25C" stroke-width="60"/>
+<path id="Vector_7" d="M1440 268L720 988" stroke="#F5F25C" stroke-width="60"/>
+<path id="Vector_8" d="M1560 268L840 988" stroke="#F5F25C" stroke-width="60"/>
+<path id="Vector_9" d="M1680 268L960 988" stroke="#F5F25C" stroke-width="60"/>
+<path id="Vector_10" d="M1800 268L1080 988" stroke="#F5F25C" stroke-width="60"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<path id="Rectangle 108" d="M1100 1148L820 1148L820 846C820 768.68 882.68 706 960 706C1037.32 706 1100 768.68 1100 846L1100 1148Z" fill="#B38C1A"/>
+<path id="Rectangle 109" d="M1060 896.791C1060 904.638 1053.64 911 1045.79 911L874.209 911C866.362 911 860 904.639 860 896.791L860 775C860 719.772 904.772 675 960 675C1015.23 675 1060 719.772 1060 775L1060 896.791Z" fill="#6BE395"/>
+<line id="Line 12" x1="1020" y1="999" x2="900" y2="999" stroke="#E2F79A" stroke-width="16"/>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_104_158">
+<rect width="1920" height="1080" rx="16" fill="white"/>
+</clipPath>
+<clipPath id="clip1_104_158">
+<rect width="480" height="480" fill="white" transform="translate(720 388)"/>
+</clipPath>
+<clipPath id="clip2_104_158">
+<rect width="480" height="480" fill="white" transform="translate(720 388)"/>
+</clipPath>
+</defs>
+</svg>

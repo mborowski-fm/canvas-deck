@@ -1,0 +1,64 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g>
+<g id="01. Percepcja">
+<g clip-path="url(#clip0_104_158)">
+<rect width="1920" height="1080" rx="16" fill="#FFFFF5"/>
+<path id="Vector 20" d="M160 617L516 822L542 630L348 560L586 475L689.5 868.5L842.5 802L763.5 547L717 447.5L970 333L1127 660L1034.5 899.5L1367 868.5L1332 560L1202.5 290.5L1448 189L1728.5 224L1802.5 94.9997L1767.5 617" stroke="#EC5A2E" stroke-width="4" stroke-dasharray="16 16"/>
+<text id="Znaj umiar" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="160" font-weight="600" letter-spacing="-0.04em"><tspan x="128" y="240">Znaj umiar</tspan></text>
+<g id="Frame 1236">
+<path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M1880.76 44.9355L1872 16L1900.94 24.7641L1893.18 32.5163L1904 43.3333L1899.33 48L1888.52 37.1829L1880.76 44.9355Z" fill="#6BE395"/>
+</g>
+<g id="Frame 1244">
+<rect width="237" height="33" transform="translate(223 376)" fill="#C7F3F8"/>
+<text id="standard.effect.fast" transform="translate(231 384)" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="0" y="16.8">standard.effect.fast</tspan></text>
+</g>
+<g id="Frame 1246">
+<rect width="244" height="33" transform="translate(157 442)" fill="#C3B9FF"/>
+<text id="standard.effect.slow" transform="translate(165 450)" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="0" y="16.8">standard.effect.slow</tspan></text>
+</g>
+<g id="Frame 1245">
+<rect width="199" height="33" transform="translate(279 409)" fill="#E2F79A"/>
+<text id="crazy.effect.fast" transform="translate(287 417)" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="0" y="16.8">crazy.effect.fast</tspan></text>
+</g>
+<circle id="Ellipse 15" cx="152" cy="614" r="24" fill="#44441A"/>
+<path id="Vector 21" d="M152.5 614.5C152.5 614.5 371.848 869.824 556.625 861.5C741.402 853.176 960.75 451 960.75 451C960.75 451 1197.53 583.208 1364.88 614.5C1520.01 643.507 1769 614.5 1769 614.5" stroke="#44441A" stroke-width="16"/>
+<circle id="Ellipse 16" cx="1768" cy="614" r="24" fill="#44441A"/>
+<g id="Pattern / Rectangle 102">
+<mask id="mask0_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="841" y="360" width="280" height="280">
+<path id="Rectangle 102" d="M841 500C841 422.68 903.68 360 981 360C1058.32 360 1121 422.68 1121 500C1121 577.32 1058.32 640 981 640C903.68 640 841 577.32 841 500Z" fill="#44441A"/>
+</mask>
+<g mask="url(#mask0_104_158)">
+<g id="Pattern">
+<g id="Pattern tiles" clip-path="url(#clip1_104_158)">
+<rect width="280" height="280" transform="translate(841 360)" fill="#6BE395"/>
+<g id="Tile / checker">
+<rect width="280" height="70" transform="translate(841 360)" fill="#6BE395"/>
+<path id="Vector_2" d="M841 360H911V430H841V360ZM981 360H1051V430H981V360Z" fill="#C7F3F8"/>
+</g>
+<g id="Tile / blocks">
+<rect width="280" height="70" transform="translate(841 430)" fill="#C7F3F8"/>
+<path id="Vector_3" d="M841 430H876V500H841V430ZM911 430H946V500H911V430ZM981 430H1016V500H981V430ZM1051 430H1086V500H1051V430Z" fill="#6BE395"/>
+</g>
+<g id="Tile / checker_2" clip-path="url(#clip2_104_158)">
+<rect width="280" height="140" transform="translate(841 500)" fill="#6BE395"/>
+<path id="Vector_4" d="M841 500H876V535H841V500ZM911 500H946V535H911V500ZM981 500H1016V535H981V500ZM1051 500H1086V535H1051V500ZM876 535H911V570H876V535ZM946 535H981V570H946V535ZM1016 535H1051V570H1016V535ZM1086 535H1121V570H1086V535ZM841 570H876V605H841V570ZM911 570H946V605H911V570ZM981 570H1016V605H981V570ZM1051 570H1086V605H1051V570ZM876 605H911V640H876V605ZM946 605H981V640H946V605ZM1016 605H1051V640H1016V605ZM1086 605H1121V640H1086V605Z" fill="#C7F3F8"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_104_158">
+<rect width="1920" height="1080" rx="16" fill="white"/>
+</clipPath>
+<clipPath id="clip1_104_158">
+<rect width="280" height="280" fill="white" transform="translate(841 360)"/>
+</clipPath>
+<clipPath id="clip2_104_158">
+<rect width="280" height="140" fill="white" transform="translate(841 500)"/>
+</clipPath>
+</defs>
+</svg>

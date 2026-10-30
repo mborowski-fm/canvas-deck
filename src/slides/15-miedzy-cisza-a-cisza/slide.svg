@@ -1,0 +1,96 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g>
+<g id="01. Percepcja">
+<rect width="1920" height="1080" rx="16" fill="#FFFFF5"/>
+<text id="MiÄ™dzy ciszÄ… a ciszÄ…" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="160" font-weight="600" letter-spacing="-0.04em"><tspan x="128" y="240">Mi&#x119;dzy cisz&#x105; a cisz&#x105;</tspan></text>
+<g id="Frame 1236">
+<path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M1880.76 44.9355L1872 16L1900.94 24.7641L1893.18 32.5163L1904 43.3333L1899.33 48L1888.52 37.1829L1880.76 44.9355Z" fill="#6BE395"/>
+</g>
+<g id="Pattern / Rectangle 106">
+<mask id="mask0_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="288" y="868" width="480" height="164">
+<path id="Rectangle 106" d="M288 932C288 896.654 316.654 868 352 868H704C739.346 868 768 896.654 768 932V1032H288V932Z" fill="#EC5A2E"/>
+</mask>
+<g mask="url(#mask0_104_158)">
+<g id="Pattern">
+<g id="Pattern tiles" clip-path="url(#clip0_104_158)">
+<rect width="480" height="164" transform="translate(288 868)" fill="#FF7036"/>
+<g id="Tile / vstripes">
+<rect width="480" height="164" transform="translate(288 868)" fill="#E84ACF"/>
+<path id="Vector_2" d="M341.33 868H394.66V1032H341.33V868ZM448 868H501.33V1032H448V868ZM554.67 868H608V1032H554.67V868ZM661.33 868H714.66V1032H661.33V868Z" fill="#C3B9FF"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Pattern / Rectangle 110">
+<mask id="mask1_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1152" y="954" width="480" height="78">
+<path id="Rectangle 110" d="M1152 1011.15C1152 975.351 1184.72 948.475 1219.84 955.426C1333.51 977.924 1450.49 977.924 1564.16 955.426C1599.28 948.475 1632 975.351 1632 1011.15V1032H1152V1011.15Z" fill="#EC5A2E"/>
+</mask>
+<g mask="url(#mask1_104_158)">
+<g id="Pattern_2">
+<g id="Pattern tiles_2" clip-path="url(#clip1_104_158)">
+<rect width="480" height="90" transform="translate(1152 942)" fill="#FF7036"/>
+<g id="Tile / vstripes_2">
+<rect width="480" height="90" transform="translate(1152 942)" fill="#EC5A2E"/>
+<path id="Vector_3" d="M1195.64 942H1239.28V1032H1195.64V942ZM1370.18 942H1413.82V1032H1370.18V942ZM1544.73 942H1588.37V1032H1544.73V942Z" fill="#F5F25C"/>
+<path id="Vector_4" d="M1282.91 942H1326.55V1032H1282.91V942ZM1457.45 942H1501.09V1032H1457.45V942Z" fill="#F5F25C"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<rect id="Rectangle 107" x="208" y="1032" width="640" height="48" fill="#731D1E"/>
+<rect id="Rectangle 111" x="1072" y="1032" width="640" height="48" fill="#731D1E"/>
+<path id="Rectangle 108" d="M380 360H660V662C660 739.32 597.32 802 520 802C442.68 802 380 739.32 380 662V360Z" fill="#B38C1A"/>
+<path id="Rectangle 112" d="M1252 360H1532V828C1532 905.32 1469.32 968 1392 968C1314.68 968 1252 905.32 1252 828V360Z" fill="#B38C1A"/>
+<path id="Rectangle 109" d="M420 611.209C420 603.362 426.362 597 434.209 597H605.791C613.638 597 620 603.362 620 611.209V733C620 788.228 575.228 833 520 833C464.772 833 420 788.228 420 733V611.209Z" fill="#6BE395"/>
+<path id="Rectangle 113" d="M1292 772.934C1292 767.448 1296.45 763 1301.93 763H1482.07C1487.55 763 1492 767.448 1492 772.934V828C1492 883.228 1447.23 928 1392 928C1336.77 928 1292 883.228 1292 828V772.934Z" fill="#E2F79A"/>
+<line id="Line 12" x1="460" y1="509" x2="580" y2="509" stroke="#E2F79A" stroke-width="16"/>
+<line id="Line 13" x1="1332" y1="675" x2="1452" y2="675" stroke="#E2F79A" stroke-width="16"/>
+<g id="Frame 1239">
+<rect width="68" height="33" transform="translate(660 804)" fill="#6BE395"/>
+<text id="KLIK" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="668" y="828.8">KLIK</tspan></text>
+</g>
+<g id="Frame 1240">
+<rect width="68" height="33" transform="translate(1547 886)" fill="#FF7036"/>
+<text id="KLIK_2" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="1555" y="910.8">KLIK</tspan></text>
+</g>
+<g id="Frame 1241">
+<rect width="68" height="33" transform="translate(1161 822.6) rotate(-15)" fill="#FF7036"/>
+<text id="KLIK_3" transform="translate(1170.8 828.257) rotate(-15)" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="0" y="16.8">KLIK</tspan></text>
+</g>
+<g id="Frame 1242">
+<rect width="68" height="33" transform="translate(1631.5 905) rotate(30)" fill="#FF7036"/>
+<text id="KLIK_4" transform="translate(1634.43 915.928) rotate(30)" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="0" y="16.8">KLIK</tspan></text>
+</g>
+<g id="Frame 1243">
+<rect width="68" height="33" transform="translate(1570.99 802.664) rotate(-45)" fill="#FF7036"/>
+<text id="KLIK_5" transform="translate(1582.3 802.664) rotate(-45)" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="0" y="16.8">KLIK</tspan></text>
+</g>
+<g id="Frame 1244">
+<rect width="68" height="33" transform="translate(1206.54 706) rotate(15)" fill="#FF7036"/>
+<text id="KLIK_6" transform="translate(1212.2 715.798) rotate(15)" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="0" y="16.8">KLIK</tspan></text>
+</g>
+<g id="Frame 1245">
+<rect width="68" height="33" transform="translate(1233 908) rotate(-30)" fill="#FF7036"/>
+<text id="KLIK_7" transform="translate(1243.93 910.928) rotate(-30)" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="0" y="16.8">KLIK</tspan></text>
+</g>
+<g id="Frame 1246">
+<rect width="68" height="33" transform="translate(1105.54 887) rotate(15)" fill="#FF7036"/>
+<text id="KLIK_8" transform="translate(1111.2 896.798) rotate(15)" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="0" y="16.8">KLIK</tspan></text>
+</g>
+<g id="Frame 1247">
+<rect width="68" height="33" transform="translate(1698.54 825) rotate(15)" fill="#FF7036"/>
+<text id="KLIK_9" transform="translate(1704.2 834.798) rotate(15)" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="0" y="16.8">KLIK</tspan></text>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_104_158">
+<rect width="480" height="164" fill="white" transform="translate(288 868)"/>
+</clipPath>
+<clipPath id="clip1_104_158">
+<rect width="480" height="90" fill="white" transform="translate(1152 942)"/>
+</clipPath>
+</defs>
+</svg>

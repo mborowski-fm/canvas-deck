@@ -1,0 +1,58 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g>
+<g id="01. Percepcja">
+<rect width="1920" height="1080" rx="16" fill="#FFFFF5"/>
+<text id="Optyka vs linijka" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="160" font-weight="600" letter-spacing="-0.04em"><tspan x="128" y="240">Optyka vs linijka</tspan></text>
+<g id="Frame 1236">
+<path id="Ellipse 8" d="M1868.5 20C1877.87 20 1886.16 21.7199 1891.96 24.333C1898.13 27.1143 1900 30.1329 1900 32C1900 33.8671 1898.13 36.8857 1891.96 39.667C1886.16 42.2801 1877.87 44 1868.5 44C1859.13 44 1850.84 42.2801 1845.04 39.667C1838.87 36.8857 1837 33.8671 1837 32C1837 30.1329 1838.87 27.1143 1845.04 24.333C1850.84 21.7199 1859.13 20 1868.5 20Z" stroke="#FF7036" stroke-width="8"/>
+</g>
+<line id="Line 1" x1="128" y1="467" x2="928" y2="467" stroke="#F1F1DC" stroke-width="4" stroke-dasharray="16 16"/>
+<line id="Line 3" x1="992" y1="467" x2="1792" y2="467" stroke="#F1F1DC" stroke-width="4" stroke-dasharray="16 16"/>
+<line id="Line 2" x1="128" y1="743" x2="928" y2="743" stroke="#F1F1DC" stroke-width="4" stroke-dasharray="16 16"/>
+<line id="Line 4" x1="992" y1="743" x2="1792" y2="743" stroke="#F1F1DC" stroke-width="4" stroke-dasharray="16 16"/>
+<rect id="Rectangle 96" x="216" y="465" width="280" height="280" fill="#F1F1DC"/>
+<rect id="Rectangle 98" x="1080" y="465" width="280" height="280" fill="#F1F1DC"/>
+<rect id="Rectangle 97" x="560" y="465" width="280" height="280" rx="140" fill="#F1F1DC"/>
+<text id="Matematycznie równe. OK" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="128" y="801.8">Matematycznie r&#xf3;wne. OK</tspan></text>
+<text id="Optycznie równe. WOW" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="992" y="801.8">Optycznie r&#xf3;wne. WOW</tspan></text>
+<line id="Line 6" x1="992" y1="445" x2="1792" y2="445" stroke="#FF7036" stroke-width="8"/>
+<line id="Line 5" x1="992" y1="765" x2="1792" y2="765" stroke="#FF7036" stroke-width="8"/>
+<g id="Pattern / Rectangle 99">
+<mask id="mask0_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1408" y="449" width="312" height="312">
+<rect id="Rectangle 99" x="1408.5" y="449.5" width="311" height="311" rx="155.5" fill="#FF7036" stroke="#FF7036"/>
+</mask>
+<g mask="url(#mask0_104_158)">
+<g id="Pattern">
+<g id="Pattern tiles" clip-path="url(#clip0_104_158)">
+<rect width="312" height="312" transform="translate(1408 449)" fill="#9A62EE"/>
+<g id="Tile / hstripes">
+<rect width="312" height="78" transform="translate(1408 449)" fill="#4F4FF7"/>
+<path id="Vector" d="M1408 475H1720V501H1408V475Z" fill="#C7F3F8"/>
+</g>
+<g id="Tile / checker" clip-path="url(#clip1_104_158)">
+<rect width="312" height="78" transform="translate(1408 527)" fill="#731D1E"/>
+<path id="Vector_2" d="M1408 527H1434V553H1408V527ZM1460 527H1486V553H1460V527ZM1512 527H1538V553H1512V527ZM1564 527H1590V553H1564V527ZM1616 527H1642V553H1616V527ZM1668 527H1694V553H1668V527ZM1434 553H1460V579H1434V553ZM1486 553H1512V579H1486V553ZM1538 553H1564V579H1538V553ZM1590 553H1616V579H1590V553ZM1642 553H1668V579H1642V553ZM1694 553H1720V579H1694V553ZM1408 579H1434V605H1408V579ZM1460 579H1486V605H1460V579ZM1512 579H1538V605H1512V579ZM1564 579H1590V605H1564V579ZM1616 579H1642V605H1616V579ZM1668 579H1694V605H1668V579Z" fill="#6BE395"/>
+</g>
+<g id="Tile / vstripes">
+<rect width="312" height="78" transform="translate(1408 605)" fill="#C7F3F8"/>
+<path id="Vector_3" d="M1427.5 605H1447V683H1427.5V605ZM1466.5 605H1486V683H1466.5V605ZM1505.5 605H1525V683H1505.5V605ZM1544.5 605H1564V683H1544.5V605ZM1583.5 605H1603V683H1583.5V605ZM1622.5 605H1642V683H1622.5V605ZM1661.5 605H1681V683H1661.5V605ZM1700.5 605H1720V683H1700.5V605Z" fill="#731D1E"/>
+</g>
+<g id="Tile / hstripes_2">
+<rect width="312" height="78" transform="translate(1408 683)" fill="#E84ACF"/>
+<path id="Vector_4" d="M1408 702.5H1720V722H1408V702.5ZM1408 741.5H1720V761H1408V741.5Z" fill="#C7F3F8"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_104_158">
+<rect width="312" height="312" fill="white" transform="translate(1408 449)"/>
+</clipPath>
+<clipPath id="clip1_104_158">
+<rect width="312" height="78" fill="white" transform="translate(1408 527)"/>
+</clipPath>
+</defs>
+</svg>

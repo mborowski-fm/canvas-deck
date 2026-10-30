@@ -1,0 +1,66 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g>
+<g id="01. Percepcja">
+<rect width="1920" height="1080" rx="16" fill="#FFFFF5"/>
+<text id="SiÅ‚a treÅ›ci" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="160" font-weight="600" letter-spacing="-0.04em"><tspan x="128" y="240">Si&#x142;a tre&#x15b;ci</tspan></text>
+<g id="Frame 1236">
+<circle id="Ellipse 9" cx="1888" cy="32" r="16" fill="#C7F3F8"/>
+</g>
+<g id="Frame 1251">
+<rect width="576" height="360" transform="translate(282 359)" fill="#F1F1DC"/>
+<g id="Frame 1239">
+<rect width="175" height="49" transform="translate(290 367)" fill="#E2F79A"/>
+<text id="Lorem ipsum" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="306" y="399.8">Lorem ipsum</tspan></text>
+</g>
+<path id="filter_vintage" d="M656.472 544.872C663.266 548.675 669.241 553.384 674.335 558.765C698.893 584.702 674.201 627.557 639.367 619.658C631.977 617.983 624.714 615.172 617.825 611.148C614.013 609.247 608.767 612.312 608.767 616.571C608.767 624.447 607.552 632.089 605.305 639.305C594.678 673.431 545.561 673.431 534.933 639.305C532.686 632.089 531.472 624.447 531.472 616.571C531.472 612.312 526.225 609.247 522.414 611.148C515.525 615.172 508.262 617.983 500.872 619.658C466.038 627.557 441.488 584.869 465.773 558.676C470.895 553.15 476.915 548.272 483.767 544.27C487.691 542.312 487.658 536.566 483.984 534.17C483.912 534.123 483.839 534.075 483.767 534.027C476.973 530.225 470.998 525.515 465.904 520.134C441.346 494.197 466.038 451.342 500.872 459.241C508.262 460.917 515.525 463.727 522.414 467.751C526.225 469.652 531.472 466.588 531.472 462.328C531.472 454.453 532.686 446.81 534.933 439.595C545.561 405.468 594.678 405.468 605.305 439.595C607.552 446.81 608.767 454.453 608.767 462.328C608.767 466.588 614.013 469.652 617.825 467.751C624.714 463.727 631.977 460.917 639.367 459.241C674.201 451.342 698.893 494.197 674.335 520.134C669.241 525.515 663.266 530.225 656.472 534.027C653.228 536.185 653.228 542.714 656.472 544.872ZM570.119 590.663C598.501 590.663 621.448 567.768 621.448 539.45C621.448 511.132 598.501 488.236 570.119 488.236C541.738 488.236 518.791 511.132 518.791 539.45C518.791 567.768 541.738 590.663 570.119 590.663Z" fill="#FFFFF5"/>
+</g>
+<g id="Frame 1255">
+<rect width="576" height="360" transform="translate(992 359)" fill="#C7F3F8"/>
+<circle id="Ellipse 17" cx="1280" cy="539" r="53" fill="#F5F25C"/>
+<path id="cloud" d="M1156.06 465.439C1169.91 466.444 1181 478.012 1181 492.094C1181 506.93 1168.91 519 1154.04 519H1084.25C1066.36 519 1052 504.415 1052 486.813C1052 470.216 1064.6 456.386 1080.72 454.877C1087.53 441.801 1100.88 433 1116.5 433C1136.15 433 1152.28 447.082 1156.06 465.439Z" fill="#F1FBE3"/>
+<rect id="Rectangle 125" x="992" y="641" width="576" height="78" fill="#0E5C36"/>
+<g id="Frame 1239_2">
+<rect width="235" height="49" transform="translate(1000 367)" fill="#E2F79A"/>
+<text id="Kwiat doniczkowy" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" font-weight="bold" letter-spacing="0em"><tspan x="1016" y="399.8">Kwiat doniczkowy</tspan></text>
+</g>
+<rect id="Rectangle 126" x="1275" y="641" width="10" height="78" fill="#731D1E"/>
+<g id="Pattern / filter_vintage">
+<mask id="mask0_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1165" y="413" width="230" height="252">
+<path id="filter_vintage_2" d="M1366.35 544.423C1373.15 548.225 1379.12 552.935 1384.22 558.316C1408.77 584.253 1384.08 627.108 1349.25 619.209C1341.86 617.533 1334.59 614.723 1327.71 610.699C1323.89 608.798 1318.65 611.862 1318.65 616.122C1318.65 623.997 1317.43 631.64 1315.19 638.855C1304.56 672.982 1255.44 672.982 1244.81 638.855C1242.57 631.64 1241.35 623.997 1241.35 616.122C1241.35 611.862 1236.11 608.798 1232.29 610.699C1225.41 614.723 1218.14 617.533 1210.75 619.209C1175.92 627.108 1151.37 584.42 1175.65 558.227C1180.78 552.701 1186.8 547.822 1193.65 543.82C1197.57 541.863 1197.54 536.117 1193.87 533.721C1193.79 533.674 1193.72 533.626 1193.65 533.578C1186.85 529.775 1180.88 525.066 1175.78 519.685C1151.23 493.748 1175.92 450.893 1210.75 458.792C1218.14 460.467 1225.41 463.278 1232.29 467.302C1236.11 469.203 1241.35 466.138 1241.35 461.879C1241.35 454.003 1242.57 446.361 1244.81 439.145C1255.44 405.019 1304.56 405.019 1315.19 439.145C1317.43 446.361 1318.65 454.003 1318.65 461.879C1318.65 466.138 1323.89 469.203 1327.71 467.302C1334.59 463.278 1341.86 460.467 1349.25 458.792C1384.08 450.893 1408.77 493.748 1384.22 519.685C1379.12 525.066 1373.15 529.775 1366.35 533.578C1363.11 535.736 1363.11 542.265 1366.35 544.423ZM1280 590.214C1308.38 590.214 1331.33 567.318 1331.33 539C1331.33 510.682 1308.38 487.787 1280 487.787C1251.62 487.787 1228.67 510.682 1228.67 539C1228.67 567.318 1251.62 590.214 1280 590.214Z" fill="#FF7036"/>
+</mask>
+<g mask="url(#mask0_104_158)">
+<g id="Pattern">
+<g id="Pattern tiles" clip-path="url(#clip0_104_158)">
+<rect width="228.239" height="250.899" transform="translate(1165.88 413.551)" fill="#FF7036"/>
+<g id="Tile / checker" clip-path="url(#clip1_104_158)">
+<rect width="228.24" height="125.45" transform="translate(1165.88 413.551)" fill="#C99ED0"/>
+<path id="Vector" d="M1165.88 413.551H1203.92V455.371H1165.88V413.551ZM1241.96 413.551H1280V455.371H1241.96V413.551ZM1318.04 413.551H1356.08V455.371H1318.04V413.551ZM1203.92 455.371H1241.96V497.191H1203.92V455.371ZM1280 455.371H1318.04V497.191H1280V455.371ZM1356.08 455.371H1394.12V497.191H1356.08V455.371ZM1165.88 497.181H1203.92V539.001H1165.88V497.181ZM1241.96 497.181H1280V539.001H1241.96V497.181ZM1318.04 497.181H1356.08V539.001H1318.04V497.181Z" fill="#E2F79A"/>
+</g>
+<g id="Tile / hstripes" clip-path="url(#clip2_104_158)">
+<rect width="228.24" height="125.45" transform="translate(1165.88 539)" fill="#C3B9FF"/>
+<path id="Vector_2" d="M1165.88 580.82H1394.12V622.64H1165.88V580.82Z" fill="#FF7036"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<path id="cloud_2" d="M1486.06 551.439C1499.91 552.444 1511 564.012 1511 578.094C1511 592.93 1498.91 605 1484.04 605H1414.25C1396.36 605 1382 590.415 1382 572.813C1382 556.216 1394.6 542.386 1410.72 540.877C1417.53 527.801 1430.88 519 1446.5 519C1466.15 519 1482.28 533.082 1486.06 551.439Z" fill="#FFFFF5"/>
+</g>
+<text id="Dolor sit amet" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="64" font-weight="500" letter-spacing="-0.02em"><tspan x="282" y="811.8">Dolor sit amet</tspan></text>
+<text id="Pelargonia domowa" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="64" font-weight="500" letter-spacing="-0.02em"><tspan x="992" y="811.8">Pelargonia domowa</tspan></text>
+<text id="Eiusmod tempor incididunt" fill="#4E4C47" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" letter-spacing="0em"><tspan x="285" y="860.8">Eiusmod tempor incididunt</tspan></text>
+<text id="283 gatunki" fill="#4E4C47" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="24" letter-spacing="0em"><tspan x="996" y="860.8">283 gatunki</tspan></text>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_104_158">
+<rect width="228.239" height="250.899" fill="white" transform="translate(1165.88 413.551)"/>
+</clipPath>
+<clipPath id="clip1_104_158">
+<rect width="228.24" height="125.45" fill="white" transform="translate(1165.88 413.551)"/>
+</clipPath>
+<clipPath id="clip2_104_158">
+<rect width="228.24" height="125.45" fill="white" transform="translate(1165.88 539)"/>
+</clipPath>
+</defs>
+</svg>
