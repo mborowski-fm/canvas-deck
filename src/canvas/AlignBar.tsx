@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { Icon } from '../Icon'
 import type { AlignOp } from './align'
 
@@ -31,17 +32,35 @@ const GROUPS: { op: AlignOp; label: string; min: number }[][] = [
   ],
 ]
 
-
-export function AlignBar({ count, onAlign, onCopyLayout, copied, onUndo, onRedo, canUndo, canRedo }: {
+/** Edit-mode bar: history, align popover, reset, save. */
+export function AlignBar({ count, onAlign, onUndo, onRedo, canUndo, canRedo, onReset, onSave, saveLabel }: {
   count: number
+  onAlign: (op: AlignOp) => void
   onUndo: () => void
   onRedo: () => void
   canUndo: boolean
   canRedo: boolean
-  onAlign: (op: AlignOp) => void
-  onCopyLayout: () => void
-  copied: boolean
+  onReset: () => void
+  /** dev only; hidden on the deployed site */
+  onSave?: () => void
+  saveLabel: string
 }) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+    const close = (e: PointerEvent | KeyboardEvent) => {
+      if (e instanceof KeyboardEvent ? e.key === 'Escape' : !ref.current?.contains(e.target as Node)) setOpen(false)
+    }
+    window.addEventListener('pointerdown', close)
+    window.addEventListener('keydown', close)
+    return () => {
+      window.removeEventListener('pointerdown', close)
+      window.removeEventListener('keydown', close)
+    }
+  }, [open])
+
   return (
     <div className="hud align-bar">
       <div className="group">
@@ -52,19 +71,36 @@ export function AlignBar({ count, onAlign, onCopyLayout, copied, onUndo, onRedo,
           <Icon name="redo" />
         </button>
       </div>
-      {GROUPS.map((g, gi) => (
-        <div className="group" key={gi}>
-          {g.map((b) => (
-            <button key={b.op} className="icon" title={b.label} disabled={count < b.min} onClick={() => onAlign(b.op)}>
-              <Icon name={ICONS[b.op]} />
-            </button>
-          ))}
-        </div>
-      ))}
+      <div className="group popover-anchor" ref={ref}>
+        <button className={'pill' + (open ? ' on' : '')} aria-expanded={open} title="Align and arrange" disabled={count < 2} onClick={() => setOpen((v) => !v)}>
+          <Icon name="align_horizontal_left" />
+          Align
+          <Icon name={open ? 'keyboard_arrow_down' : 'keyboard_arrow_up'} />
+        </button>
+        {open && count >= 2 && (
+          <div className="popover" role="menu">
+            {GROUPS.map((g, gi) => (
+              <div className="row" key={gi}>
+                {g.map((b) => (
+                  <button key={b.op} className="icon" title={b.label} disabled={count < b.min} onClick={() => onAlign(b.op)}>
+                    <Icon name={ICONS[b.op]} />
+                  </button>
+                ))}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
       <span className="count">{count ? `${count} selected` : 'Drag to select'}</span>
-      <button className="text" onClick={onCopyLayout} title="Copy positions as JSON for src/slides/layout.json">
-        {copied ? 'Copied' : 'Copy layout'}
+      <button className="icon" title="Reset layout to the original arrangement" onClick={onReset}>
+        <Icon name="restart_alt" />
       </button>
+      {onSave && (
+        <button className="cta" onClick={onSave} title="Write positions to src/slides/layout.json">
+          <Icon name="save" />
+          {saveLabel}
+        </button>
+      )}
     </div>
   )
 }

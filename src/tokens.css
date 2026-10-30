@@ -1,0 +1,34 @@
+/*
+ * Figma variables from "UI-Prezentacja storyboard" (file TVxGtPg72Xpe38wLHXTiaS), collection "Brand".
+ * Names mirror Figma: `color/ink` -> --color-ink. Keep in sync with Figma; UI styles use only these.
+ */
+:root {
+  --color-lime: #e2f79a;
+  --color-olive: #b38c1a;
+  --color-ultraviolet: #4f4ff7;
+  --color-oxblood: #731d1e;
+  --color-electric-blue: #3bafea;
+  --color-mint: #6be395;
+  --color-magenta: #e84acf;
+  --color-tangerine: #ff7036;
+  --color-red: #ec5a2e;
+  --color-violet: #9a62ee;
+  --color-sun: #f5f25c;
+  --color-ink: #44441a;
+  --color-lilac: #c99ed0;
+  --color-lavender: #c3b9ff;
+  --color-ice: #c7f3f8;
+  --color-cream: #f1fbe3;
+  --color-forest: #0e5c36;
+  --neutral-paper: #fffff5;
+  --neutral-ink-60: #4e4c47;
+  --neutral-ink-10: #f1f1dc;
+
+  /* aliases, as in Figma */
+  --text-primary: var(--color-ink);
+  --text-secondary: var(--neutral-ink-60);
+  --text-accent: var(--color-ultraviolet);
+  --text-inverse: var(--neutral-paper);
+  --text-inverse-secondary: var(--neutral-ink-10);
+  --text-inverse-accent: var(--color-lime);
+}

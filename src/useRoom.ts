@@ -4,6 +4,15 @@ import { createSync, type LayoutItem, type Me, type Peer, type SharedState, type
 const newer = (a: SharedState, b: SharedState) =>
   a.ts > b.ts || (a.ts === b.ts && a.by > b.by)
 
+/** Merge incoming per-slide items, last write wins. Returns null when nothing changed. */
+function mergeLww<T extends { id: string; ts: number }>(cur: Record<string, T>, items: T[]) {
+  let next: Record<string, T> | null = null
+  for (const it of items) {
+    if (!cur[it.id] || it.ts > cur[it.id].ts) (next ??= { ...cur })[it.id] = it
+  }
+  return next
+}
+
 /**
  * Everything multiplayer: the shared active slide + live peers/cursors.
  * Any presenter can change `active`; it is last-write-wins for everyone.
@@ -32,18 +41,8 @@ export function useRoom(roomId: string, me: Me, slideCount: number) {
       if (newer(st, sharedRef.current)) setShared(st)
     })
     s.onLayout((items) => {
-      const next = { ...layoutRef.current }
-      let changed = false
-      for (const it of items) {
-        if (!next[it.id] || it.ts > next[it.id].ts) {
-          next[it.id] = it
-          changed = true
-        }
-      }
-      if (changed) {
-        layoutRef.current = next
-        setLayout(next)
-      }
+      const next = mergeLww(layoutRef.current, items)
+      if (next) setLayout((layoutRef.current = next))
     })
     s.onCursor((c, from) =>
       setPeers((p) => ({ ...p, [from]: { ...c, id: from, seen: Date.now() } })),

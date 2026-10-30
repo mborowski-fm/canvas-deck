@@ -20,10 +20,12 @@ Multi-presenter presentation tool. One big pan/zoom canvas, each slide is an art
 
 ## Edit mode (toggle `E`, default off)
 - View mode: click a slide = make it active for everyone, drag = pan. Double click a slide (any mode) = focus it (fly to it, make it active).
-- Edit mode: undo/redo (Cmd+Z, Cmd+Shift+Z, local history of layout moves), grid arrange of the selection, click/shift-click/marquee selects, drag moves selected slides, arrows nudge (Shift = 100), Space+drag pans, Cmd/Ctrl+A selects all. Align/distribute bar at the top. Edit mode is per person, but moves are shared live (`LayoutItem`, last write wins per slide) via `moveSlides` in `src/useRoom.ts`.
-- Shared layout lives only in the room. To keep it, press "Copy layout" and paste into `src/slides/layout.json` (`{ "<slide-folder>": {x, y} }`), which overrides `meta.x/y`.
+- Edit mode: undo/redo (Cmd+Z, Cmd+Shift+Z, local history of layout moves), grid arrange of the selection, click/shift-click/marquee selects, drag moves selected slides, arrows nudge (Shift = 100), Space+drag pans, Cmd/Ctrl+A selects all. Align/distribute bar at the bottom. Edit mode is per person, but moves are shared live (`LayoutItem`, last write wins per slide) via `moveSlides` in `src/useRoom.ts`.
+- Edit bar: undo/redo, an "Align" popover (align, distribute, grid; needs 2+ selected), reset layout (back to the positions from the files at load, undoable), and Save layout.
+- Save layout exists only in `npm run dev`: the `deck-save` Vite plugin (`vite.config.ts`, `POST /__deck/save`, client `src/save.ts`) writes `src/slides/layout.json`, which overrides `meta.x/y`. Its own writes skip HMR. On the deployed site layout edits stay in the room only.
+- Speaker notes are not editable in the app: Marcin sends them in chat and the agent writes them into `src/slides/<id>/notes.md`.
 - Align math is in `src/canvas/align.ts` (pure functions).
-- UI style: Figma light (canvas #e5e5e5, white panels, blue #0d99ff). Frame labels and selection outlines are screen-constant via the `--px` CSS variable on `.world`.
+- UI style: follows the Figma frame `Canvas Deck / Edit mode` (node `160:359`, page WIP). All colors come from the Figma "Brand" variables, mirrored 1:1 in `src/tokens.css` (`color/ink` -> `--color-ink`, aliases like `--text-accent`); never hardcode colors in `styles.css`. Bars use `--color-ice`, the CTA is ultraviolet with lime text, canvas is `--neutral-ink-10`, presenter colors are Brand colors. Font Google Sans Flex, icons Material Symbols Sharp (filled), M3 Expressive shapes/motion. Frame labels and selection outlines are screen-constant via the `--px` CSS variable on `.world`.
 
 ## Commands
 - `npm run dev` local dev server (test multiplayer with two tabs and the same `#/r/<room>`)
@@ -40,6 +42,6 @@ Arrows/Space/PageUp/PageDown: prev/next. `O` overview. `F` re-fit active slide (
 - Keep shared state minimal. Anything shared must be added to `SharedState`/`useRoom` and be conflict-safe (last write wins).
 - P2P limits: WebRTC can be blocked by strict corporate networks/VPN, and room state is lost when everyone leaves. That is why `Sync` is swappable.
 - Deploy: push to `main`, GitHub Action builds and publishes to Pages. `vite.config.ts` uses `base: './'`, keep it.
-- Icons: Google Material Symbols Rounded via `<Icon name="..." />` (`src/Icon.tsx`). The font URL in `index.html` lists only the used icon names (alphabetical); add new ones there.
-- Main controls live in the top-right toolbar (prev/next, overview, focus, edit toggle, notes); the edit bar sits bottom-center.
+- Icons: Google Material Symbols Sharp (filled) via `<Icon name="..." />` (`src/Icon.tsx`). The font URL in `index.html` lists only the used icon names (alphabetical); add new ones there.
+- Main controls live in the top-right toolbar (prev/next, edit toggle, notes) next to the presenter avatars; the edit bar sits bottom-center. Overview (`O`) and focus (`F`) are keyboard only; the invite link is the page URL.
 - Language: UI and docs in English. Never use em dashes in docs.

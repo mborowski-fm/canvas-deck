@@ -73,7 +73,7 @@ export function Canvas({ slides, active, onActive, peers, onCursor, view, edit, 
   useEffect(() => {
     if (!view.n) return
     const all = slidesRef.current
-    fit(view.mode === 'all' ? all : [all[active]].filter(Boolean), view.mode === 'all' ? 80 : 100)
+    fit(view.mode === 'all' ? all : [all[active]].filter(Boolean), view.mode === 'all' ? 112 : 100)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [view.n, view.mode, fit])
 
@@ -101,7 +101,8 @@ export function Canvas({ slides, active, onActive, peers, onCursor, view, edit, 
 
   // hold Space to pan in edit mode
   useEffect(() => {
-    const dn = (e: KeyboardEvent) => e.code === 'Space' && setSpace(true)
+    const dn = (e: KeyboardEvent) =>
+      e.code === 'Space' && !['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement).tagName) && setSpace(true)
     const up = (e: KeyboardEvent) => e.code === 'Space' && setSpace(false)
     window.addEventListener('keydown', dn)
     window.addEventListener('keyup', up)
@@ -251,7 +252,7 @@ export function Canvas({ slides, active, onActive, peers, onCursor, view, edit, 
               <div key={p.id} className="cursor" style={{ left: p.x, top: p.y }}>
                 <div style={{ transform: `scale(${1 / z})`, transformOrigin: '0 0' }}>
                   <svg width="18" height="20" viewBox="0 0 18 20">
-                    <path d="M1.5 1.5 L1.5 15.5 L5.3 12 L8.2 18.3 L10.6 17.2 L7.8 11 L13 11 Z" fill={p.color} stroke="#fff" strokeWidth="1.3" strokeLinejoin="round" />
+                    <path d="M1.5 1.5 L1.5 15.5 L5.3 12 L8.2 18.3 L10.6 17.2 L7.8 11 L13 11 Z" fill={p.color} strokeWidth="1.3" strokeLinejoin="round" />
                   </svg>
                   <span style={{ background: p.color }}>{p.name}</span>
                 </div>

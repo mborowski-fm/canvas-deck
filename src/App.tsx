@@ -7,9 +7,11 @@ import { NotesWindow } from './notes/NotesWindow'
 import { slides as baseSlides } from './slides/registry'
 import type { Me } from './sync'
 import { Icon } from './Icon'
+import { canSave, saveLayoutToRepo } from './save'
 import { useRoom } from './useRoom'
 
-const COLORS = ['#e5484d', '#f76b15', '#30a46c', '#0091ff', '#8e4ec6', '#d6409f', '#12a594']
+// Presenter colors = Figma Brand variables (see src/tokens.css), readable with paper-colored text.
+const COLORS = ['#9a62ee', '#b38c1a', '#4f4ff7', '#ec5a2e', '#e84acf', '#0e5c36', '#3bafea', '#731d1e']
 
 // Routes (hash based, works on GitHub Pages): #/r/<room>  and  #/r/<room>/notes
 function parseHash() {
@@ -20,7 +22,10 @@ function parseHash() {
 function loadMe(): Me | null {
   try {
     const raw = localStorage.getItem('canvas-deck:me')
-    return raw ? JSON.parse(raw) : null
+    const me: Me | null = raw ? JSON.parse(raw) : null
+    // re-pick colors saved before the palette came from Figma
+    if (me && !COLORS.includes(me.color)) me.color = COLORS[me.name.length % COLORS.length]
+    return me
   } catch {
     return null
   }
@@ -81,7 +86,7 @@ function Presenting({ room, me }: { room: string; me: Me }) {
   const [view, setView] = useState<ViewReq>({ n: 0, mode: 'all' })
   const [edit, setEdit] = useState(false)
   const [selected, setSelected] = useState<string[]>([])
-  const [copied, setCopied] = useState<'link' | 'layout' | null>(null)
+  const [flashMsg, setFlashMsg] = useState<string | null>(null)
   const ch = useRef<BroadcastChannel | null>(null)
   const st = useRef({ active, edit, selected, slides })
   st.current = { active, edit, selected, slides }
@@ -102,7 +107,7 @@ function Presenting({ room, me }: { room: string; me: Me }) {
   }, [active])
 
   const openNotes = () => window.open(`#/r/${room}/notes`, `notes-${room}`, 'width=520,height=760')
-  const flash = (k: 'link' | 'layout') => { setCopied(k); setTimeout(() => setCopied(null), 1500) }
+  const flash = (msg: string) => { setFlashMsg(msg); setTimeout(() => setFlashMsg(null), 1500) }
   const fitView = (mode: 'all' | 'active') => setView((v) => ({ n: v.n + 1, mode }))
 
   // Undo/redo for layout edits (local to this presenter; the moves themselves are shared).
@@ -136,7 +141,7 @@ function Presenting({ room, me }: { room: string; me: Me }) {
 
   useEffect(() => {
     const k = (e: KeyboardEvent) => {
-      if ((e.target as HTMLElement).tagName === 'INPUT') return
+      if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement).tagName)) return
       const { active: a, edit: ed, selected: sel, slides: sl } = st.current
       const arrows: Record<string, [number, number]> = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] }
       if (ed) {
@@ -161,15 +166,12 @@ function Presenting({ room, me }: { room: string; me: Me }) {
     return () => window.removeEventListener('keydown', k)
   })
 
-  const copyLink = async () => {
-    await navigator.clipboard.writeText(location.href.split('#')[0] + `#/r/${room}`)
-    flash('link')
-  }
-  const copyLayout = async () => {
+  // Dev only: write layout.json into the repo.
+  const saveLayout = async () => {
     const out = Object.fromEntries(slides.map((s) => [s.id, { x: Math.round(s.x), y: Math.round(s.y) }]))
-    await navigator.clipboard.writeText(JSON.stringify(out, null, 2) + '\n')
-    flash('layout')
+    flash((await saveLayoutToRepo(out)) ? 'Saved' : 'Save failed')
   }
+  const resetLayout = () => commit(baseSlides.map((s) => ({ id: s.id, x: s.x, y: s.y })))
 
   return (
     <>
@@ -186,32 +188,21 @@ function Presenting({ room, me }: { room: string; me: Me }) {
         onMove={moveSlides}
         onMoveStart={record}
       />
-      <div className="hud top-left">
-        <div className="file">
-          <span className="logo" />
-          Canvas Deck <small>/ {room}</small>
-        </div>
-      </div>
       <div className="hud top-right">
         <div className="toolbar">
-          <button className="icon" title="Previous slide (Left)" onClick={() => setActive(active - 1)} disabled={active === 0}>
-            <Icon name="chevron_left" />
-          </button>
-          <button className="icon" title="Next slide (Right)" onClick={() => setActive(active + 1)} disabled={active >= slides.length - 1}>
-            <Icon name="chevron_right" />
-          </button>
-          <i className="sep" />
-          <button className="icon" title="Overview (O)" onClick={() => fitView('all')}>
-            <Icon name="zoom_out_map" />
-          </button>
-          <button className="icon" title="Focus active slide (F)" onClick={() => fitView('active')}>
-            <Icon name="center_focus_strong" />
-          </button>
-          <button className={'icon' + (edit ? ' on' : '')} aria-pressed={edit} title="Edit canvas (E)" onClick={() => setEdit((v) => !v)}>
+          <div className="connected">
+            <button title="Previous slide (Left)" onClick={() => setActive(active - 1)} disabled={active === 0}>
+              <Icon name="arrow_back" />
+            </button>
+            <button title="Next slide (Right)" onClick={() => setActive(active + 1)} disabled={active >= slides.length - 1}>
+              <Icon name="arrow_forward" />
+            </button>
+          </div>
+          <button className={'icon accent' + (edit ? ' on' : '')} aria-pressed={edit} title="Edit canvas (E)" onClick={() => setEdit((v) => !v)}>
             <Icon name="edit" />
           </button>
-          <button className="icon" title="Presenter notes (N)" onClick={openNotes}>
-            <Icon name="speaker_notes" />
+          <button className="icon accent" title="Presenter notes (N)" onClick={openNotes}>
+            <Icon name="sticky_note_2" />
           </button>
         </div>
         <div className="avatars">
@@ -224,18 +215,18 @@ function Presenting({ room, me }: { room: string; me: Me }) {
             </span>
           ))}
         </div>
-        <button className="primary" onClick={copyLink}>{copied === 'link' ? 'Link copied' : 'Share'}</button>
       </div>
       {edit && (
         <AlignBar
           count={selected.length}
           onAlign={doAlign}
-          onCopyLayout={copyLayout}
-          copied={copied === 'layout'}
           onUndo={() => step('undo')}
           onRedo={() => step('redo')}
           canUndo={hist.current.undo.length > 0}
           canRedo={hist.current.redo.length > 0}
+          onReset={resetLayout}
+          onSave={canSave ? saveLayout : undefined}
+          saveLabel={flashMsg ?? 'Save layout'}
         />
       )}
     </>
