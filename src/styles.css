@@ -1,0 +1,37 @@
+:root { color-scheme: dark; --bg: #16171a; --fg: #ececf0; --line: #2c2e34; font-family: system-ui, sans-serif; }
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; background: var(--bg); color: var(--fg); overflow: hidden; }
+button { font: inherit; color: inherit; background: #26282e; border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+button:hover:not(:disabled) { background: #31343b; }
+button:disabled { opacity: .4; cursor: default; }
+
+.canvas { position: fixed; inset: 0; overflow: hidden; cursor: grab; touch-action: none;
+  background-image: radial-gradient(circle, #3a3d45 1.5px, transparent 1.5px); }
+.canvas:active { cursor: grabbing; }
+.world { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.slide-label { position: absolute; top: -48px; left: 0; color: #8b8e98; white-space: nowrap; }
+.artboard { background: #fff; color: #111; overflow: hidden; border-radius: 6px; box-shadow: 0 10px 60px #0008; position: relative; }
+.artboard.active { outline: 6px solid #0091ff; outline-offset: 6px; }
+.cursor { position: absolute; pointer-events: none; z-index: 10; transition: left .08s linear, top .08s linear; }
+.cursor span { position: absolute; left: 16px; top: 18px; color: #fff; font-size: 12px; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+
+.hud { position: fixed; z-index: 20; display: flex; gap: 8px; align-items: center; }
+.top-left { top: 14px; left: 14px; }
+.top-right { top: 14px; right: 14px; }
+.bottom { bottom: 16px; left: 50%; transform: translateX(-50%); background: #1e2025ee; padding: 8px 10px; border-radius: 12px; border: 1px solid var(--line); }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 1px solid; border-radius: 999px; background: #1e2025; font-size: 13px; }
+.chip i { width: 8px; height: 8px; border-radius: 50%; }
+
+.modal { position: fixed; inset: 0; display: grid; place-items: center; }
+.modal form { display: grid; gap: 12px; width: 300px; }
+.modal input { font: inherit; padding: 10px; border-radius: 8px; border: 1px solid var(--line); background: #1e2025; color: var(--fg); }
+
+.notes-win { display: grid; grid-template-rows: auto auto 1fr auto; height: 100%; padding: 16px 20px; gap: 8px; }
+.notes-win header, .notes-win footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: #9a9da8; }
+.notes-win h1 { margin: 4px 0; font-size: 22px; }
+.notes-body { overflow: auto; font-size: 22px; line-height: 1.45; }
+.notes-body h2, .notes-body h3 { margin: 12px 0 4px; }
+.notes-body p { margin: 4px 0; }
+.notes-body li { margin-left: 22px; }
+.notes-win .next { flex: 1; display: grid; text-align: center; }
+.muted { color: #6f7280; }
