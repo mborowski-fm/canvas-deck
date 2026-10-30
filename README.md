@@ -21,13 +21,18 @@ Open the printed URL. You land in a random room (`#/r/abc123`). Click **Copy inv
 | Pan | Scroll or drag the background |
 | Zoom | Ctrl/Cmd + scroll, or pinch |
 | Overview of all slides | `O` |
+| Focus a slide again after zooming out | Double click it, or `F` |
 | Presenter notes window | `N` |
+| Edit canvas (move, multi-select, align) | `E` or the Edit switch, off by default |
 
 ## Adding slides
 ```bash
 npm run new-slide -- my-topic
 ```
 Creates `src/slides/04-my-topic/slide.tsx` and `notes.md`. A slide is a React component filling a 1920x1080 artboard. Notes are markdown (`#`, `-`, `**bold**`). See `src/slides/` for examples: text, animated SVG, image.
+
+## Editing the layout
+Switch **Edit** on to drag slides (single or selected), select with shift-click or a marquee, and align or distribute them. Moves are shared live with everyone in the room. Press **Copy layout** and paste into `src/slides/layout.json` to make the arrangement permanent.
 
 ## Deploy
 Push to `main` on GitHub. The workflow in `.github/workflows/deploy.yml` publishes to GitHub Pages (enable Settings > Pages > Source: GitHub Actions once).

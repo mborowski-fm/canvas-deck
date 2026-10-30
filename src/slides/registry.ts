@@ -1,4 +1,5 @@
 import type { ComponentType } from 'react'
+import layout from './layout.json'
 import { GAP, SLIDE_H, SLIDE_W, type Slide, type SlideMeta } from './types'
 
 // Every folder in src/slides/<NN-name>/ with a slide.tsx is a slide.
@@ -13,6 +14,9 @@ const notes = import.meta.glob<string>('./*/notes.md', {
   eager: true,
 })
 
+// Positions saved from edit mode ("Copy layout" button) win over meta.
+const saved = layout as Record<string, { x: number; y: number }>
+
 export const slides: Slide[] = Object.keys(mods)
   .sort()
   .map((path, index) => {
@@ -26,8 +30,8 @@ export const slides: Slide[] = Object.keys(mods)
       title: meta.title ?? folder.replace(/^\d+-/, '').replace(/-/g, ' '),
       Component,
       notes: notes[`./${folder}/notes.md`] ?? '',
-      x: meta.x ?? index * (SLIDE_W + GAP),
-      y: meta.y ?? 0,
+      x: saved[folder]?.x ?? meta.x ?? index * (SLIDE_W + GAP),
+      y: saved[folder]?.y ?? meta.y ?? 0,
       width,
       height,
     }

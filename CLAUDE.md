@@ -10,13 +10,20 @@ Multi-presenter presentation tool. One big pan/zoom canvas, each slide is an art
 - **Rooms**: hash routes. `#/r/<room>` = main window, `#/r/<room>/notes` = presenter notes window. No hash = random room is created. Whoever has the link joins as a presenter (name prompt, saved in localStorage).
 - **Notes window** (`src/notes/`): a second browser window opened from the main one (key N). Talks to the main window through `BroadcastChannel` (`src/channel.ts`), so it only works in the same browser. It shows notes for the active slide, next slide, a timer, and can drive slides. Share the main window, keep the notes window to yourself.
 
+## Edit mode (toggle `E`, default off)
+- View mode: click a slide = make it active for everyone, drag = pan. Double click a slide (any mode) = focus it (fly to it, make it active).
+- Edit mode: click/shift-click/marquee selects, drag moves selected slides, arrows nudge (Shift = 100), Space+drag pans, Cmd/Ctrl+A selects all. Align/distribute bar at the top. Edit mode is per person, but moves are shared live (`LayoutItem`, last write wins per slide) via `moveSlides` in `src/useRoom.ts`.
+- Shared layout lives only in the room. To keep it, press "Copy layout" and paste into `src/slides/layout.json` (`{ "<slide-folder>": {x, y} }`), which overrides `meta.x/y`.
+- Align math is in `src/canvas/align.ts` (pure functions).
+- UI style: Figma light (canvas #e5e5e5, white panels, blue #0d99ff). Frame labels and selection outlines are screen-constant via the `--px` CSS variable on `.world`.
+
 ## Commands
 - `npm run dev` local dev server (test multiplayer with two tabs and the same `#/r/<room>`)
 - `npm run build` typecheck + production build to `dist/`
 - `npm run new-slide -- my-name` scaffold the next slide folder
 
 ## Keys
-Arrows/Space/PageUp/PageDown: prev/next. `O` overview. `F` re-fit active slide. `N` open notes window.
+Arrows/Space/PageUp/PageDown: prev/next. `O` overview. `F` re-fit active slide (local). `N` open notes window. `E` toggle edit mode.
 
 ## Rules for changes
 - Add a slide = add a folder. Do not edit the registry or App for it.

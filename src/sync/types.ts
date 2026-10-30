@@ -5,6 +5,9 @@ export type SharedState = {
   by: string
 }
 
+export type LayoutItem = { id: string; x: number; y: number; ts: number }
+export type LayoutMsg = { items: LayoutItem[] }
+
 export type Me = {
   name: string
   color: string
@@ -39,5 +42,7 @@ export interface Sync {
   /** Called when a new peer joins, so we can hand them the current state. */
   onPeerJoin(cb: (id: string) => void): void
   sendStateTo(id: string, s: SharedState): void
+  sendLayout(items: LayoutItem[], to?: string): void
+  onLayout(cb: (items: LayoutItem[]) => void): void
   leave(): void
 }
