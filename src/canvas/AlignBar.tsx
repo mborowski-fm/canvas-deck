@@ -32,8 +32,8 @@ const GROUPS: { op: AlignOp; label: string; min: number }[][] = [
   ],
 ]
 
-/** Edit-mode bar: history, align popover, reset, save. */
-export function AlignBar({ count, onAlign, onUndo, onRedo, canUndo, canRedo, onReset, onSave, saveLabel }: {
+/** Edit-mode bar: add/delete elements, history, align popover, reset, save. */
+export function AlignBar({ count, onAlign, onUndo, onRedo, canUndo, canRedo, onReset, onSave, saveLabel, onAdd, onDelete, canDelete }: {
   count: number
   onAlign: (op: AlignOp) => void
   onUndo: () => void
@@ -44,6 +44,9 @@ export function AlignBar({ count, onAlign, onUndo, onRedo, canUndo, canRedo, onR
   /** dev only; hidden on the deployed site */
   onSave?: () => void
   saveLabel: string
+  onAdd: () => void
+  onDelete: () => void
+  canDelete: boolean
 }) {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
@@ -63,6 +66,14 @@ export function AlignBar({ count, onAlign, onUndo, onRedo, canUndo, canRedo, onR
 
   return (
     <div className="hud align-bar">
+      <div className="group">
+        <button className="icon" title="Add image, video or web page" onClick={onAdd}>
+          <Icon name="add" />
+        </button>
+        <button className="icon" title="Delete selected elements (Delete)" disabled={!canDelete} onClick={onDelete}>
+          <Icon name="delete" />
+        </button>
+      </div>
       <div className="group">
         <button className="icon" title="Undo (Cmd+Z)" disabled={!canUndo} onClick={onUndo}>
           <Icon name="undo" />

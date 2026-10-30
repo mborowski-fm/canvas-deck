@@ -1,5 +1,4 @@
 <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g>
 <g id="01. Percepcja">
 <rect width="1920" height="1080" rx="16" fill="#FFFFF5"/>
 <g id="Frame 1236">
@@ -17,66 +16,73 @@
 <rect id="brick_9" x="576" y="424" width="224" height="84" fill="#F1F1DC"/>
 <rect id="brick_10" x="864" y="358" width="224" height="84" fill="#FF7036"/>
 <g id="Pattern / brick">
-<mask id="mask0_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="728" y="488" width="240" height="140">
+<mask id="mask0_171_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="728" y="488" width="240" height="140">
 <path id="brick_11" d="M728.946 546.419L945.313 488.443L967.054 569.581L750.687 627.557L728.946 546.419Z" fill="#FF7036"/>
 </mask>
-<g mask="url(#mask0_104_158)">
+<g mask="url(#mask0_171_2)">
 <g id="Pattern">
-<g id="Pattern tiles" clip-path="url(#clip0_104_158)">
-<rect width="238.108" height="139.113" transform="translate(728.946 488.443)" fill="#EC5A2E"/>
-<g id="Tile / checker" clip-path="url(#clip1_104_158)">
-<rect width="238.11" height="139.11" transform="translate(728.946 488.443)" fill="#4F4FF7"/>
-<path id="Vector" d="M728.946 488.443H768.626V523.223H728.946V488.443ZM808.316 488.443H847.996V523.223H808.316V488.443ZM887.686 488.443H927.366V523.223H887.686V488.443ZM768.626 523.223H808.306V558.003H768.626V523.223ZM847.996 523.223H887.676V558.003H847.996V523.223ZM927.366 523.223H967.046V558.003H927.366V523.223ZM728.946 558.003H768.626V592.783H728.946V558.003ZM808.316 558.003H847.996V592.783H808.316V558.003ZM887.686 558.003H927.366V592.783H887.686V558.003ZM768.626 592.773H808.306V627.553H768.626V592.773ZM847.996 592.773H887.676V627.553H847.996V592.773ZM927.366 592.773H967.046V627.553H927.366V592.773Z" fill="#C99ED0"/>
+<g id="Pattern tiles">
+<path id="Color 1" d="M967.056 488.443V627.554H967.054V627.557H728.946V488.443H967.056Z" fill="#4F4FF7"/>
+<g id="Color 2">
+<path d="M967.054 627.557H728.946V627.554H768.625V592.783H728.946V558.003H768.625V592.773H808.306V627.554H847.996V592.783H808.316V558.003H847.996V592.773H887.676V627.554H927.366V592.783H887.686V558.003H927.366V592.773H967.045V627.554H967.054V627.557Z" fill="#C99ED0"/>
+<path d="M808.306 558.003H768.625V523.224H808.306V558.003Z" fill="#C99ED0"/>
+<path d="M887.676 558.003H847.996V523.224H887.676V558.003Z" fill="#C99ED0"/>
+<path d="M967.045 558.003H927.366V523.224H967.045V558.003Z" fill="#C99ED0"/>
+<path d="M768.625 523.224H728.946V488.443H768.625V523.224Z" fill="#C99ED0"/>
+<path d="M847.996 523.224H808.316V488.443H847.996V523.224Z" fill="#C99ED0"/>
+<path d="M927.366 523.224H887.686V488.443H927.366V523.224Z" fill="#C99ED0"/>
 </g>
+<path id="Color 3" d="M967.054 627.557H728.946V627.554H967.054V627.557Z" fill="#EC5A2E"/>
 </g>
 </g>
 </g>
 </g>
 <g id="Pattern / brick_2">
-<mask id="mask1_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="984" y="816" width="240" height="140">
+<mask id="mask1_171_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="984" y="816" width="240" height="140">
 <path id="brick_12" d="M1006.69 816.443L1223.05 874.419L1201.31 955.557L984.946 897.581L1006.69 816.443Z" fill="#FF7036"/>
 </mask>
-<g mask="url(#mask1_104_158)">
+<g mask="url(#mask1_171_2)">
 <g id="Pattern_2">
-<g id="Pattern tiles_2" clip-path="url(#clip2_104_158)">
-<rect width="238.108" height="139.113" transform="translate(984.946 816.443)" fill="#EC5A2E"/>
-<g id="Tile / checker_2" clip-path="url(#clip3_104_158)">
-<rect width="238.11" height="139.11" transform="translate(984.946 816.443)" fill="#4F4FF7"/>
-<path id="Vector_2" d="M984.946 816.443H1104V955.553H984.946V816.443Z" fill="#FF7036"/>
-</g>
+<g id="Pattern tiles_2">
+<path id="Color 1_2" d="M1223.06 816.443V955.554H1223.05V955.557H984.946V816.443H1223.06Z" fill="#4F4FF7"/>
+<path id="Color 2_2" d="M1223.05 955.557H984.946V816.443H1104V955.554H1223.05V955.557Z" fill="#FF7036"/>
+<path id="Color 3_2" d="M1223.05 955.557H984.946V955.554H1223.05V955.557Z" fill="#EC5A2E"/>
 </g>
 </g>
 </g>
 </g>
 <g id="Pattern / brick_3">
-<mask id="mask2_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="856" y="652" width="240" height="140">
+<mask id="mask2_171_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="856" y="652" width="240" height="140">
 <path id="brick_13" d="M878.687 652.443L1095.05 710.419L1073.31 791.557L856.946 733.581L878.687 652.443Z" fill="#FF7036"/>
 </mask>
-<g mask="url(#mask2_104_158)">
+<g mask="url(#mask2_171_2)">
 <g id="Pattern_3">
-<g id="Pattern tiles_3" clip-path="url(#clip4_104_158)">
-<rect width="238.108" height="139.113" transform="translate(856.946 652.443)" fill="#C99ED0"/>
-<g id="Tile / vstripes" clip-path="url(#clip5_104_158)">
-<rect width="238.11" height="139.11" transform="translate(856.946 652.443)" fill="#EC5A2E"/>
-<path id="Vector_3" d="M886.706 652.443H916.466V791.553H886.706V652.443ZM946.236 652.443H975.996V791.553H946.236V652.443ZM1005.77 652.443H1035.53V791.553H1005.77V652.443ZM1065.29 652.443H1095.05V791.553H1065.29V652.443Z" fill="#C99ED0"/>
+<g id="Pattern tiles_3">
+<path id="Color 1_3" d="M1095.06 652.443V791.554H1095.05V791.557H856.946V652.443H1095.06Z" fill="#C99ED0"/>
+<g id="Color 2_3">
+<path d="M886.706 652.443V791.554H856.946V652.443H886.706Z" fill="#EC5A2E"/>
+<path d="M946.236 652.443V791.554H916.465V652.443H946.236Z" fill="#EC5A2E"/>
+<path d="M1005.77 652.443V791.554H975.996V652.443H1005.77Z" fill="#EC5A2E"/>
+<path d="M1065.29 652.443V791.554H1035.53V652.443H1065.29Z" fill="#EC5A2E"/>
+<path d="M1095.06 791.554H1095.05V652.443H1095.06V791.554Z" fill="#EC5A2E"/>
 </g>
 </g>
 </g>
 </g>
 </g>
 <g id="Pattern / brick_4">
-<mask id="mask3_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="984" y="560" width="240" height="140">
+<mask id="mask3_171_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="984" y="560" width="240" height="140">
 <path id="brick_14" d="M1006.69 560.443L1223.05 618.419L1201.31 699.557L984.946 641.581L1006.69 560.443Z" fill="#FF7036"/>
 </mask>
-<g mask="url(#mask3_104_158)">
+<g mask="url(#mask3_171_2)">
 <g id="Pattern_4">
-<g id="Pattern tiles_4" clip-path="url(#clip6_104_158)">
-<rect width="238.108" height="139.113" transform="translate(984.946 560.443)" fill="#C99ED0"/>
-<g id="Tile / donut" clip-path="url(#clip7_104_158)">
-<rect width="238.11" height="139.11" transform="translate(984.946 560.443)" fill="#FF7036"/>
-<path id="Vector_4" d="M1052.38 577.133H1227.06L1258.77 608.853V651.143L1227.06 682.863H1052.38L1020.67 651.143V608.853L1052.38 577.133Z" fill="#4F4FF7"/>
-<path id="Vector_5" d="M1084.1 653.263C1096.94 653.263 1107.36 642.849 1107.36 630.003C1107.36 617.157 1096.94 606.743 1084.1 606.743C1071.25 606.743 1060.84 617.157 1060.84 630.003C1060.84 642.849 1071.25 653.263 1084.1 653.263Z" fill="#FF7036"/>
+<g id="Pattern tiles_4">
+<path id="Color 1_4" d="M1223.05 699.557H984.946V560.443H1223.06V699.554H1223.05V699.557Z" fill="#FF7036"/>
+<g id="Color 2_4">
+<path d="M1223.05 699.557H984.946V699.554H1223.05V699.557Z" fill="#4F4FF7"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1223.06 682.863H1052.38L1020.67 651.144V608.854L1052.38 577.134H1223.06V682.863ZM1084.1 606.743C1071.25 606.743 1060.84 617.157 1060.84 630.003C1060.84 642.849 1071.25 653.262 1084.1 653.263C1096.94 653.263 1107.36 642.849 1107.36 630.003C1107.36 617.157 1096.94 606.743 1084.1 606.743Z" fill="#4F4FF7"/>
 </g>
+<path id="Color 3_3" d="M1223.05 699.557H984.946V699.554H1223.05V699.557Z" fill="#C99ED0"/>
 </g>
 </g>
 </g>
@@ -90,31 +96,4 @@
 <rect id="brick_21" x="1440" y="424" width="224" height="84" fill="#F1F1DC"/>
 <rect id="brick_22" x="1568" y="572" width="224" height="84" fill="#F1F1DC"/>
 </g>
-</g>
-<defs>
-<clipPath id="clip0_104_158">
-<rect width="238.108" height="139.113" fill="white" transform="translate(728.946 488.443)"/>
-</clipPath>
-<clipPath id="clip1_104_158">
-<rect width="238.11" height="139.11" fill="white" transform="translate(728.946 488.443)"/>
-</clipPath>
-<clipPath id="clip2_104_158">
-<rect width="238.108" height="139.113" fill="white" transform="translate(984.946 816.443)"/>
-</clipPath>
-<clipPath id="clip3_104_158">
-<rect width="238.11" height="139.11" fill="white" transform="translate(984.946 816.443)"/>
-</clipPath>
-<clipPath id="clip4_104_158">
-<rect width="238.108" height="139.113" fill="white" transform="translate(856.946 652.443)"/>
-</clipPath>
-<clipPath id="clip5_104_158">
-<rect width="238.11" height="139.11" fill="white" transform="translate(856.946 652.443)"/>
-</clipPath>
-<clipPath id="clip6_104_158">
-<rect width="238.108" height="139.113" fill="white" transform="translate(984.946 560.443)"/>
-</clipPath>
-<clipPath id="clip7_104_158">
-<rect width="238.11" height="139.11" fill="white" transform="translate(984.946 560.443)"/>
-</clipPath>
-</defs>
 </svg>

@@ -1,5 +1,4 @@
 <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g>
 <g id="01. Percepcja">
 <rect width="1920" height="1080" rx="16" fill="#FFFFF5"/>
 <g id="Frame 1236">
@@ -12,6 +11,5 @@
 <rect id="Rectangle 103" x="352" y="424" width="608" height="528" fill="#F5F25C"/>
 <circle id="Ellipse 10" cx="288" cy="688" r="64" fill="#EC5A2E"/>
 <circle id="Ellipse 11" cx="1632" cy="688" r="64" fill="#EC5A2E"/>
-</g>
 </g>
 </svg>

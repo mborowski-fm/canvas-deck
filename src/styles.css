@@ -108,3 +108,33 @@ button.pill.on { background: var(--neutral-paper); }
 .popover .row { display: flex; gap: 2px; padding: 2px; background: var(--neutral-paper); border-radius: 999px; }
 
 
+
+/* 1, 2, 3 animation buttons on the active slide (screen-sized, bottom-left of the artboard) */
+.anim-buttons { position: absolute; left: 0; bottom: 0; transform-origin: left bottom; display: flex; gap: 4px; padding: 12px; z-index: 3; }
+.anim-buttons button { width: 36px; height: 36px; padding: 0; background: var(--bar); color: var(--text-primary); font-weight: 600; }
+.anim-buttons button.on { background: var(--color-ultraviolet); color: var(--text-inverse-accent); border-radius: 12px; }
+.canvas.edit .anim-buttons { display: none; }
+
+
+/* Free canvas elements (images, videos, web pages) */
+.frame.item .artboard { background: var(--neutral-paper); }
+.frame.item .artboard > img, .frame.item .artboard > video, .frame.item .artboard > iframe { display: block; width: 100%; height: 100%; border: 0; object-fit: contain; }
+.frame.item .frame-label a { color: inherit; text-decoration: none; }
+.frame.item .frame-label a:hover { text-decoration: underline; }
+.resize { position: absolute; right: 0; bottom: 0; transform: translate(50%, 50%); background: var(--color-ultraviolet); border: calc(var(--px) * 2) solid var(--neutral-paper); border-radius: 50%; cursor: nwse-resize; z-index: 3; }
+
+/* Dialog over the deck */
+.modal.scrim { z-index: 50; background: color-mix(in srgb, var(--color-ink) 32%, transparent); }
+.modal form p { margin: 0; line-height: 1.5; color: var(--text-secondary); }
+.modal .actions { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+.modal .actions button.text { background: transparent; color: var(--text-accent); }
+
+/* Web page elements: a light card until shown live (a live page is heavy for the canvas) */
+.web-card { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 48px; background: var(--color-ice); color: var(--text-primary); text-align: center; }
+.web-card b { font-size: 64px; font-weight: 600; letter-spacing: -0.02em; }
+.web-card small { font-size: 28px; color: var(--text-secondary); word-break: break-all; }
+.web-card button.cta { height: 96px; padding: 0 40px 0 32px; font-size: 32px; gap: 12px; }
+.web-card button.cta .msr { font-size: 44px; }
+.canvas.edit .web-card button { pointer-events: none; }
+.web-close { position: absolute; top: 24px; right: 24px; width: 88px; height: 88px; padding: 0; background: var(--neutral-paper); color: var(--text-primary); box-shadow: 0 2px 12px rgba(0,0,0,.2); }
+.web-close .msr { font-size: 48px; }

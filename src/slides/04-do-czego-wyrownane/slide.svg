@@ -1,7 +1,6 @@
 <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g>
 <g id="01. Percepcja">
-<g clip-path="url(#clip0_104_158)">
+<g clip-path="url(#clip0_171_2)">
 <rect width="1920" height="1080" rx="16" fill="#FFFFF5"/>
 <g id="Frame 1236">
 <path id="Ellipse 8" d="M1868.5 20C1877.87 20 1886.16 21.7199 1891.96 24.333C1898.13 27.1143 1900 30.1329 1900 32C1900 33.8671 1898.13 36.8857 1891.96 39.667C1886.16 42.2801 1877.87 44 1868.5 44C1859.13 44 1850.84 42.2801 1845.04 39.667C1838.87 36.8857 1837 33.8671 1837 32C1837 30.1329 1838.87 27.1143 1845.04 24.333C1850.84 21.7199 1859.13 20 1868.5 20Z" stroke="#FF7036" stroke-width="8"/>
@@ -20,24 +19,22 @@
 <rect id="Shape_5" x="1015" y="360" width="553" height="90" rx="45" fill="#F1F1DC"/>
 <rect id="Shape_6" x="350" y="540" width="333" height="270" rx="135" fill="#F1F1DC"/>
 <g id="Pattern / Shape">
-<mask id="mask0_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="793" y="540" width="222" height="270">
+<mask id="mask0_171_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="793" y="540" width="222" height="270">
 <rect id="Shape_7" x="793" y="540" width="222" height="270" fill="#D9D9D9"/>
 </mask>
-<g mask="url(#mask0_104_158)">
+<g mask="url(#mask0_171_2)">
 <g id="Pattern">
-<g id="Pattern tiles" clip-path="url(#clip1_104_158)">
-<rect width="222" height="270" transform="translate(793 540)" fill="#3BAFEA"/>
-<g id="Tile / checker">
-<rect width="222" height="54" transform="translate(793 540)" fill="#6BE395"/>
-<path id="Vector" d="M793 540H848.5V594H793V540ZM904 540H959.5V594H904V540Z" fill="#E84ACF"/>
+<g id="Pattern tiles">
+<path id="Color 1" d="M1015 810H793V540H1015V810Z" fill="#F5F25C"/>
+<g id="Color 2">
+<path d="M904 664.2C939.788 664.2 968.8 693.212 968.8 729C968.8 764.788 939.788 793.8 904 793.8C868.212 793.8 839.2 764.788 839.2 729C839.2 693.212 868.212 664.2 904 664.2Z" fill="#FF7036"/>
+<path d="M1015 594H1001.13L1001.14 648H987.26V594H973.38L973.39 648H959.51V594H945.63L945.64 648H931.76V594H917.88L917.89 648H904.01V594H890.13L890.14 648H876.26V594H862.38L862.39 648H848.51V594H834.63L834.64 648H820.76V594H806.88L806.89 648H793V540H1015V594Z" fill="#FF7036"/>
 </g>
-<g id="Tile / vstripes" clip-path="url(#clip2_104_158)">
-<rect width="222" height="54" transform="translate(793 594)" fill="#731D1E"/>
-<path id="Vector_2" d="M806.88 594H820.76V648H806.89L806.88 594ZM834.63 594H848.51V648H834.64L834.63 594ZM862.38 594H876.26V648H862.39L862.38 594ZM890.13 594H904.01V648H890.14L890.13 594ZM917.88 594H931.76V648H917.89L917.88 594ZM945.63 594H959.51V648H945.64L945.63 594ZM973.38 594H987.26V648H973.39L973.38 594ZM1001.13 594H1015.01V648H1001.14L1001.13 594Z" fill="#F5F25C"/>
-</g>
-<g id="Tile / circle">
-<rect width="222" height="162" transform="translate(793 648)" fill="#F5F25C"/>
-<path id="Vector_3" d="M904 793.8C939.788 793.8 968.8 764.788 968.8 729C968.8 693.212 939.788 664.2 904 664.2C868.212 664.2 839.2 693.212 839.2 729C839.2 764.788 868.212 793.8 904 793.8Z" fill="#FF7036"/>
+<path id="Color 3" d="M1001.14 648H987.26V594H973.38L973.39 648H959.51V594H945.63L945.64 648H931.76V594H917.88L917.89 648H904.01V594H890.13L890.14 648H876.26V594H862.38L862.39 648H848.51V594H834.63L834.64 648H820.76V594H806.88L806.89 648H793V540H1015V594H1001.13L1001.14 648Z" fill="#731D1E"/>
+<path id="Color 4" d="M1015 540V594H793V540H1015Z" fill="#6BE395"/>
+<g id="Color 5">
+<path d="M848.5 594H793V540H848.5V594Z" fill="#E84ACF"/>
+<path d="M959.5 594H904V540H959.5V594Z" fill="#E84ACF"/>
 </g>
 </g>
 </g>
@@ -48,16 +45,9 @@
 <line id="Line_9" x1="1792" y1="810" x2="128" y2="810" stroke="#FF7036" stroke-width="8"/>
 </g>
 </g>
-</g>
 <defs>
-<clipPath id="clip0_104_158">
+<clipPath id="clip0_171_2">
 <rect width="1920" height="1080" rx="16" fill="white"/>
-</clipPath>
-<clipPath id="clip1_104_158">
-<rect width="222" height="270" fill="white" transform="translate(793 540)"/>
-</clipPath>
-<clipPath id="clip2_104_158">
-<rect width="222" height="54" fill="white" transform="translate(793 594)"/>
 </clipPath>
 </defs>
 </svg>

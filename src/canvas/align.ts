@@ -1,10 +1,11 @@
-import type { Slide } from '../slides/types'
 
 export type AlignOp = 'left' | 'hcenter' | 'right' | 'top' | 'vcenter' | 'bottom' | 'disth' | 'distv' | 'grid'
 export type Pos = { id: string; x: number; y: number }
+/** anything on the canvas: slides and free elements */
+export type Box = Pos & { width: number; height: number }
 
 /** Pure helper: new positions for the selected slides after an align/distribute. */
-export function align(sel: Slide[], op: AlignOp): Pos[] {
+export function align(sel: Box[], op: AlignOp): Pos[] {
   if (sel.length < 2) return []
   const minX = Math.min(...sel.map((s) => s.x))
   const maxX = Math.max(...sel.map((s) => s.x + s.width))
@@ -37,7 +38,7 @@ export function align(sel: Slide[], op: AlignOp): Pos[] {
 
 /** Arrange in a near-square grid (row-major by current position), anchored at the top-left of the selection. */
 // Row gap leaves room for the frame labels, which stay screen-sized when zoomed out.
-function grid(sel: Slide[], gapX = 256, gapY = 600): Pos[] {
+function grid(sel: Box[], gapX = 256, gapY = 600): Pos[] {
   const o = [...sel].sort((a, b) => a.y - b.y || a.x - b.x)
   const cols = Math.ceil(Math.sqrt(o.length))
   const w = Math.max(...o.map((s) => s.width))

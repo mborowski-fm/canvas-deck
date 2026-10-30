@@ -1,7 +1,6 @@
 <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g>
 <g id="01. Percepcja">
-<g clip-path="url(#clip0_104_158)">
+<g clip-path="url(#clip0_171_2)">
 <rect width="1920" height="1080" rx="16" fill="#FFFFF5"/>
 <text id="Nie tylko ekran" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="160" font-weight="600" letter-spacing="-0.04em"><tspan x="128" y="240">Nie tylko ekran</tspan></text>
 <g id="Frame 1236">
@@ -18,24 +17,22 @@
 <path id="jagged line_6" d="M570 828.5L644 775.056L570 721.611L644 668.167L570 614.722L644 561.278L570 507.833L644 454.389L570 400.944L644 347.5" stroke="#6BE395" stroke-width="16"/>
 </g>
 <g id="Pattern / Ellipse 14">
-<mask id="mask0_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="720" y="388" width="480" height="480">
+<mask id="mask0_171_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="720" y="388" width="480" height="480">
 <circle id="Ellipse 14" cx="960" cy="628" r="240" fill="#D9D9D9"/>
 </mask>
-<g mask="url(#mask0_104_158)">
+<g mask="url(#mask0_171_2)">
 <g id="Pattern">
-<g id="Pattern tiles" clip-path="url(#clip1_104_158)">
-<rect width="480" height="480" transform="translate(720 388)" fill="#FF7036"/>
-<g id="Tile / stripes" clip-path="url(#clip2_104_158)">
-<rect width="480" height="480" transform="translate(720 388)" fill="#EC5A2E"/>
-<path id="Vector_2" d="M840 268L120 988" stroke="#F5F25C" stroke-width="60"/>
-<path id="Vector_3" d="M960 268L240 988" stroke="#F5F25C" stroke-width="60"/>
-<path id="Vector_4" d="M1080 268L360 988" stroke="#F5F25C" stroke-width="60"/>
-<path id="Vector_5" d="M1200 268L480 988" stroke="#F5F25C" stroke-width="60"/>
-<path id="Vector_6" d="M1320 268L600 988" stroke="#F5F25C" stroke-width="60"/>
-<path id="Vector_7" d="M1440 268L720 988" stroke="#F5F25C" stroke-width="60"/>
-<path id="Vector_8" d="M1560 268L840 988" stroke="#F5F25C" stroke-width="60"/>
-<path id="Vector_9" d="M1680 268L960 988" stroke="#F5F25C" stroke-width="60"/>
-<path id="Vector_10" d="M1800 268L1080 988" stroke="#F5F25C" stroke-width="60"/>
+<g id="Pattern tiles">
+<path id="Color 1" d="M1200 388V868H720V388H1200Z" fill="#EC5A2E"/>
+<g id="Color 2">
+<path d="M1200 472.852L804.852 868H720L1200 388V472.852Z" fill="#F5F25C"/>
+<path d="M1200 592.852L924.852 868H840L1200 508V592.852Z" fill="#F5F25C"/>
+<path d="M1200 712.852L1044.85 868H960L1200 628V712.852Z" fill="#F5F25C"/>
+<path d="M1200 832.852L1164.85 868H1080L1200 748V832.852Z" fill="#F5F25C"/>
+<path d="M720 832.852V748L1080 388H1164.85L720 832.852Z" fill="#F5F25C"/>
+<path d="M720 712.852V628L960 388H1044.85L720 712.852Z" fill="#F5F25C"/>
+<path d="M720 592.852V508L840 388H924.852L720 592.852Z" fill="#F5F25C"/>
+<path d="M720 472.852V388H804.852L720 472.852Z" fill="#F5F25C"/>
 </g>
 </g>
 </g>
@@ -46,16 +43,9 @@
 <line id="Line 12" x1="1020" y1="999" x2="900" y2="999" stroke="#E2F79A" stroke-width="16"/>
 </g>
 </g>
-</g>
 <defs>
-<clipPath id="clip0_104_158">
+<clipPath id="clip0_171_2">
 <rect width="1920" height="1080" rx="16" fill="white"/>
-</clipPath>
-<clipPath id="clip1_104_158">
-<rect width="480" height="480" fill="white" transform="translate(720 388)"/>
-</clipPath>
-<clipPath id="clip2_104_158">
-<rect width="480" height="480" fill="white" transform="translate(720 388)"/>
 </clipPath>
 </defs>
 </svg>

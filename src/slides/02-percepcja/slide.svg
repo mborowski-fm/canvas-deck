@@ -1,46 +1,82 @@
 <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g>
 <g id="01. Percepcja">
 <rect width="1920" height="1080" rx="16" fill="#FF7036"/>
+<g id="Eye">
 <ellipse id="Ellipse 8" cx="1311.5" cy="540" rx="480.5" ry="212" fill="#F1FBE3"/>
-<text id="Percepcja" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="160" font-weight="600" letter-spacing="-0.04em"><tspan x="128" y="240">Percepcja</tspan></text>
-<text id="Oko to dobra miarka" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="96" font-weight="500" letter-spacing="-0.03em"><tspan x="128" y="952.2">Oko to dobra miarka</tspan></text>
+<g id="Eye clip" clip-path="url(#eye_clip)">
+<g id="Iris">
 <g id="Pattern / Ellipse 6">
-<mask id="mask0_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1048" y="387" width="360" height="360">
+<mask id="mask0_171_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1048" y="387" width="360" height="360">
 <circle id="Ellipse 6" cx="1228" cy="567" r="180" fill="#C3B9FF"/>
 </mask>
-<g mask="url(#mask0_104_158)">
+<g mask="url(#mask0_171_2)">
 <g id="Pattern">
-<g id="Pattern tiles" clip-path="url(#clip0_104_158)">
-<rect width="360" height="360" transform="translate(1048 387)" fill="#C7F3F8"/>
-<g id="Tile / checker" clip-path="url(#clip1_104_158)">
-<rect width="360" height="180" transform="translate(1048 387)" fill="#9A62EE"/>
-<path id="Vector" d="M1048 387H1078V417H1048V387ZM1108 387H1138V417H1108V387ZM1168 387H1198V417H1168V387ZM1228 387H1258V417H1228V387ZM1288 387H1318V417H1288V387ZM1348 387H1378V417H1348V387ZM1078 417H1108V447H1078V417ZM1138 417H1168V447H1138V417ZM1198 417H1228V447H1198V417ZM1258 417H1288V447H1258V417ZM1318 417H1348V447H1318V417ZM1378 417H1408V447H1378V417ZM1048 447H1078V477H1048V447ZM1108 447H1138V477H1108V447ZM1168 447H1198V477H1168V447ZM1228 447H1258V477H1228V447ZM1288 447H1318V477H1288V447ZM1348 447H1378V477H1348V447ZM1078 477H1108V507H1078V477ZM1138 477H1168V507H1138V477ZM1198 477H1228V507H1198V477ZM1258 477H1288V507H1258V477ZM1318 477H1348V507H1318V477ZM1378 477H1408V507H1378V477ZM1048 507H1078V537H1048V507ZM1108 507H1138V537H1108V507ZM1168 507H1198V537H1168V507ZM1228 507H1258V537H1228V507ZM1288 507H1318V537H1288V507ZM1348 507H1378V537H1348V507ZM1078 537H1108V567H1078V537ZM1138 537H1168V567H1138V537ZM1198 537H1228V567H1198V537ZM1258 537H1288V567H1258V537ZM1318 537H1348V567H1318V537ZM1378 537H1408V567H1378V537Z" fill="#C3B9FF"/>
+<g id="Pattern tiles">
+<path id="Color 1" d="M1408 387V747H1048V387H1408Z" fill="#9A62EE"/>
+<g id="Color 2">
+<path d="M1183 747H1138V657H1183V747Z" fill="#C3B9FF"/>
+<path d="M1273 747H1228V612H1138V657H1093V747H1048V612H1138V537H1168V567H1198V537H1228V612H1318V537H1348V567H1378V537H1408V612H1318V657H1273V747Z" fill="#C3B9FF"/>
+<path d="M1363 747H1318V657H1363V747Z" fill="#C3B9FF"/>
+<path d="M1108 567H1078V537H1108V567Z" fill="#C3B9FF"/>
+<path d="M1288 567H1258V537H1288V567Z" fill="#C3B9FF"/>
+<path d="M1078 537H1048V507H1078V537Z" fill="#C3B9FF"/>
+<path d="M1138 537H1108V507H1138V537Z" fill="#C3B9FF"/>
+<path d="M1198 537H1168V507H1198V537Z" fill="#C3B9FF"/>
+<path d="M1258 537H1228V507H1258V537Z" fill="#C3B9FF"/>
+<path d="M1318 537H1288V507H1318V537Z" fill="#C3B9FF"/>
+<path d="M1378 537H1348V507H1378V537Z" fill="#C3B9FF"/>
+<path d="M1108 507H1078V477H1108V507Z" fill="#C3B9FF"/>
+<path d="M1168 507H1138V477H1168V507Z" fill="#C3B9FF"/>
+<path d="M1228 507H1198V477H1228V507Z" fill="#C3B9FF"/>
+<path d="M1288 507H1258V477H1288V507Z" fill="#C3B9FF"/>
+<path d="M1348 507H1318V477H1348V507Z" fill="#C3B9FF"/>
+<path d="M1408 507H1378V477H1408V507Z" fill="#C3B9FF"/>
+<path d="M1078 477H1048V447H1078V477Z" fill="#C3B9FF"/>
+<path d="M1138 477H1108V447H1138V477Z" fill="#C3B9FF"/>
+<path d="M1198 477H1168V447H1198V477Z" fill="#C3B9FF"/>
+<path d="M1258 477H1228V447H1258V477Z" fill="#C3B9FF"/>
+<path d="M1318 477H1288V447H1318V477Z" fill="#C3B9FF"/>
+<path d="M1378 477H1348V447H1378V477Z" fill="#C3B9FF"/>
+<path d="M1108 447H1078V417H1108V447Z" fill="#C3B9FF"/>
+<path d="M1168 447H1138V417H1168V447Z" fill="#C3B9FF"/>
+<path d="M1228 447H1198V417H1228V447Z" fill="#C3B9FF"/>
+<path d="M1288 447H1258V417H1288V447Z" fill="#C3B9FF"/>
+<path d="M1348 447H1318V417H1348V447Z" fill="#C3B9FF"/>
+<path d="M1408 447H1378V417H1408V447Z" fill="#C3B9FF"/>
+<path d="M1078 417H1048V387H1078V417Z" fill="#C3B9FF"/>
+<path d="M1138 417H1108V387H1138V417Z" fill="#C3B9FF"/>
+<path d="M1198 417H1168V387H1198V417Z" fill="#C3B9FF"/>
+<path d="M1258 417H1228V387H1258V417Z" fill="#C3B9FF"/>
+<path d="M1318 417H1288V387H1318V417Z" fill="#C3B9FF"/>
+<path d="M1378 417H1348V387H1378V417Z" fill="#C3B9FF"/>
 </g>
-<g id="Tile / blocks" clip-path="url(#clip2_104_158)">
-<rect width="360" height="90" transform="translate(1048 567)" fill="#C3B9FF"/>
-<path id="Vector_2" d="M1048 567H1138V612H1048V567ZM1228 567H1318V612H1228V567ZM1138 612H1228V657H1138V612ZM1318 612H1408V657H1318V612Z" fill="#9A62EE"/>
-</g>
-<g id="Tile / vstripes">
-<rect width="360" height="90" transform="translate(1048 657)" fill="#C7F3F8"/>
-<path id="Vector_3" d="M1093 657H1138V747H1093V657ZM1183 657H1228V747H1183V657ZM1273 657H1318V747H1273V657ZM1363 657H1408V747H1363V657Z" fill="#9A62EE"/>
+<g id="Color 3">
+<path d="M1093 657V747H1048V657H1093Z" fill="#C7F3F8"/>
+<path d="M1183 657V747H1138V657H1183Z" fill="#C7F3F8"/>
+<path d="M1273 657V747H1228V657H1273Z" fill="#C7F3F8"/>
+<path d="M1363 657V747H1318V657H1363Z" fill="#C7F3F8"/>
 </g>
 </g>
 </g>
 </g>
 </g>
+<g id="Pupil">
 <circle id="Ellipse 7" cx="1228.5" cy="566.5" r="48.5" fill="#731D1E"/>
 </g>
 </g>
+<g id="Eyelids">
+<path id="Upper lid" d="M811 0H1812V540Q1311.5 640 811 540Z" fill="#FF7036" transform="translate(0 -270)"/>
+<path id="Lower lid" d="M811 1080H1812V540Q1311.5 440 811 540Z" fill="#FF7036" transform="translate(0 270)"/>
+</g>
+</g>
+</g>
+<text id="Percepcja" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="160" font-weight="600" letter-spacing="-0.04em"><tspan x="128" y="240">Percepcja</tspan></text>
+<text id="Oko to dobra miarka" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="96" font-weight="500" letter-spacing="-0.03em"><tspan x="128" y="952.2">Oko to dobra miarka</tspan></text>
+
+</g>
 <defs>
-<clipPath id="clip0_104_158">
-<rect width="360" height="360" fill="white" transform="translate(1048 387)"/>
-</clipPath>
-<clipPath id="clip1_104_158">
-<rect width="360" height="180" fill="white" transform="translate(1048 387)"/>
-</clipPath>
-<clipPath id="clip2_104_158">
-<rect width="360" height="90" fill="white" transform="translate(1048 567)"/>
+<clipPath id="eye_clip">
+<ellipse cx="1311.5" cy="540" rx="480.5" ry="212"/>
 </clipPath>
 </defs>
 </svg>

@@ -7,8 +7,10 @@ import { NotesWindow } from './notes/NotesWindow'
 import { slides as baseSlides } from './slides/registry'
 import type { Me } from './sync'
 import { Icon } from './Icon'
-import { canSave, saveLayoutToRepo } from './save'
+import { canSave, saveLayoutToRepo, uploadMedia } from './save'
 import { useRoom } from './useRoom'
+import { AddDialog } from './canvas/AddDialog'
+import { baseItems, DEFAULT_SIZE, detectKind, mediaSize, newItemId, type CanvasItem } from './items'
 
 // Presenter colors = Figma Brand variables (see src/tokens.css), readable with paper-colored text.
 const COLORS = ['#9a62ee', '#b38c1a', '#4f4ff7', '#ec5a2e', '#e84acf', '#0e5c36', '#3bafea', '#731d1e']
@@ -77,19 +79,33 @@ function NamePrompt({ onDone }: { onDone: (m: Me) => void }) {
 }
 
 function Presenting({ room, me }: { room: string; me: Me }) {
-  const { active, setActive, peers, sendCursor, layout, moveSlides } = useRoom(room, me, baseSlides.length)
+  const { active, activeTs, play, playAnim, setActive, peers, sendCursor, layout, moveSlides } = useRoom(room, me, baseSlides.length)
   // registry positions + shared edits from the room
   const slides = useMemo(
     () => baseSlides.map((s) => (layout[s.id] ? { ...s, x: layout[s.id].x, y: layout[s.id].y } : s)),
     [layout],
   )
+  // Animation of the active slide, the same for everyone: the last shared (re)play of this slide,
+  // else autoplay on entering a slide with exactly one animation (or idle loop).
+  const activeSlide = slides[active]
+  const activePlay = useMemo(() => {
+    if (!activeSlide?.animations.length) return null
+    if (play && play.slide === activeSlide.id && play.ts > activeTs) return { anim: play.anim, key: `${play.ts}:${play.by}` }
+    return activeSlide.animations.length === 1 ? { anim: 0, key: `enter:${activeTs}` } : null
+  }, [activeSlide, play, activeTs])
+  const replay = () => activeSlide?.animations.length && playAnim(activeSlide.id, activePlay?.anim ?? 0)
+  const goTo = (i: number) => i !== active && setActive(i)
   const [view, setView] = useState<ViewReq>({ n: 0, mode: 'all' })
   const [edit, setEdit] = useState(false)
   const [selected, setSelected] = useState<string[]>([])
   const [flashMsg, setFlashMsg] = useState<string | null>(null)
+  // free canvas elements: local to this presenter (not synced), saved to items.json in dev
+  const [items, setItems] = useState<CanvasItem[]>(baseItems)
+  const [adding, setAdding] = useState(false)
+  const centerRef = useRef<() => { x: number; y: number }>(() => ({ x: 0, y: 0 }))
   const ch = useRef<BroadcastChannel | null>(null)
-  const st = useRef({ active, edit, selected, slides })
-  st.current = { active, edit, selected, slides }
+  const st = useRef({ active, edit, selected, slides, items })
+  st.current = { active, edit, selected, slides, items }
 
   // Bridge to the presenter-notes window.
   useEffect(() => {
@@ -110,50 +126,113 @@ function Presenting({ room, me }: { room: string; me: Me }) {
   const flash = (msg: string) => { setFlashMsg(msg); setTimeout(() => setFlashMsg(null), 1500) }
   const fitView = (mode: 'all' | 'active') => setView((v) => ({ n: v.n + 1, mode }))
 
-  // Undo/redo for layout edits (local to this presenter; the moves themselves are shared).
-  const hist = useRef<{ undo: Pos[][]; redo: Pos[][] }>({ undo: [], redo: [] })
+  // Edits are lists of changes: a slide position (Pos), or an element's full state (`item: null` = removed).
+  type Change = Pos | { id: string; item: CanvasItem | null }
+  const isSlide = (id: string) => st.current.slides.some((s) => s.id === id)
+  const apply = (list: Change[]) => {
+    moveSlides(list.filter((c): c is Pos => !('item' in c) && isSlide(c.id)))
+    const its = list.filter((c) => !isSlide(c.id))
+    if (!its.length) return
+    setItems((prev) => {
+      const m = new Map(prev.map((i) => [i.id, i]))
+      for (const c of its) {
+        if ('item' in c) {
+          if (c.item) m.set(c.id, c.item)
+          else m.delete(c.id)
+        } else {
+          const cur = m.get(c.id)
+          if (cur) m.set(c.id, { ...cur, x: c.x, y: c.y })
+        }
+      }
+      return [...m.values()]
+    })
+  }
+
+  // Undo/redo for canvas edits (local to this presenter; slide moves themselves are shared).
+  const hist = useRef<{ undo: Change[][]; redo: Change[][] }>({ undo: [], redo: [] })
   const [, setHistTick] = useState(0)
-  const snapshot = (ids: string[]) =>
-    st.current.slides.filter((s) => ids.includes(s.id)).map((s) => ({ id: s.id, x: s.x, y: s.y }))
-  const record = (before: Pos[]) => {
-    if (!before.length) return
-    hist.current.undo.push(before)
+  const snapshot = (ids: string[]): Change[] =>
+    ids.map((id) => {
+      const s = st.current.slides.find((x) => x.id === id)
+      if (s) return { id, x: s.x, y: s.y }
+      return { id, item: st.current.items.find((x) => x.id === id) ?? null }
+    })
+  const record = (ids: string[]) => {
+    if (!ids.length) return
+    hist.current.undo.push(snapshot(ids))
     hist.current.redo = []
     setHistTick((n) => n + 1)
   }
-  const commit = (items: Pos[]) => {
-    record(snapshot(items.map((i) => i.id)))
-    moveSlides(items)
+  const commit = (list: Change[]) => {
+    record(list.map((c) => c.id))
+    apply(list)
   }
   const step = (from: 'undo' | 'redo') => {
     const h = hist.current
-    const items = h[from].pop()
-    if (!items) return
-    h[from === 'undo' ? 'redo' : 'undo'].push(snapshot(items.map((i) => i.id)))
-    moveSlides(items)
+    const list = h[from].pop()
+    if (!list) return
+    h[from === 'undo' ? 'redo' : 'undo'].push(snapshot(list.map((c) => c.id)))
+    apply(list)
     setHistTick((n) => n + 1)
+  }
+  const objects = () => [...st.current.slides, ...st.current.items]
+
+  // Adding elements: by link (any presenter) or local file (dev: uploaded into public/media/).
+  const addAt = async (entries: { src: string; kind: CanvasItem['kind'] }[], at: { x: number; y: number }) => {
+    const added: CanvasItem[] = []
+    for (const [n, e] of entries.entries()) {
+      const size = e.kind === 'image' || e.kind === 'video' ? await mediaSize(e.kind, e.src) : DEFAULT_SIZE[e.kind]
+      added.push({ id: newItemId(), kind: e.kind, src: e.src, x: Math.round(at.x - size.width / 2 + n * 60), y: Math.round(at.y - size.height / 2 + n * 60), ...size })
+    }
+    commit(added.map((it) => ({ id: it.id, item: it })))
+    setSelected(added.map((it) => it.id))
+  }
+  const addFiles = async (files: File[], at: { x: number; y: number }) => {
+    const media = files.filter((f) => /^(image|video)\//.test(f.type))
+    if (!media.length) return
+    if (!canSave) return flash('Files: localhost only')
+    try {
+      const entries = []
+      for (const f of media) entries.push({ src: await uploadMedia(f), kind: (f.type.startsWith('image') ? 'image' : 'video') as CanvasItem['kind'] })
+      await addAt(entries, at)
+    } catch (err) {
+      console.error(err)
+      flash('Upload failed')
+    }
+  }
+  const addLink = async (url: string, at = centerRef.current()) => addAt([{ src: url, kind: await detectKind(url) }], at)
+  const onDrop = (data: DataTransfer, at: { x: number; y: number }) => {
+    if (data.files.length) return void addFiles([...data.files], at)
+    const url = (data.getData('text/uri-list') || data.getData('text/plain')).split('\n')[0].trim()
+    if (/^https?:\/\//.test(url)) void addLink(url, at)
+  }
+  const deleteSelected = () => {
+    const ids = st.current.selected.filter((id) => !isSlide(id))
+    if (!ids.length) return
+    commit(ids.map((id) => ({ id, item: null })))
+    setSelected(st.current.selected.filter((id) => isSlide(id)))
   }
 
   const doAlign = (op: AlignOp) => {
-    const { slides: sl, selected: sel } = st.current
-    commit(align(sl.filter((s) => sel.includes(s.id)), op))
+    commit(align(objects().filter((o) => st.current.selected.includes(o.id)), op))
   }
 
   useEffect(() => {
     const k = (e: KeyboardEvent) => {
       if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement).tagName)) return
-      const { active: a, edit: ed, selected: sel, slides: sl } = st.current
+      const { active: a, edit: ed, selected: sel } = st.current
       const arrows: Record<string, [number, number]> = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] }
       if (ed) {
         if (arrows[e.key] && sel.length) {
           e.preventDefault()
           const nudge = e.shiftKey ? 100 : 10
           const [dx, dy] = arrows[e.key]
-          commit(sl.filter((s) => sel.includes(s.id)).map((s) => ({ id: s.id, x: s.x + dx * nudge, y: s.y + dy * nudge })))
+          commit(objects().filter((o) => sel.includes(o.id)).map((o) => ({ id: o.id, x: o.x + dx * nudge, y: o.y + dy * nudge })))
         } else if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); step(e.shiftKey ? 'redo' : 'undo') }
         else if ((e.metaKey || e.ctrlKey) && e.key === 'y') { e.preventDefault(); step('redo') }
         else if (e.key === 'Escape') setSelected([])
-        else if ((e.metaKey || e.ctrlKey) && e.key === 'a') { e.preventDefault(); setSelected(sl.map((s) => s.id)) }
+        else if ((e.metaKey || e.ctrlKey) && e.key === 'a') { e.preventDefault(); setSelected(objects().map((o) => o.id)) }
+        else if (e.key === 'Delete' || e.key === 'Backspace') { e.preventDefault(); deleteSelected() }
       } else if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); setActive(a + 1) }
       else if (['ArrowLeft', 'PageUp'].includes(e.key)) setActive(a - 1)
       if (e.metaKey || e.ctrlKey) return
@@ -161,6 +240,7 @@ function Presenting({ room, me }: { room: string; me: Me }) {
       else if (e.key === 'f') fitView('active')
       else if (e.key === 'n') openNotes()
       else if (e.key === 'e') setEdit((v) => !v)
+      else if (e.key === 'r') replay()
     }
     window.addEventListener('keydown', k)
     return () => window.removeEventListener('keydown', k)
@@ -169,7 +249,7 @@ function Presenting({ room, me }: { room: string; me: Me }) {
   // Dev only: write layout.json into the repo.
   const saveLayout = async () => {
     const out = Object.fromEntries(slides.map((s) => [s.id, { x: Math.round(s.x), y: Math.round(s.y) }]))
-    flash((await saveLayoutToRepo(out)) ? 'Saved' : 'Save failed')
+    flash((await saveLayoutToRepo(out, items)) ? 'Saved' : 'Save failed')
   }
   const resetLayout = () => commit(baseSlides.map((s) => ({ id: s.id, x: s.x, y: s.y })))
 
@@ -177,16 +257,22 @@ function Presenting({ room, me }: { room: string; me: Me }) {
     <>
       <Canvas
         slides={slides}
+        items={items}
+        centerRef={centerRef}
+        onDrop={onDrop}
+        onResize={(id, width, height) => setItems((prev) => prev.map((i) => (i.id === id ? { ...i, width, height } : i)))}
         active={active}
-        onActive={setActive}
+        onActive={goTo}
+        play={activePlay}
+        onPlay={(anim) => activeSlide && playAnim(activeSlide.id, anim)}
         peers={peers}
         onCursor={sendCursor}
         view={view}
         edit={edit}
         selected={selected}
         onSelected={setSelected}
-        onMove={moveSlides}
-        onMoveStart={record}
+        onMove={apply}
+        onChangeStart={record}
       />
       <div className="hud top-right">
         <div className="toolbar">
@@ -198,6 +284,9 @@ function Presenting({ room, me }: { room: string; me: Me }) {
               <Icon name="arrow_forward" />
             </button>
           </div>
+          <button className="icon accent" title="Replay animation (R)" onClick={replay} disabled={!activeSlide?.animations.length}>
+            <Icon name="replay" />
+          </button>
           <button className={'icon accent' + (edit ? ' on' : '')} aria-pressed={edit} title="Edit canvas (E)" onClick={() => setEdit((v) => !v)}>
             <Icon name="edit" />
           </button>
@@ -227,6 +316,17 @@ function Presenting({ room, me }: { room: string; me: Me }) {
           onReset={resetLayout}
           onSave={canSave ? saveLayout : undefined}
           saveLabel={flashMsg ?? 'Save layout'}
+          onAdd={() => setAdding(true)}
+          onDelete={deleteSelected}
+          canDelete={selected.some((id) => !isSlide(id))}
+        />
+      )}
+      {adding && (
+        <AddDialog
+          canUpload={canSave}
+          onClose={() => setAdding(false)}
+          onLink={(url) => { setAdding(false); void addLink(url) }}
+          onFiles={(files) => { setAdding(false); void addFiles(files, centerRef.current()) }}
         />
       )}
     </>

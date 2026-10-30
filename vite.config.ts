@@ -1,13 +1,15 @@
-import { writeFileSync } from 'node:fs'
+import { mkdirSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 
 const SLIDES = resolve(__dirname, 'src/slides')
+const MEDIA = resolve(__dirname, 'public/media')
 
 /**
- * Dev only: POST /__deck/save { layout: {slideId: {x,y}} } writes src/slides/layout.json,
- * so a layout arranged in the browser lands in the repo. Our own writes skip HMR, so the open deck is not reloaded.
+ * Dev only, so edits made in the browser land in the repo:
+ * - POST /__deck/save { layout: {slideId: {x,y}}, items: CanvasItem[] } writes src/slides/layout.json and items.json
+ * - POST /__deck/upload?name=<file> (raw body) writes public/media/<time>-<name>, returns { src: "media/..." } Our own writes skip HMR, so the open deck is not reloaded.
  */
 function deckSave(): Plugin {
   const own = new Set<string>()
@@ -19,6 +21,20 @@ function deckSave(): Plugin {
     name: 'deck-save',
     apply: 'serve',
     configureServer(server) {
+      server.middlewares.use('/__deck/upload', async (req, res) => {
+        if (req.method !== 'POST') {
+          res.statusCode = 405
+          return res.end()
+        }
+        const name = new URL(req.url ?? '', 'http://x').searchParams.get('name') ?? 'file'
+        const safe = `${Date.now()}-${name.replace(/[^\w.-]+/g, '-').slice(-80)}`
+        const chunks: Buffer[] = []
+        for await (const chunk of req) chunks.push(chunk as Buffer)
+        mkdirSync(MEDIA, { recursive: true })
+        writeFileSync(resolve(MEDIA, safe), Buffer.concat(chunks))
+        res.setHeader('Content-Type', 'application/json')
+        res.end(JSON.stringify({ src: `media/${safe}` }))
+      })
       server.middlewares.use('/__deck/save', async (req, res) => {
         if (req.method !== 'POST') {
           res.statusCode = 405
@@ -26,8 +42,9 @@ function deckSave(): Plugin {
         }
         let body = ''
         for await (const chunk of req) body += chunk
-        const { layout } = JSON.parse(body) as { layout?: Record<string, { x: number; y: number }> }
+        const { layout, items } = JSON.parse(body) as { layout?: Record<string, { x: number; y: number }>; items?: unknown[] }
         if (layout) write(resolve(SLIDES, 'layout.json'), JSON.stringify(layout, null, 2) + '\n')
+        if (items) write(resolve(SLIDES, 'items.json'), JSON.stringify(items, null, 2) + '\n')
         res.end('ok')
       })
     },

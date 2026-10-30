@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { createSync, type LayoutItem, type Me, type Peer, type SharedState, type Sync } from './sync'
+import { createSync, type LayoutItem, type Me, type Peer, type PlayState, type SharedState, type Sync } from './sync'
 
 const newer = (a: SharedState, b: SharedState) =>
   a.ts > b.ts || (a.ts === b.ts && a.by > b.by)
@@ -22,6 +22,8 @@ export function useRoom(roomId: string, me: Me, slideCount: number) {
   const [peers, setPeers] = useState<Record<string, Peer>>({})
   const [layout, setLayout] = useState<Record<string, LayoutItem>>({})
   const layoutRef = useRef(layout)
+  const [play, setPlay] = useState<PlayState | null>(null)
+  const playRef = useRef(play)
   const lastTs = useRef(0)
   const sync = useRef<Sync | null>(null)
   const sharedRef = useRef(shared)
@@ -44,6 +46,10 @@ export function useRoom(roomId: string, me: Me, slideCount: number) {
       const next = mergeLww(layoutRef.current, items)
       if (next) setLayout((layoutRef.current = next))
     })
+    s.onPlay((p) => {
+      const cur = playRef.current
+      if (!cur || p.ts > cur.ts || (p.ts === cur.ts && p.by > cur.by)) setPlay((playRef.current = p))
+    })
     s.onCursor((c, from) =>
       setPeers((p) => ({ ...p, [from]: { ...c, id: from, seen: Date.now() } })),
     )
@@ -54,6 +60,7 @@ export function useRoom(roomId: string, me: Me, slideCount: number) {
       if (sharedRef.current.ts > 0) s.sendStateTo(id, sharedRef.current)
       const all = Object.values(layoutRef.current)
       if (all.length) s.sendLayout(all, id)
+      if (playRef.current) s.sendPlay(playRef.current, id)
       announce()
     })
     const beat = setInterval(announce, 4000)
@@ -89,10 +96,17 @@ export function useRoom(roomId: string, me: Me, slideCount: number) {
     sync.current?.sendLayout(stamped)
   }, [])
 
+  /** (Re)play an animation of a slide for everyone. */
+  const playAnim = useCallback((slide: string, anim: number) => {
+    const p = { slide, anim, ts: Math.max(Date.now(), (playRef.current?.ts ?? 0) + 1), by: sync.current?.selfId ?? '' }
+    setPlay((playRef.current = p))
+    sync.current?.sendPlay(p)
+  }, [])
+
   const sendCursor = useCallback((x?: number, y?: number) => {
     lastPos.current = { x, y }
     announce()
   }, [announce])
 
-  return { active: shared.active, setActive, peers: Object.values(peers), sendCursor, layout, moveSlides }
+  return { active: shared.active, activeTs: shared.ts, play, playAnim, setActive, peers: Object.values(peers), sendCursor, layout, moveSlides }
 }

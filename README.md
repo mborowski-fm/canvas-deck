@@ -34,6 +34,9 @@ Creates `src/slides/04-my-topic/slide.tsx` and `notes.md`. A slide is a React co
 ## Editing the layout
 Switch **Edit** on to drag slides (single or selected), select with shift-click or a marquee, and align or distribute them. Moves are shared live with everyone in the room. Locally (`npm run dev`) **Save layout** writes the arrangement to `src/slides/layout.json`; commit it to make it permanent. **Reset** goes back to the saved layout.
 
+## Images, videos and web pages
+In edit mode press **+** and paste a link (image, mp4, YouTube, Vimeo or any web page), or drop links or files onto the canvas. Files can be added only locally (`npm run dev`); they go to `public/media/`. **Save layout** keeps them in `src/slides/items.json`.
+
 ## Deploy
 Push to `main` on GitHub. The workflow in `.github/workflows/deploy.yml` publishes to GitHub Pages (enable Settings > Pages > Source: GitHub Actions once).
 

@@ -12,10 +12,22 @@ Multi-presenter presentation tool. One big pan/zoom canvas, each slide is an art
 
 ## Slides from Figma (current deck)
 - Source: Figma file `TVxGtPg72Xpe38wLHXTiaS` ("UI-Prezentacja storyboard"), section node `139:359`. Each slide folder's `slide.tsx` names its source frame id.
-- Each frame is exported as SVG (Figma MCP `download_assets`, `defaultFormat: svg`) into `slide.svg`. The export includes the parent section background: strip the first `<rect fill="#E2E0DA">` and the two section `<path d="M-...">` lines, and drop `<mask>` attributes with `inf`/`nan` values.
+- Each frame is exported as SVG (Figma MCP `download_assets`, `defaultFormat: svg`) into `slide.svg`, from its merged copy (see Seams below). Drop `<mask>` attributes with `inf`/`nan` values.
 - `src/slides/SvgSlide.tsx` inlines the SVG (vector-sharp at any zoom) and prefixes every id with the slide id, so slides do not clash. The SVG keeps the Figma layer tree (`<g id="Layer name">`), so every layer is its own animatable DOM element.
 - Text is live `<text>`, not curves: edit the words directly in `slide.svg`. The download export outlines text, so texts were swapped in from a plugin export (`exportAsync({format:'SVG_STRING', svgOutlineText:false, svgIdAttribute:true})`), matched by layer id. Fonts (Figtree, Inter) load from Google Fonts in `index.html`.
+- Seams: Figma patterns are tiles that touch edge to edge, and anti-aliasing shows a hairline of background between them. Fixed at the source: slides are exported from copies on the Figma page "Canvas Deck export", where a script merged every "Pattern tiles" group into one shape per color (layer i = union of the colors above it, so lower colors run underneath and no two edges coincide). Do not fix seams in CSS or by growing shapes.
+- Re-exporting a slide: run the merge on a fresh copy of its frame on that page (the use_figma script is in `docs/figma-pattern-merge.js`), export the copy with `download_assets` (svg), drop the page background `<rect fill="#F5F5F5">`, remove " [export ...]" from the frame id, swap in live text, and re-apply hand-made animation layers (02-percepcja: Eye / Eye clip / Iris / Pupil / Eyelids).
 - Figma layer names become ids: animate a layer with `[id="<slug>__<Layer name>"]` (e.g. from a `useEffect` in that slide's `slide.tsx`). For heavier animation, rebuild that slide as React/SVG using the Figma variables (Figtree, colors like `color/tangerine #ff7036`, `text/primary #44441a`).
+- Animations (only on the active slide, synced for everyone):
+  - Declare them in the slide's `meta.animations` (`{ description, loop? }[]`). Descriptions are appended to the speaker notes automatically ("## Animation").
+  - The component gets `play: { anim, key } | null` (`SlideProps`). `null` = slide not active: render the rest pose. A new `key` = (re)start animation `anim` from t=0.
+  - One animation: it autoplays when the slide becomes active (or loops if `loop: true`). Several: small 1, 2, 3 buttons appear in the active slide's bottom-left corner. The Replay button (top bar, key `R`) restarts the current one for everyone (`PlayState` in the sync layer, last write wins).
+  - Write animations as a pure function of time since `play.key` changed (see `02-percepcja/eye.ts`), so every presenter sees the same frame. No cursor-driven animations.
+  - Use the helpers in `src/slides/motion.ts` (`spring`, `wobble`, `runTimeline`) for natural motion: springs with a little overshoot, anticipation before a move, follow-through after; avoid linear or plain smoothstep tweens.
+  - Layers: group what you animate inside `slide.svg` (e.g. `<g id="Iris">`), reach them by `[id="<slug>__<layer>"]` from a `useEffect` in `slide.tsx` (wrap `<SvgSlide>` in a div with a ref). Put clip-paths on a wrapper group, not on the group you move.
+  - `06-podswiadomy-porzadek`: loop (`bricks.ts`): knock-out as a chain reaction (each brick starts only when the one below hits it: `pushedBy`, `CONTACT`; hit bricks start fast and ease out, the hitter recoils), hold still, rebuild top first, neat pause, repeat. Bricks are rigid and heavy: stiff springs (damping ~0.9), tiny lift, no float or wobble, short hard knocks on neighbors. Match motion to the material.
+  - Idle phase (optional, for one-shot animations): after it settles, add a small looping motion with an envelope that fades it in and out. Not for rigid materials.
+  - `02-percepcja`: idle loop (`eye.ts`, springs from `src/slides/motion.ts`), the eye glances around in saccades; the iris pattern and its brown center move as one element; blinks are tangerine lids sliding over the eye inside its clip (the eye itself is never scaled).
 - `src/slides/layout.json` mirrors the Figma positions (frame x/y minus the first frame's 680/431).
 
 ## Edit mode (toggle `E`, default off)
@@ -26,6 +38,14 @@ Multi-presenter presentation tool. One big pan/zoom canvas, each slide is an art
 - Speaker notes are not editable in the app: Marcin sends them in chat and the agent writes them into `src/slides/<id>/notes.md`.
 - Align math is in `src/canvas/align.ts` (pure functions).
 - UI style: follows the Figma frame `Canvas Deck / Edit mode` (node `160:359`, page WIP). All colors come from the Figma "Brand" variables, mirrored 1:1 in `src/tokens.css` (`color/ink` -> `--color-ink`, aliases like `--text-accent`); never hardcode colors in `styles.css`. Bars use `--color-ice`, the CTA is ultraviolet with lime text, canvas is `--neutral-ink-10`, presenter colors are Brand colors. Font Google Sans Flex, icons Material Symbols Sharp (filled), M3 Expressive shapes/motion. Frame labels and selection outlines are screen-constant via the `--px` CSS variable on `.world`.
+
+## Free elements on the canvas (images, videos, web pages)
+- `src/items.ts`: `CanvasItem` = `{ id, kind: image | video | embed | web, src, x, y, width, height }`. Not part of the slide order (arrows skip them). Local to each presenter, NOT synced (only the active slide/focus is shared).
+- Edit mode: "+" opens `AddDialog` (paste a link) and links or files can be dropped on the canvas. `detectKind` picks the kind (extension, YouTube/Vimeo, else tries the link as an image, else web page). Media keep their aspect ratio when resized (bottom-right handle); web pages resize freely. Delete/Backspace or the trash button removes; all of it is in undo/redo, select, move, align.
+- Files (dev only): uploaded via `POST /__deck/upload` to `public/media/<time>-<name>` and referenced as `media/<file>` (works on Pages too after commit). Large videos bloat the repo: prefer links for big files.
+- Saved with Save layout (dev) to `src/slides/items.json`. On the deployed site added elements live only until reload.
+- Web pages are heavy (a whole website running inside the transformed canvas makes panning stutter), so they render as a light card; "Show live page" mounts the iframe for that one page. It unmounts on Esc, the close button, a click on the background or a slide change; at most one page is live. Keep it that way.
+- View mode: videos and live pages take their own clicks (controls, scrolling). Some sites refuse to be embedded and show an empty frame; the label above each element links to the source.
 
 ## Commands
 - `npm run dev` local dev server (test multiplayer with two tabs and the same `#/r/<room>`)

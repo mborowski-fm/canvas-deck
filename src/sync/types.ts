@@ -8,6 +8,9 @@ export type SharedState = {
 export type LayoutItem = { id: string; x: number; y: number; ts: number }
 export type LayoutMsg = { items: LayoutItem[] }
 
+/** Last (re)played animation, shared: slide id + animation index. Last write wins. */
+export type PlayState = { slide: string; anim: number; ts: number; by: string }
+
 export type Me = {
   name: string
   color: string
@@ -43,6 +46,8 @@ export interface Sync {
   onPeerJoin(cb: (id: string) => void): void
   sendStateTo(id: string, s: SharedState): void
   sendLayout(items: LayoutItem[], to?: string): void
+  sendPlay(p: PlayState, to?: string): void
+  onPlay(cb: (p: PlayState) => void): void
   onLayout(cb: (items: LayoutItem[]) => void): void
   leave(): void
 }

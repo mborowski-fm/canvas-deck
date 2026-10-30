@@ -1,102 +1,70 @@
 <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g>
 <g id="01. Percepcja">
 <rect width="1920" height="1080" rx="16" fill="#FFFFF5"/>
 <g id="Pattern / Rectangle 88">
-<mask id="mask0_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="128" y="360" width="512" height="592">
+<mask id="mask0_171_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="128" y="360" width="512" height="592">
 <rect id="Rectangle 88" x="128" y="360" width="512" height="592" fill="#D9D9D9"/>
 </mask>
-<g mask="url(#mask0_104_158)">
+<g mask="url(#mask0_171_2)">
 <g id="Pattern">
-<g id="Pattern tiles" clip-path="url(#clip0_104_158)">
-<rect width="512" height="592" transform="translate(128 360)" fill="#E2F79A"/>
-<g id="Tile / vstripes">
-<rect width="512" height="296" transform="translate(128 360)" fill="#F5F25C"/>
-<path id="Vector" d="M256 360H384V656H256V360ZM512 360H640V656H512V360Z" fill="#E2F79A"/>
-</g>
-<g id="Tile / hstripes">
-<rect width="512" height="296" transform="translate(128 656)" fill="#E2F79A"/>
-<path id="Vector_2" d="M128 715.2H640V774.4H128V715.2Z" fill="#F5F25C"/>
-<path id="Vector_3" d="M128 833.6H640V892.8H128V833.6Z" fill="#F5F25C"/>
+<g id="Pattern tiles">
+<path id="Color 1" d="M640 952H128V360H640V952Z" fill="#E2F79A"/>
+<g id="Color 2">
+<path d="M640 892.8H128V833.6H640V892.8Z" fill="#F5F25C"/>
+<path d="M640 774.4H128V715.2H640V774.4Z" fill="#F5F25C"/>
+<path d="M256 656H128V360H256V656Z" fill="#F5F25C"/>
+<path d="M512 656H384V360H512V656Z" fill="#F5F25C"/>
 </g>
 </g>
 </g>
 </g>
 </g>
 <g id="Pattern / Rectangle 89">
-<mask id="mask1_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="704" y="360" width="512" height="592">
+<mask id="mask1_171_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="704" y="360" width="512" height="592">
 <rect id="Rectangle 88_2" x="704" y="360" width="512" height="592" fill="#D9D9D9"/>
 </mask>
-<g mask="url(#mask1_104_158)">
+<g mask="url(#mask1_171_2)">
 <g id="Pattern_2">
-<g id="Pattern tiles_2" clip-path="url(#clip1_104_158)">
-<rect width="512" height="592" transform="translate(704 360)" fill="#F5F25C"/>
-<g id="Tile / vstripes_2" clip-path="url(#clip2_104_158)">
-<rect width="512" height="296" transform="translate(704 360)" fill="#E2F79A"/>
-<path id="Vector_4" d="M789.33 360H874.66V656H789.33V360ZM960 360H1045.33V656H960V360ZM1130.67 360H1216V656H1130.67V360Z" fill="#F5F25C"/>
-<g id="Group 13">
-<circle id="Ellipse 13" cx="732" cy="388" r="12" fill="#44441A"/>
+<g id="Pattern tiles_2">
+<path id="Color 1_2" d="M1216 360V952H704V360H1216Z" fill="#F5F25C"/>
+<g id="Color 2_2">
+<path d="M960 952H832V804H960V952Z" fill="#E2F79A"/>
+<path d="M1216 952H1088V804H1216V952Z" fill="#E2F79A"/>
+<path d="M732 912C738.627 912 744 917.373 744 924C744 930.627 738.627 936 732 936C725.373 936 720 930.627 720 924C720 917.373 725.373 912 732 912Z" fill="#E2F79A"/>
+<path d="M789.33 656H832V804H704V360H789.33V656Z" fill="#E2F79A"/>
+<path d="M1130.67 656H1088V804H960V656H1045.33V360H1130.67V656Z" fill="#E2F79A"/>
+<path d="M960 656H874.66V360H960V656Z" fill="#E2F79A"/>
+<path d="M1188 376C1194.63 376 1200 381.373 1200 388C1200 394.627 1194.63 400 1188 400C1181.37 400 1176 394.627 1176 388C1176 381.373 1181.37 376 1188 376Z" fill="#E2F79A"/>
 </g>
-<g id="Group 14">
-<circle id="Ellipse 13_2" cx="1188" cy="388" r="12" fill="#44441A"/>
-</g>
-</g>
-<g id="Tile / checker" clip-path="url(#clip3_104_158)">
-<rect width="512" height="296" transform="translate(704 656)" fill="#F5F25C"/>
-<path id="Vector_5" d="M704 656H832V804H704V656ZM960 656H1088V804H960V656ZM832 804H960V952H832V804ZM1088 804H1216V952H1088V804Z" fill="#E2F79A"/>
-<g id="Group 13_2">
-<circle id="Ellipse 13_3" cx="732" cy="924" r="12" fill="#44441A"/>
-</g>
-<g id="Group 14_2">
-<circle id="Ellipse 13_4" cx="1188" cy="924" r="12" fill="#44441A"/>
-</g>
+<g id="Color 3">
+<path d="M732 912C738.627 912 744 917.373 744 924C744 930.627 738.627 936 732 936C725.373 936 720 930.627 720 924C720 917.373 725.373 912 732 912Z" fill="#44441A"/>
+<path d="M1188 912C1194.63 912 1200 917.373 1200 924C1200 930.627 1194.63 936 1188 936C1181.37 936 1176 930.627 1176 924C1176 917.373 1181.37 912 1188 912Z" fill="#44441A"/>
+<path d="M732 376C738.627 376 744 381.373 744 388C744 394.627 738.627 400 732 400C725.373 400 720 394.627 720 388C720 381.373 725.373 376 732 376Z" fill="#44441A"/>
+<path d="M1188 376C1194.63 376 1200 381.373 1200 388C1200 394.627 1194.63 400 1188 400C1181.37 400 1176 394.627 1176 388C1176 381.373 1181.37 376 1188 376Z" fill="#44441A"/>
 </g>
 </g>
 </g>
 </g>
 </g>
 <g id="Pattern / Rectangle 90">
-<mask id="mask2_104_158" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1280" y="360" width="512" height="592">
+<mask id="mask2_171_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1280" y="360" width="512" height="592">
 <rect id="Rectangle 88_3" x="1280" y="360" width="512" height="592" rx="128" fill="#D9D9D9"/>
 </mask>
-<g mask="url(#mask2_104_158)">
+<g mask="url(#mask2_171_2)">
 <g id="Pattern_3">
 <g id="Pattern tiles_3">
-<g clip-path="url(#clip4_104_158)">
-<rect x="1280" y="360" width="512" height="592" rx="128" fill="#F5F25C"/>
-<g id="Tile / circle">
-<rect width="512" height="592" transform="translate(1280 360)" fill="#F5F25C"/>
-<path id="Vector_6" d="M1536 860.8C1649.11 860.8 1740.8 769.108 1740.8 656C1740.8 542.892 1649.11 451.2 1536 451.2C1422.89 451.2 1331.2 542.892 1331.2 656C1331.2 769.108 1422.89 860.8 1536 860.8Z" fill="#E2F79A"/>
-</g>
-</g>
+<path id="Color 1_3" d="M1792 952H1280V360H1792V952Z" fill="#F5F25C"/>
+<path id="Color 2_3" d="M1536 451.2C1649.11 451.2 1740.8 542.892 1740.8 656C1740.8 769.108 1649.11 860.8 1536 860.8C1422.89 860.8 1331.2 769.108 1331.2 656C1331.2 542.892 1422.89 451.2 1536 451.2Z" fill="#E2F79A"/>
 </g>
 </g>
 </g>
 </g>
 <text id="Jest ważna" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Figtree" font-size="160" font-weight="600" letter-spacing="-0.04em"><tspan x="128" y="240">Jest wa&#x17c;na</tspan></text>
 <g id="Frame 1236">
-<path id="Vector_7" d="M1903.64 16L1904 23.5044H1903.1C1902.92 22.1829 1902.69 21.2389 1902.39 20.6726C1901.9 19.7601 1901.24 19.0914 1900.42 18.6667C1899.61 18.2262 1898.54 18.0059 1897.21 18.0059H1892.68V42.4543C1892.68 44.4208 1892.9 45.648 1893.32 46.1357C1893.92 46.7965 1894.85 47.1268 1896.1 47.1268H1897.21V48H1883.57V47.1268H1884.71C1886.07 47.1268 1887.04 46.7178 1887.61 45.8997C1887.95 45.3963 1888.13 44.2478 1888.13 42.4543V18.0059H1884.26C1882.76 18.0059 1881.69 18.116 1881.06 18.3363C1880.23 18.6352 1879.53 19.2094 1878.95 20.059C1878.36 20.9086 1878.01 22.057 1877.9 23.5044H1877L1877.38 16H1903.64Z" fill="#731D1E"/>
+<path id="Vector" d="M1903.64 16L1904 23.5044H1903.1C1902.92 22.1829 1902.69 21.2389 1902.39 20.6726C1901.9 19.7601 1901.24 19.0914 1900.42 18.6667C1899.61 18.2262 1898.54 18.0059 1897.21 18.0059H1892.68V42.4543C1892.68 44.4208 1892.9 45.648 1893.32 46.1357C1893.92 46.7965 1894.85 47.1268 1896.1 47.1268H1897.21V48H1883.57V47.1268H1884.71C1886.07 47.1268 1887.04 46.7178 1887.61 45.8997C1887.95 45.3963 1888.13 44.2478 1888.13 42.4543V18.0059H1884.26C1882.76 18.0059 1881.69 18.116 1881.06 18.3363C1880.23 18.6352 1879.53 19.2094 1878.95 20.059C1878.36 20.9086 1878.01 22.057 1877.9 23.5044H1877L1877.38 16H1903.64Z" fill="#731D1E"/>
 </g>
 <text id="T" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="300" font-weight="600" letter-spacing="0em"><tspan x="284" y="765.182">T</tspan></text>
 <text id="T_2" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Times New Roman" font-size="300" font-weight="bold" letter-spacing="0em"><tspan x="859" y="754.633">T</tspan></text>
 <text id="T_3" fill="#44441A" style="white-space: pre" xml:space="preserve" font-family="Courier New" font-size="300" font-weight="bold" letter-spacing="0em"><tspan x="1445" y="744.539">T</tspan></text>
 </g>
-</g>
-<defs>
-<clipPath id="clip0_104_158">
-<rect width="512" height="592" fill="white" transform="translate(128 360)"/>
-</clipPath>
-<clipPath id="clip1_104_158">
-<rect width="512" height="592" fill="white" transform="translate(704 360)"/>
-</clipPath>
-<clipPath id="clip2_104_158">
-<rect width="512" height="296" fill="white" transform="translate(704 360)"/>
-</clipPath>
-<clipPath id="clip3_104_158">
-<rect width="512" height="296" fill="white" transform="translate(704 656)"/>
-</clipPath>
-<clipPath id="clip4_104_158">
-<rect x="1280" y="360" width="512" height="592" rx="128" fill="white"/>
-</clipPath>
-</defs>
 </svg>
