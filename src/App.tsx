@@ -6,6 +6,7 @@ import { channelName, type ChannelMsg } from './channel'
 import { NotesWindow } from './notes/NotesWindow'
 import { slides as baseSlides } from './slides/registry'
 import type { Me } from './sync'
+import { BuildInfo } from './BuildInfo'
 import { Icon } from './Icon'
 import { canSave, saveLayoutToRepo, uploadMedia } from './save'
 import { useRoom } from './useRoom'
@@ -309,6 +310,7 @@ function Presenting({ room, me }: { room: string; me: Me }) {
         onMove={apply}
         onChangeStart={record}
       />
+      <BuildInfo />
       <div className="hud top-right">
         <div className="toolbar">
           <div className="connected">

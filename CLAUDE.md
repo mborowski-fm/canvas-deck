@@ -52,6 +52,9 @@ Multi-presenter presentation tool. One big pan/zoom canvas, each slide is an art
 - Shared: cursors and avatars (presence), slide positions from edit mode, and every presenter's view (`ViewMsg`: camera world rect + active slide + playing animation, throttled ~60 ms, `sendView` in `useRoom`).
 - Follow mode: click another presenter's avatar (hover shows "Śledź <name>") to see the deck through their eyes: their camera (fitted to your viewport), their active slide and animation. Their avatar is highlighted, the screen gets a frame in their color and a bottom bar "Śledzisz <name>" with "Przestań". It stops on that button, Esc, clicking the avatar again, or when you navigate or move the camera yourself.
 
+## Versioning
+- Bottom-left build stamp (`src/BuildInfo.tsx`): `v<package.json version> · <commit> · <build time>`, injected as `__BUILD__` in `vite.config.ts` (commit from `GITHUB_SHA` in Actions). On each release bump `package.json` version and tag `v<major.minor>`.
+
 ## Commands
 - `npm run dev` local dev server (test multiplayer with two tabs and the same `#/r/<room>`)
 - `npm run build` typecheck + production build to `dist/`

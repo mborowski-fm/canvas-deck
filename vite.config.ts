@@ -1,4 +1,5 @@
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { execSync } from 'node:child_process'
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -54,8 +55,17 @@ function deckSave(): Plugin {
   }
 }
 
+// Shown in the bottom-left corner, so you can tell which build you are looking at.
+const git = (cmd: string) => { try { return execSync(cmd).toString().trim() } catch { return '' } }
+const BUILD = {
+  version: JSON.parse(readFileSync(resolve(__dirname, 'package.json'), 'utf8')).version as string,
+  sha: (process.env.GITHUB_SHA ?? git('git rev-parse HEAD')).slice(0, 7),
+  time: new Date().toISOString(),
+}
+
 // base './' lets the build run from any GitHub Pages sub-path
 export default defineConfig({
   base: './',
   plugins: [react(), deckSave()],
+  define: { __BUILD__: JSON.stringify(BUILD) },
 })

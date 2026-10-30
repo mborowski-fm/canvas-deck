@@ -152,3 +152,7 @@ button.avatar:hover::after { opacity: 1; transform: translate(-50%, 0); }
 .follow-bar.above-edit { bottom: 96px; }
 .follow-bar .avatar { width: 36px; height: 36px; border-width: 2px; margin: 0; font-size: 14px; }
 .follow-bar button.cta { height: 40px; padding: 0 18px; }
+
+/* Build stamp, bottom-left */
+.build-info { position: fixed; left: 12px; bottom: 10px; z-index: 20; font-size: 11px; color: var(--text-secondary); text-decoration: none; opacity: .7; font-variant-numeric: tabular-nums; }
+.build-info:hover { opacity: 1; text-decoration: underline; }
