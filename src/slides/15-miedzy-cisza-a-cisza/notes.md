@@ -1,10 +1,10 @@
 **Każde kliknięcie zasługuje na odpowiedź interfejsu.**
 
-1. **Teza**
-    - *Karteczka:* Cisza po kliknięciu to błąd. Element powinien reagować na usera.
-2. **Przykłady feedbacku**
-    - *Karteczka:* Pole na kod: po wpisaniu ostatniej cyfry lekki shake, czerwień, a znacznik wraca na początek.
-    - *Karteczka:* Przycisk „Dodaj”: po kliknięciu stan ładowania, potem na chwilę zielony tick i powrót do naturalnej formy.
-3. **Szerzej niż animacja**
-    - *Komentarz:* Feedback: dużo tematów dla samego feedbacku
-    - *Z rozmowy:* Feedback to szerzej niż mikrointerakcje: animacja, tekst, haptyka, ton.
+- Cisza po kliknięciu to błąd
+- Progi czasu (Nielsen): do 0.1 s = natychmiast, do 1 s = płynnie, powyżej 1 s pokaż postęp, 10 s = tracimy uwagę
+- Przykłady:
+  - pole na kod: po ostatniej cyfrze shake, czerwień, kursor wraca na początek
+  - przycisk „Dodaj”: loading, chwilę zielony tick, powrót do formy
+- Stany komponentu: default, hover, pressed, loading, success, error, disabled
+- Optimistic UI: pokazujemy efekt od razu, cofamy przy błędzie
+- Feedback to szerzej niż animacja: tekst, haptyka, dźwięk, ton

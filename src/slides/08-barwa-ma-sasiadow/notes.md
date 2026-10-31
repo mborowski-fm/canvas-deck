@@ -1,9 +1,8 @@
 **Kolor zawsze oceniamy w towarzystwie innych kolorów.**
 
-1. **Teza**
-    - *Karteczka:* Kolor wygląda inaczej w zależności od tego, co jest obok.
-2. **Kolor w towarzystwie**
-    - *Komentarz:* rzadko widzimy jeden kolor, raczej kolegów
-3. **Ale u podstaw…**
-    - *Komentarz:* chociaż u podstaw...
-    - *Z rozmowy:* Czerwony zawsze trochę niesie negatyw.
+- Rzadko widzimy jeden kolor, raczej kolegów
+- Kontrast symultaniczny: ten sam szary na jasnym i ciemnym tle to dwa różne kolory (Albers)
+- Proporcje palety, np. 60 / 30 / 10
+- Dark mode: te same barwy trzeba odsaturować i przesunąć jasność
+- Dostępność: kontrast tekstu min. 4.5:1, duży tekst i elementy UI 3:1
+- Ale u podstaw znaczenia zostają: czerwony zawsze trochę niesie negatyw

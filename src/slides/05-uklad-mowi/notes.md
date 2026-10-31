@@ -1,9 +1,9 @@
 **Kompozycja przekazuje klimat, zanim ktokolwiek przeczyta tekst.**
 
-1. **Teza**
-    - *Karteczka:* Układ mówi, zanim zrobi to tekst.
-2. **Nie tylko kolor i wielkość**
-    - *Komentarz:* nie samymi kolorami i wielkością: center vs bottom left aligned to inny klimat
-3. **Dlaczego tak działa**
-    - *Z rozmowy:* W pierwszej milisekundzie widzimy całą kompozycję.
-    - *Z rozmowy:* Czytamy wyrazy jako kształty, nie litery.
+- Te same elementy, inny układ = inny klimat
+  - center: formalny, statyczny, „ogłoszenie”
+  - bottom left aligned: edytorski, dynamiczny, nowoczesny
+- Nie tylko kolor i wielkość budują nastrój: pozycja, oś, rytm
+- W pierwszej milisekundzie widzimy całą kompozycję, dopiero potem treść
+- Czytamy wyrazy jako kształty, nie litery
+- Test: zmruż oczy (squint test) i zobacz, co zostaje

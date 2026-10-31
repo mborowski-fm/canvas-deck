@@ -1,7 +1,7 @@
-**Wejście w rozdział: ruch to część designu, nie dekoracja.**
+**Ruch to część designu, nie dekoracja.**
 
-1. **Teza**
-    - *Komentarz:* ogólnie motion: integralna część designu, mamy narzędzia, mamy dane
-2. **⚡ Ile to procent?**
-    - *Komentarz:* design 30% / 70% motion
-    - *Z rozmowy:* Ten procent jest niczym niepoparty.
+- Wejście w rozdział: motion jest integralną częścią designu
+- Mamy narzędzia (Figma, Rive, Lottie, ProtoPie, kod z AI) i mamy dane
+- Prowokacja: design 30% / 70% motion?
+  - ten procent jest niczym niepoparty, chodzi o wagę tematu
+- Ruch tłumaczy: skąd element przyszedł, dokąd idzie, co się zmieniło

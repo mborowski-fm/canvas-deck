@@ -1,7 +1,6 @@
-**Wejście w rozdział: typografia to spora część designu.**
+**Typografia to spora część designu.**
 
-1. **Teza**
-    - *Karteczka:* Typografia jest naprawdę ważna.
-    - *Komentarz:* wielka część designu: coś, co widzimy na co dzień, nie tylko w UX/UI
-2. **Od czego zaczynamy**
-    - *Z rozmowy:* Czytamy od lewej do prawej, więc i stronę.
+- Wejście w rozdział: typografia jest naprawdę ważna
+- Widzimy ją na co dzień, nie tylko w UX/UI: szyldy, opakowania, napisy w filmach
+- Większość interfejsu to tekst: dobra typografia = dobry design w połowie
+- Czytamy od lewej do prawej, więc i stronę (wzorce F i Z)

@@ -1,8 +1,8 @@
 **Pustka to decyzja projektowa, nie brak pracy.**
 
-1. **Teza**
-    - *Karteczka:* Puste miejsce też się projektuje.
-2. **Co daje pustka**
-    - *Komentarz:* • puste nie znaczy leniwy designer • oddech • budowanie roli innego bohatera itp.
-3. **Most dalej**
-    - *Propozycja:* Pustka buduje bohatera: wrócimy do tego w Kontekście, przy „Bohater?”.
+- Puste nie znaczy leniwy designer
+- Oddech: mniej elementów = szybsze zrozumienie
+- Spacing grupuje: odstęp w grupie mniejszy niż między grupami (np. 8 vs 24)
+- Makro (sekcje, marginesy) vs mikro (litery, linie, padding) whitespace
+- Pustka buduje bohatera: im więcej miejsca wokół, tym ważniejszy element
+- Most: wrócimy do tego przy „Bohater?” w Kontekście

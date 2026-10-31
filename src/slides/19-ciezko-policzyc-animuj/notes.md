@@ -1,7 +1,8 @@
 **Ruchu nie da się opisać, trzeba go zobaczyć i przetestować.**
 
-1. **Teza**
-    - *Karteczka:* Testowanie mikrointerakcji: projektując, myślimy w tym samym czasie o mikrointerakcjach. Planujemy feeling aplikacji, więc sami twórzmy drafty animacji i je szlifujmy.
-2. **AI jako szybki prototyp**
-    - *Komentarz:* Dobre czasy, żeby z AI zweryfikować pomysł w 10 min z odpowiednim prototypem
-    - *Z rozmowy:* Dziś to must have. Narzędzie przestało być barierą.
+- Projektując ekran, od razu myślimy o mikrointerakcjach
+- Planujemy feeling aplikacji, więc sami robimy drafty animacji i je szlifujemy
+- AI jako szybki prototyp: pomysł zweryfikowany w 10 min (ta prezentacja też)
+  - dziś to must have, narzędzie przestało być barierą
+- Handoff dla devów: czas, easing / krzywa, opóźnienie, trigger, parametry sprężyny, nagranie wideo
+- Testuj na urządzeniu: 60 vs 120 Hz, słabszy telefon
