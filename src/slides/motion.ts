@@ -37,3 +37,41 @@ export function runTimeline(frame: (t: number) => boolean | void, rest: () => vo
   })
   return () => cancelAnimationFrame(raf)
 }
+
+/** What an animated slide drives: `rest` = the Figma design, `play` starts and returns stop. */
+export type Rig = { rest: () => void; play: () => () => void }
+
+/**
+ * Rig from a pose function of time (null = rest pose). `loop`: seconds per cycle.
+ * `end`: one-shot length; after it the last frame stays.
+ */
+export function makeRig(pose: (t: number | null) => void, opts: { loop?: number; end?: number } = {}): Rig {
+  return {
+    rest: () => pose(null),
+    play: () => {
+      const stop = runTimeline((t) => {
+        pose(opts.loop ? t % opts.loop : opts.end != null ? Math.min(t, opts.end) : t)
+        return opts.end == null || t < opts.end
+      }, () => pose(null))
+      return () => {
+        stop()
+        pose(null)
+      }
+    },
+  }
+}
+
+/** Find a Figma layer by name inside a slide (ids are prefixed by SvgSlide). */
+export const layerFinder = (root: HTMLElement, prefix: string) => (id: string) =>
+  root.querySelector<SVGGraphicsElement>(`[id="${prefix}__${CSS.escape(id)}"]`)
+
+/** Deterministic pseudo-random number in [0, 1) for an integer seed (same on every screen). */
+export function rand(seed: number) {
+  let t = (seed + 0x6d2b79f5) | 0
+  t = Math.imul(t ^ (t >>> 15), t | 1)
+  t ^= t + Math.imul(t ^ (t >>> 7), t | 61)
+  return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+}
+
+/** Transform that scales/rotates around a point. */
+export const around = (cx: number, cy: number, inner: string) => `translate(${cx} ${cy}) ${inner} translate(${-cx} ${-cy})`
