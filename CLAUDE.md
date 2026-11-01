@@ -1,6 +1,6 @@
 # Canvas Deck: agent guide
 
-Multi-presenter presentation tool. One big pan/zoom canvas, each slide is an artboard (a React component). Several people present at once, all with equal rights. Runs in the browser, hosted on GitHub Pages, no backend.
+Multi-presenter presentation tool, shown in the browser as "UI huh?" (page title, smiley favicon in `public/favicon.svg`). One big pan/zoom canvas, each slide is an artboard (a React component). Several people present at once, all with equal rights. Runs in the browser, hosted on GitHub Pages, no backend.
 
 ## How it works (read this first)
 - **Slides** = folders in `src/slides/<NN>-<name>/` with `slide.tsx` (default export React component, optional `export const meta`) and optional `notes.md`. Auto-discovered by `src/slides/registry.ts` via `import.meta.glob`, ordered by folder name. Titles are shown numbered ("01. Hej UI!", from the order) on the canvas and in the notes window. Artboard is 1920x1080 world px. Default layout is a horizontal row; override with `meta.x/y/width/height`.
