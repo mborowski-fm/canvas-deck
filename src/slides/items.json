@@ -1,1 +1,142 @@
-[]
+[
+  {
+    "id": "link-07-1",
+    "kind": "link",
+    "title": "Gionatan Nese",
+    "src": "https://www.gionatannese.com/",
+    "x": 10880,
+    "y": 3840,
+    "width": 360,
+    "height": 360
+  },
+  {
+    "id": "link-10-1",
+    "kind": "link",
+    "title": "Andre Font",
+    "src": "https://andrefont.com/",
+    "x": 2176,
+    "y": 6520,
+    "width": 360,
+    "height": 360
+  },
+  {
+    "id": "link-10-2",
+    "kind": "link",
+    "title": "Editorial New",
+    "src": "https://editorialnew.com/",
+    "x": 2576,
+    "y": 6520,
+    "width": 360,
+    "height": 360
+  },
+  {
+    "id": "link-10-3",
+    "kind": "link",
+    "title": "Lama Lama",
+    "src": "https://lamalama.com/",
+    "x": 2976,
+    "y": 6520,
+    "width": 360,
+    "height": 360
+  },
+  {
+    "id": "link-12-1",
+    "kind": "link",
+    "title": "Signal-A Studio",
+    "src": "https://signal-a.studio/",
+    "x": 6528,
+    "y": 6520,
+    "width": 360,
+    "height": 360
+  },
+  {
+    "id": "link-16-1",
+    "kind": "link",
+    "title": "Haptic Haven",
+    "src": "https://apps.apple.com/us/app/haptic-haven/id1523772947",
+    "x": 6528,
+    "y": 9200,
+    "width": 360,
+    "height": 360
+  },
+  {
+    "id": "link-16-2",
+    "kind": "link",
+    "title": "Fidgetable",
+    "src": "https://www.fidgetable.app/",
+    "x": 6928,
+    "y": 9200,
+    "width": 360,
+    "height": 360
+  },
+  {
+    "id": "link-17-1",
+    "kind": "link",
+    "title": "Oryzo AI",
+    "src": "https://oryzo.ai/",
+    "x": 8704,
+    "y": 9200,
+    "width": 360,
+    "height": 360
+  },
+  {
+    "id": "link-17-2",
+    "kind": "link",
+    "title": "Real Food",
+    "src": "https://realfood.gov/",
+    "x": 9104,
+    "y": 9200,
+    "width": 360,
+    "height": 360
+  },
+  {
+    "id": "link-17-3",
+    "kind": "link",
+    "title": "iPhone 18 Pro",
+    "src": "https://www.apple.com/pl/iphone-18-pro/",
+    "x": 9504,
+    "y": 9200,
+    "width": 360,
+    "height": 360
+  },
+  {
+    "id": "link-18-1",
+    "kind": "link",
+    "title": "A24",
+    "src": "https://a24.raviklaassens.com/",
+    "x": 10880,
+    "y": 9200,
+    "width": 360,
+    "height": 360
+  },
+  {
+    "id": "link-18-2",
+    "kind": "link",
+    "title": "Gil Huybrecht",
+    "src": "https://gilhuybrecht.com/",
+    "x": 11280,
+    "y": 9200,
+    "width": 360,
+    "height": 360
+  },
+  {
+    "id": "link-18-3",
+    "kind": "link",
+    "title": "Pally",
+    "src": "https://pally.com/pl",
+    "x": 11680,
+    "y": 9200,
+    "width": 360,
+    "height": 360
+  },
+  {
+    "id": "link-21-1",
+    "kind": "link",
+    "title": "Tengile MalaMala",
+    "src": "https://tengilemalamala.com/",
+    "x": 2176,
+    "y": 11880,
+    "width": 360,
+    "height": 360
+  }
+]

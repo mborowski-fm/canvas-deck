@@ -373,11 +373,11 @@ export function Canvas({ slides, items, active, onActive, peers, onCursor, view,
               className={'frame item' + (sel ? ' selected' : '')}
               style={{ left: it.x, top: it.y, width: it.width, height: it.height }}
             >
-              <div className="frame-label" style={{ transform: `scale(${1 / z})`, maxWidth: it.width * z }}>
+              {it.kind !== 'link' && <div className="frame-label" style={{ transform: `scale(${1 / z})`, maxWidth: it.width * z }}>
                 <a href={it.src} target="_blank" rel="noreferrer" onPointerDown={(e) => e.stopPropagation()}>
                   {itemLabel(it)}
                 </a>
-              </div>
+              </div>}
               {/* in view mode videos and pages take their own clicks (controls, scrolling) */}
               <div className="artboard" onPointerDown={(e) => !edit && it.kind !== 'image' && e.stopPropagation()}>
                 <ItemView item={it} live={live === it.id} onLive={(on) => setLive(on ? it.id : null)} />
@@ -420,6 +420,14 @@ function Handles() {
 }
 
 function ItemView({ item, live, onLive }: { item: CanvasItem; live: boolean; onLive: (on: boolean) => void }) {
+  if (item.kind === 'link')
+    return (
+      <a className="postit" href={item.src} target="_blank" rel="noreferrer" draggable={false}>
+        <b>{item.title || itemLabel(item)}</b>
+        <small>{itemLabel(item)}</small>
+        <Icon name="open_in_new" />
+      </a>
+    )
   if (item.kind === 'image') return <img src={item.src} alt="" draggable={false} />
   if (item.kind === 'video') return <video src={item.src} controls playsInline loop preload="metadata" />
   if (item.kind === 'embed')

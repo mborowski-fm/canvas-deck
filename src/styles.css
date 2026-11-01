@@ -136,6 +136,13 @@ button.pill.on { background: var(--neutral-paper); }
 .web-card button.cta { height: 96px; padding: 0 40px 0 32px; font-size: 32px; gap: 12px; }
 .web-card button.cta .msr { font-size: 44px; }
 .canvas.edit .web-card button { pointer-events: none; }
+/* link post-it: a sticky note with a link, opens in a new tab (view mode) */
+.postit { width: 100%; height: 100%; display: flex; flex-direction: column; gap: 12px; padding: 36px; background: var(--color-sun); color: var(--text-primary); text-decoration: none; box-shadow: 0 6px 18px color-mix(in srgb, var(--color-ink) 18%, transparent); position: relative; }
+.postit b { font-size: 40px; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; }
+.postit small { font-size: 24px; opacity: .7; word-break: break-all; }
+.postit .msr { position: absolute; right: 28px; bottom: 28px; font-size: 48px; }
+.postit:hover { filter: brightness(1.03); }
+.canvas.edit .postit { pointer-events: none; }
 .web-close { position: absolute; top: 24px; right: 24px; width: 88px; height: 88px; padding: 0; background: var(--neutral-paper); color: var(--text-primary); box-shadow: 0 2px 12px rgba(0,0,0,.2); }
 .web-close .msr { font-size: 48px; }
 

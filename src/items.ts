@@ -6,8 +6,9 @@ import saved from './slides/items.json'
  * each presenter (not synced), saved with "Save layout" (dev) to src/slides/items.json.
  * Local files (dev only) are uploaded to public/media/ and referenced as "media/<file>".
  */
-export type ItemKind = 'image' | 'video' | 'embed' | 'web'
-export type CanvasItem = { id: string; kind: ItemKind; src: string; x: number; y: number; width: number; height: number }
+export type ItemKind = 'image' | 'video' | 'embed' | 'web' | 'link'
+/** `link` = a small post-it with a clickable link (opens in a new tab); `title` is its headline. */
+export type CanvasItem = { id: string; kind: ItemKind; src: string; x: number; y: number; width: number; height: number; title?: string }
 
 export const baseItems = saved as CanvasItem[]
 
@@ -49,6 +50,7 @@ export const DEFAULT_SIZE: Record<ItemKind, { width: number; height: number }> =
   video: { width: 1280, height: 720 },
   embed: { width: 1280, height: 720 },
   web: { width: 1280, height: 800 },
+  link: { width: 360, height: 360 },
 }
 
 export const newItemId = () => 'item-' + Math.random().toString(36).slice(2, 9)
