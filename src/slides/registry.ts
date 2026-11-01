@@ -14,13 +14,6 @@ const notes = import.meta.glob<string>('./*/notes.md', {
   eager: true,
 })
 
-/** Speaker notes = notes.md + an automatic section describing the slide's animations. */
-function withAnimationNotes(text: string, anims: SlideAnimation[]) {
-  if (!anims.length) return text
-  const lines = anims.map((a, i) => `- ${anims.length > 1 ? `**${i + 1}:** ` : ''}${a.description}${a.loop ? ' (loops)' : ''}`)
-  return `${text.trimEnd()}${text.trim() ? '\n\n' : ''}## Animation\n${lines.join('\n')}\n`
-}
-
 // Positions saved from edit mode ("Copy layout" button) win over meta.
 const saved = layout as Record<string, { x: number; y: number }>
 
@@ -34,10 +27,11 @@ export const slides: Slide[] = Object.keys(mods)
     return {
       id: folder,
       index,
-      title: meta.title ?? folder.replace(/^\d+-/, '').replace(/-/g, ' '),
+      // numbered like the folder ("01. Hej UI!") so slides are easy to refer to
+      title: `${String(index + 1).padStart(2, '0')}. ${meta.title ?? folder.replace(/^\d+-/, '').replace(/-/g, ' ')}`,
       Component,
       animations: meta.animations ?? [],
-      notes: withAnimationNotes(notes[`./${folder}/notes.md`] ?? '', meta.animations ?? []),
+      notes: notes[`./${folder}/notes.md`] ?? '',
       x: saved[folder]?.x ?? meta.x ?? index * (SLIDE_W + GAP),
       y: saved[folder]?.y ?? meta.y ?? 0,
       width,
