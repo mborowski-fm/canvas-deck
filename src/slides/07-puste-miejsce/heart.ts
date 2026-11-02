@@ -11,7 +11,8 @@
  * The heart is the active side and the walls only react: before each push the heart winds up
  * (eases back and crouches), then lunges into the wall stretched in its direction; the wall gives
  * way a beat later and slower. The walls never move by themselves. The text stays on top. Walls
- * are drawn in code.
+ * are drawn in code. Every push bends the whole wall face concave (it caves in, wobbles like
+ * jelly and stays bent), deepest where the heart hits, and the heart sits in it.
  * Rest pose = the Figma design (no walls).
  */
 import { around, clamp01, easeOutCubic, layerFinder, makeRig, spring } from '../motion'
@@ -49,11 +50,19 @@ const LAG = 0.06 // the wall starts moving only after the heart hits it
 const windUp = (u: number) => (u > -WIND && u < 0.05 ? Math.sin(((u + WIND) / (WIND + 0.05)) * Math.PI) : 0)
 /** how far the wall has been pushed: it follows the heart a beat later and slower */
 const wallPushed = (t: number, pushes: number[]) => pushes.reduce((d, p) => d + STEP * spring(t - p - LAG, ...PUSH_SPRING), 0)
+const DENT_PUSH = 12 // px: each push bends the whole wall face a little more (it stays)
+const DENT_HIT = 22 // px: extra bend from the knockout strike
+const DENT_SPRING = [2.6, 0.38] as const // caves in fast, wobbles like jelly, settles
 const LEAD = 12 // px the heart presses into the wall ahead of it (visible push, no overlap)
+/** how far a wall is caved in: each push leaves a dent that stays (with a jelly wobble) */
+const dentAt = (t: number, side: { pushes: number[]; hit: number }) =>
+  side.pushes.reduce((d, p) => d + DENT_PUSH * spring(t - p - LAG, ...DENT_SPRING), 0) + DENT_HIT * spring(t - side.hit - LAG, ...DENT_SPRING)
 /** how far the heart has moved: it leads (faster, at most LEAD ahead of the wall) and pulls back a little before each push */
 const heartPushed = (t: number, pushes: number[]) => {
   const raw = pushes.reduce((d, p) => d + STEP * spring(t - p, 3.4, 0.62) - 14 * windUp(t - p), 0)
-  return Math.min(raw, wallPushed(t, pushes) + LEAD)
+  // the heart sinks into the dent its pushes leave in the wall
+  const dent = pushes.reduce((d, p) => d + DENT_PUSH * spring(t - p - LAG, ...DENT_SPRING), 0)
+  return Math.min(raw, wallPushed(t, pushes) + LEAD) + dent
 }
 /** the wall knocked out by the hit: fastest at the hit, slowing down until it is off the slide (fully opaque all the way) */
 const knocked = (t: number, hit: number, exit: number) => OUT * easeOutCubic(clamp01((t - hit - LAG) / exit))
@@ -77,21 +86,31 @@ export function heartRig(root: HTMLElement, prefix: string) {
   // Looked up by side (not DOM order), so the lime one always moves left and the magenta one right.
   const bg = root.querySelector('svg rect')
   const walls = (['left', 'right'] as const).map((side, i) => {
-    let r = root.querySelector<SVGRectElement>(`[data-wall="${side}"]`)
+    let r = root.querySelector<SVGPathElement>(`path[data-wall="${side}"]`)
     if (!r && heart) {
-      const w = WALLS[i]
-      r = document.createElementNS('http://www.w3.org/2000/svg', 'rect')
+      root.querySelector(`[data-wall="${side}"]`)?.remove() // older rect walls
+      r = document.createElementNS('http://www.w3.org/2000/svg', 'path')
       r.setAttribute('data-wall', side)
-      Object.entries({ x: w.x, y: -40, width: w.w, height: 1160, fill: w.fill }).forEach(([k, v]) => r!.setAttribute(k, String(v)))
+      r.setAttribute('fill', WALLS[i].fill)
       bg?.after(r)
     }
     return r
   })
-
+  /** wall outline with its whole face toward the heart bent concave: deepest (`dent` px) at the
+   *  heart's height, the curve running over the full height of the wall */
+  const wallPath = (side: 'left' | 'right', dent: number) => {
+    const top = -40, bottom = 2 * C.y + 40 // symmetric around the heart, past both slide edges
+    if (side === 'left') {
+      const e = C.x - HALF
+      return `M-40 ${top}H${e}Q${(e - 2 * dent).toFixed(2)} ${C.y} ${e} ${bottom}H-40Z`
+    }
+    const e = C.x + HALF
+    return `M1960 ${top}H${e}Q${(e + 2 * dent).toFixed(2)} ${C.y} ${e} ${bottom}H1960Z`
+  }
   return makeRig((t) => {
     if (t === null) {
       heart?.removeAttribute('transform')
-      walls.forEach((w) => w?.setAttribute('opacity', '0'))
+      walls.forEach((w, i) => { w?.setAttribute('opacity', '0'); w?.setAttribute('d', wallPath(i ? 'right' : 'left', 0)) })
       return
     }
     const x = heartX(t)
@@ -120,6 +139,7 @@ export function heartRig(root: HTMLElement, prefix: string) {
     ;[left, right].forEach((d, i) => {
       walls[i]?.setAttribute('opacity', '1')
       walls[i]?.setAttribute('transform', `translate(${d.toFixed(2)} 0)`)
+      walls[i]?.setAttribute('d', wallPath(i ? 'right' : 'left', dentAt(t, i ? RIGHT : LEFT)))
     })
   })
 }

@@ -9,14 +9,14 @@
 import { around, clamp01, layerFinder, M3, makeRig, spring, springVel, stretchBy } from '../motion'
 
 const BLOCKS = [
-  { id: 'Pattern / Shape', dx: 432, start: 0.7, chevrons: ['Vector 11', 'Vector 12', 'Vector 13', 'Vector 14', 'Vector 15'] },
-  { id: 'Pattern / Shape_2', dx: 576, start: 0.84, chevrons: ['Vector 16', 'Vector 17'] },
-  { id: 'Pattern / Shape_3', dx: 140, start: 0.98, chevrons: [] as string[] },
+  { id: 'Pattern / Shape', dx: 432, start: 1.2, chevrons: ['Vector 11', 'Vector 12', 'Vector 13', 'Vector 14', 'Vector 15'] },
+  { id: 'Pattern / Shape_2', dx: 576, start: 1.42, chevrons: ['Vector 16', 'Vector 17'] },
+  { id: 'Pattern / Shape_3', dx: 140, start: 1.64, chevrons: [] as string[] },
 ]
-const OUT = M3.bouncy
-const BACK_SPRING = [1.9, 0.66] as const // the way back: a bit calmer
-const BACK = 3.8 // the blocks start going back to the center
-const LOOP = 6
+const OUT = [1.4, 0.62] as const // slower, still bubbly
+const BACK_SPRING = [1.2, 0.7] as const // the way back: a bit calmer
+const BACK = 6.0 // the blocks start going back to the center (long hold on the left)
+const LOOP = 10 // long hold in the center before the next round
 
 export function blocksRig(root: HTMLElement, prefix: string) {
   const $ = layerFinder(root, prefix)

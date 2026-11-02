@@ -6,7 +6,7 @@ import svg from './slide.svg?raw'
 // Source: Figma frame 104:1059 (UI-Prezentacja storyboard)
 export const meta: SlideMeta = {
   title: "Hej UI!",
-  animations: [{ description: 'The faces stay in place; their eyes and mouths look around at each other (eye-like saccades), then all look at "Dobry?".', loop: true }],
+  animations: [{ description: 'The faces stay in place; their eyes and mouths follow your cursor, and when the cursor rests they look around at each other (eye-like saccades).', loop: true }],
 }
 
 export default function Slide({ play }: SlideProps) {

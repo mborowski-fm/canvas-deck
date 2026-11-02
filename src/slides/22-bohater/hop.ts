@@ -3,8 +3,11 @@
  * moment later a grey dot from the left hops into the gap it left on the right. Then both hop
  * home. Hops are soft and bouncy: crouch, arc, squash on landing. Each cycle picks other dots
  * (seeded, the same on every screen). Rest pose = the Figma design.
+ * Interactive (local to each presenter): drag a dot onto a dot of the other group and they swap:
+ * the dragged one lands in that place and the other one hops into the dragged one's place.
+ * The first drag stops the automatic hops (Replay brings them back, with the dots reset).
  */
-import { around, clamp01, layerFinder, makeRig, rand, spring } from '../motion'
+import { around, clamp01, layerFinder, M3, rand, runTimeline, spring, type Rig } from '../motion'
 
 const LOOP = 7.5
 const FLIGHT = 0.55
@@ -31,7 +34,7 @@ function hop(t: number, start: number, a: Dot, b: Dot) {
   return { dx: b.cx - a.cx, dy: b.cy - a.cy, sx: 1.22 - 0.22 * s, sy: 0.72 + 0.28 * s }
 }
 
-export function hopRig(root: HTMLElement, prefix: string) {
+export function hopRig(root: HTMLElement, prefix: string): Rig {
   const $ = layerFinder(root, prefix)
   const svg = root.querySelector('svg')
   const left: Dot[] = []
@@ -53,7 +56,7 @@ export function hopRig(root: HTMLElement, prefix: string) {
   const apply = (d: Dot, o: { dx: number; dy: number; sx: number; sy: number } | null) =>
     o ? d.el.setAttribute('transform', `translate(${o.dx.toFixed(2)} ${o.dy.toFixed(2)}) ${around(d.cx, d.cy + 43, `scale(${o.sx.toFixed(3)} ${o.sy.toFixed(3)})`)}`) : d.el.removeAttribute('transform')
 
-  return makeRig((t) => {
+  const autoPose = (t: number | null) => {
     all.forEach((d) => { d.el.removeAttribute('transform'); d.el.removeAttribute('opacity') })
     if (t === null || !left.length || !right.length) return
     const k = Math.floor(t / LOOP)
@@ -75,5 +78,110 @@ export function hopRig(root: HTMLElement, prefix: string) {
     const gOut = hop(lt, HOPS.greyOut, G, C)
     if (gBack) apply(G, { ...gBack, dx: gBack.dx + C.cx - G.cx, dy: gBack.dy + C.cy - G.cy })
     else apply(G, gOut)
-  })
+  }
+
+  // --- interactive: drag a dot onto a dot of the other group to swap them ---
+  type State = { slot: { x: number; y: number }; x: number; y: number; vx: number; vy: number; hop: null | { from: { x: number; y: number }; at: number } }
+  const DROP = 70 // px: how close to another dot counts as dropping on it
+  const play = () => {
+    autoPose(null)
+    const st = new Map<Dot, State>(all.map((d) => [d, { slot: { x: d.cx, y: d.cy }, x: d.cx, y: d.cy, vx: 0, vy: 0, hop: null }]))
+    let interactive = false
+    let drag: null | { dot: Dot; ox: number; oy: number; px: number; py: number } = null
+    let now = 0
+    const toSlide = (e: PointerEvent) => new DOMPoint(e.clientX, e.clientY).matrixTransform(svg!.getScreenCTM()!.inverse())
+    const downs = all.map((d) => {
+      const onDown = (e: PointerEvent) => {
+        if (!svg?.getScreenCTM()) return
+        e.stopPropagation() // do not pan the canvas
+        e.preventDefault()
+        if (!interactive) {
+          interactive = true
+          autoPose(null)
+        }
+        const p = toSlide(e)
+        const s0 = st.get(d)!
+        drag = { dot: d, ox: p.x - s0.x, oy: p.y - s0.y, px: p.x, py: p.y }
+        d.el.parentNode?.appendChild(d.el) // on top of its neighbours
+        window.addEventListener('pointermove', onMove)
+        window.addEventListener('pointerup', onUp, { once: true })
+      }
+      d.el.addEventListener('pointerdown', onDown)
+      ;(d.el as SVGElement).style.cursor = 'var(--cursor)'
+      return () => d.el.removeEventListener('pointerdown', onDown)
+    })
+    const onMove = (e: PointerEvent) => {
+      if (!drag) return
+      const p = toSlide(e)
+      drag.px = p.x
+      drag.py = p.y
+    }
+    const onUp = () => {
+      window.removeEventListener('pointermove', onMove)
+      if (!drag) return
+      const d = drag.dot
+      const s = st.get(d)!
+      const others = left.includes(d) ? right : left
+      let best: Dot | null = null, bd = DROP
+      for (const o of others) {
+        const so = st.get(o)!
+        const dist = Math.hypot(so.slot.x - s.x, so.slot.y - s.y)
+        if (dist < bd) { bd = dist; best = o }
+      }
+      if (best) {
+        // swap: the dragged dot takes the place, the other one hops into the dragged one's place
+        const sb = st.get(best)!
+        const mine = s.slot
+        s.slot = sb.slot
+        sb.hop = { from: { x: sb.x, y: sb.y }, at: now }
+        sb.slot = mine
+      }
+      drag = null
+    }
+    const stop = runTimeline((t) => {
+      const dt = Math.min(0.05, Math.max(0, t - now))
+      now = t
+      if (!interactive) return autoPose(t)
+      all.forEach((d) => {
+        const s = st.get(d)!
+        let sx = 1, sy = 1
+        if (drag?.dot === d) {
+          // follows the cursor on a quick spring, lifted a little
+          spring2(s, drag.px - drag.ox, drag.py - drag.oy, ...M3.fast, dt)
+          sx = sy = 1.12
+        } else if (s.hop) {
+          const o = hop(t, s.hop.at + 0.15, { el: d.el, cx: s.hop.from.x, cy: s.hop.from.y }, { el: d.el, cx: s.slot.x, cy: s.slot.y })
+          if (o) {
+            s.x = s.hop.from.x + o.dx
+            s.y = s.hop.from.y + o.dy
+            s.vx = s.vy = 0
+            sx = o.sx
+            sy = o.sy
+          }
+          if (t - s.hop.at > 0.15 + FLIGHT + 0.8) s.hop = null
+        } else {
+          spring2(s, s.slot.x, s.slot.y, ...M3.bouncy, dt) // settles into its place with a bounce
+        }
+        d.el.removeAttribute('opacity')
+        d.el.setAttribute('transform', `translate(${(s.x - d.cx).toFixed(2)} ${(s.y - d.cy).toFixed(2)}) ${around(d.cx, d.cy + 43, `scale(${sx.toFixed(3)} ${sy.toFixed(3)})`)}`)
+      })
+    }, () => autoPose(null))
+    return () => {
+      stop()
+      downs.forEach((off) => off())
+      window.removeEventListener('pointermove', onMove)
+      window.removeEventListener('pointerup', onUp)
+      autoPose(null)
+    }
+  }
+  return { rest: () => autoPose(null), play }
+}
+
+/** one step of a damped spring pulling a point toward (tx, ty) */
+function spring2(s: { x: number; y: number; vx: number; vy: number }, tx: number, ty: number, freq: number, damp: number, dt: number) {
+  const w = 2 * Math.PI * freq
+  s.vx += (w * w * (tx - s.x) - 2 * damp * w * s.vx) * dt
+  s.vy += (w * w * (ty - s.y) - 2 * damp * w * s.vy) * dt
+  s.x += s.vx * dt
+  s.y += s.vy * dt
 }
