@@ -11,7 +11,7 @@
  * Note: this follows each presenter's own cursor, so it is the one animation that is not the
  * same for a follower. Rest pose = the Figma design.
  */
-import { layerFinder, rand, runTimeline, type Rig } from '../motion'
+import { layerFinder, rand, runTimeline, toSlidePoint, type Rig } from '../motion'
 
 const FACES = ['mood_bad', 'sentiment_neutral', 'mood', 'sentiment_very_dissatisfied', 'sentiment_stressed']
 const CENTERS = FACES.map((_, i) => ({ x: 40 + 460 * i, y: 582 })) // face centers in slide px
@@ -52,9 +52,8 @@ export function lookRig(root: HTMLElement, prefix: string): Rig {
       let cursor: { x: number; y: number } | null = null
       let movedAt = -Infinity // performance.now() of the last cursor move
       const onMove = (e: PointerEvent) => {
-        const m = svg?.getScreenCTM()
-        if (!m) return
-        const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse())
+        const p = toSlidePoint(svg, e)
+        if (!p) return
         cursor = { x: p.x, y: p.y }
         movedAt = performance.now()
       }

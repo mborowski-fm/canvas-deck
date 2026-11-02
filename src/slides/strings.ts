@@ -5,7 +5,7 @@
  * lightly. Interactive: it reacts to each presenter's own cursor (a follower does not see it).
  * The <line> stays in the SVG; while the slide is active it is hidden and drawn as a path.
  */
-import { layerFinder, runTimeline, type Rig } from './motion'
+import { layerFinder, runTimeline, toSlidePoint, type Rig } from './motion'
 
 const SVG_NS = 'http://www.w3.org/2000/svg'
 const GRAB = 6 // px: how close to the line counts as touching it
@@ -60,9 +60,8 @@ export function stringsRig(ids: string[]) {
           s.ringFrom = now
         }
         const onMove = (e: PointerEvent) => {
-          const m = svg?.getScreenCTM()
-          if (!m) return
-          const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse())
+          const p = toSlidePoint(svg, e)
+          if (!p) return
           for (const s of strs) {
             const along = ((p.x - s.ax) * s.ux + (p.y - s.ay) * s.uy) / s.len
             const off = (p.x - s.ax) * s.nx + (p.y - s.ay) * s.ny

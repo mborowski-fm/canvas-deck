@@ -9,7 +9,7 @@
  * Interactive: it follows each presenter's own cursor (a follower does not see that part).
  * Rest pose = the Figma design.
  */
-import { layerFinder, runTimeline, type Rig } from '../motion'
+import { layerFinder, runTimeline, toSlidePoint, type Rig } from '../motion'
 
 const STOPS: [number, number][] = [[0, 0], [1.2, -360], [3.6, -120], [5.2, 0]] // idle loop: [time s, element dx px]; further left would cover the title
 const LOOP = 7
@@ -52,9 +52,9 @@ export function spotlightRig(root: HTMLElement, prefix: string): Rig {
       let cursorX: number | null = null
       let movedAt = -Infinity
       const onMove = (e: PointerEvent) => {
-        const m = svg?.getScreenCTM()
-        if (!m) return
-        cursorX = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse()).x
+        const p = toSlidePoint(svg, e)
+        if (!p) return
+        cursorX = p.x
         movedAt = performance.now()
       }
       const onLeave = () => { movedAt = -Infinity }

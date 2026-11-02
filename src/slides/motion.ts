@@ -99,5 +99,18 @@ export function rand(seed: number) {
   return ((t ^ (t >>> 14)) >>> 0) / 4294967296
 }
 
+/**
+ * Pointer position in slide coordinates (1920x1080 viewBox). Uses the svg's on-screen box, not
+ * getScreenCTM(): Safari leaves the canvas' CSS zoom out of getScreenCTM, which shifts the point.
+ */
+export function toSlidePoint(svg: SVGSVGElement | null, e: { clientX: number; clientY: number }) {
+  if (!svg) return null
+  const r = svg.getBoundingClientRect()
+  const vb = svg.viewBox.baseVal
+  const w = vb && vb.width ? vb.width : 1920, h = vb && vb.height ? vb.height : 1080
+  if (!r.width || !r.height) return null
+  return { x: ((e.clientX - r.left) / r.width) * w, y: ((e.clientY - r.top) / r.height) * h }
+}
+
 /** Transform that scales/rotates around a point. */
 export const around = (cx: number, cy: number, inner: string) => `translate(${cx} ${cy}) ${inner} translate(${-cx} ${-cy})`

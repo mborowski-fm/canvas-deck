@@ -7,7 +7,7 @@
  * the dragged one lands in that place and the other one hops into the dragged one's place.
  * The first drag stops the automatic hops (Replay brings them back, with the dots reset).
  */
-import { around, clamp01, layerFinder, M3, rand, runTimeline, spring, type Rig } from '../motion'
+import { around, clamp01, layerFinder, M3, rand, runTimeline, spring, toSlidePoint, type Rig } from '../motion'
 
 const LOOP = 7.5
 const FLIGHT = 0.55
@@ -89,10 +89,10 @@ export function hopRig(root: HTMLElement, prefix: string): Rig {
     let interactive = false
     let drag: null | { dot: Dot; ox: number; oy: number; px: number; py: number } = null
     let now = 0
-    const toSlide = (e: PointerEvent) => new DOMPoint(e.clientX, e.clientY).matrixTransform(svg!.getScreenCTM()!.inverse())
+    const toSlide = (e: PointerEvent) => toSlidePoint(svg, e) ?? { x: 0, y: 0 }
     const downs = all.map((d) => {
       const onDown = (e: PointerEvent) => {
-        if (!svg?.getScreenCTM()) return
+        if (!svg) return
         e.stopPropagation() // do not pan the canvas
         e.preventDefault()
         if (!interactive) {
