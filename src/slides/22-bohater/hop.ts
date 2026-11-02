@@ -16,15 +16,19 @@ type Dot = { el: SVGGraphicsElement; cx: number; cy: number }
 function hop(t: number, start: number, a: Dot, b: Dot) {
   const u = t - start
   if (u < -0.15) return null
-  if (u < 0) return { dx: 0, dy: 0, sx: 1 + 0.12 * clamp01((u + 0.15) / 0.15), sy: 1 - 0.18 * clamp01((u + 0.15) / 0.15) } // crouch
+  if (u < 0) {
+    const k = Math.sin(clamp01((u + 0.15) / 0.15) * (Math.PI / 2)) // crouch, easing in
+    return { dx: 0, dy: 0, sx: 1 + 0.14 * k, sy: 1 - 0.2 * k }
+  }
   if (u < FLIGHT) {
     const p = u / FLIGHT
-    const e = p * p * (3 - 2 * p)
-    return { dx: (b.cx - a.cx) * e, dy: (b.cy - a.cy) * e - ARC * 4 * p * (1 - p), sx: 0.9, sy: 1.12 }
+    const e = 0.5 - 0.5 * Math.cos(Math.PI * p)
+    const st = Math.abs(1 - 2 * p) // stretched at take-off and landing, round at the top
+    return { dx: (b.cx - a.cx) * e, dy: (b.cy - a.cy) * e - ARC * 4 * p * (1 - p), sx: 1 - 0.1 * st, sy: 1 + 0.16 * st }
   }
   // landed: squash and spring back to round
-  const s = spring(u - FLIGHT, 3, 0.4)
-  return { dx: b.cx - a.cx, dy: b.cy - a.cy, sx: 1.2 - 0.2 * s, sy: 0.75 + 0.25 * s }
+  const s = spring(u - FLIGHT, 2.6, 0.38) // jelly settle
+  return { dx: b.cx - a.cx, dy: b.cy - a.cy, sx: 1.22 - 0.22 * s, sy: 0.72 + 0.28 * s }
 }
 
 export function hopRig(root: HTMLElement, prefix: string) {

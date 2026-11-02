@@ -3,16 +3,15 @@
  * Pink is bouncy: stretches while falling, squashes on every impact (the design shows the
  * squash) and bounces several times. Black is calm and heavy: no squash, a tiny settle and a
  * thud that knocks the floor line. Same gravity for both: the difference is the material.
- * Then both balls glide back up to the top outline and drop again. Rest pose = the Figma design.
+ * Then both balls float back up to the top outline on a soft spring (M3 Expressive) and drop
+ * again; the pink one stretches while it rises and wobbles like jelly after every bounce. Rest pose = the Figma design.
  */
-import { around, clamp01, layerFinder, makeRig, wobble } from '../motion'
-
-const smooth = (u: number) => u * u * (3 - 2 * u)
+import { around, layerFinder, M3, makeRig, spring, springVel, wobble } from '../motion'
 
 const G = 2400 // px/s²
 const FALL = 296 // px from the top outline to the floor
 const LOOP = 5
-const RISE = [3.7, 4.7] // both balls glide back up to the start
+const RISE = [3.7] // both balls float back up to the start
 const PINK = { x: 704, floor: 952, start: 0.5, bounce: 0.62, squashedH: 190, size: 280 }
 const BLACK = { start: 1.1, bounce: 0.12 }
 
@@ -43,8 +42,8 @@ export function ballsRig(root: HTMLElement, prefix: string) {
   const black = $('Rectangle 102')
   const floor = $('Line 6')
   const vMax = Math.sqrt(2 * G * FALL)
-  // after the drop both balls glide back up to the start (ease in and out)
-  const lift = (t: number) => FALL * smooth(clamp01((t - RISE[0]) / (RISE[1] - RISE[0])))
+  // after the drop both balls float back up to the start on a soft spring (a small overshoot)
+  const lift = (t: number) => FALL * spring(t - RISE[0], ...M3.lazy)
 
   return makeRig(
     (t) => {
@@ -56,8 +55,13 @@ export function ballsRig(root: HTMLElement, prefix: string) {
       const p = drop(t - PINK.start, PINK.bounce)
       if (t >= RISE[0]) p.h = lift(t)
       let squash = 0
-      for (const im of p.impacts) squash = Math.max(squash, (im.speed / vMax) * Math.exp(-(((t - PINK.start - im.at) / 0.04) ** 2)))
-      const stretch = (p.v / vMax) * 0.14 * (1 - squash)
+      let jelly = 0 // after each impact the pink ball wobbles back to round, like jelly
+      for (const im of p.impacts) {
+        squash = Math.max(squash, (im.speed / vMax) * Math.exp(-(((t - PINK.start - im.at) / 0.04) ** 2)))
+        jelly += wobble(t - PINK.start - im.at - 0.05, 0.12 * (im.speed / vMax), 3.2, 5.5)
+      }
+      const rising = t >= RISE[0] ? (FALL * springVel(t - RISE[0], ...M3.lazy)) / vMax : 0
+      const stretch = (p.v / vMax + Math.abs(rising)) * 0.14 * (1 - squash) + jelly
       const sy = (1 - 0.32 * squash + stretch) * (PINK.size / PINK.squashedH)
       const sx = 1 + 0.22 * squash - stretch * 0.5
       pink?.setAttribute('transform', `translate(0 ${(-p.h).toFixed(2)}) ${around(PINK.x, PINK.floor, `scale(${sx.toFixed(4)} ${sy.toFixed(4)})`)}`)

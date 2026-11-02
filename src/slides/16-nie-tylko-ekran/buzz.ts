@@ -3,7 +3,7 @@
  * button gives a little under it, and on every press the zigzag lines on both sides buzz like
  * haptic feedback (a short, fast, decaying shake). Rest pose = the Figma design.
  */
-import { around, layerFinder, makeRig, spring, wobble } from '../motion'
+import { around, layerFinder, M3, makeRig, spring, wobble } from '../motion'
 
 const FINGER = ['Rectangle 108', 'Rectangle 109', 'Line 12']
 const DOWN = 70 // finger pulled back (px, finger points up)
@@ -16,8 +16,8 @@ const fingerY = (t: number) => {
   let y = DOWN
   for (const p of PRESSES) {
     const u = t - p
-    if (u < 0 || u > 0.6) continue
-    y = Math.min(y, u < 0.06 ? DOWN * (1 - u / 0.06) : DOWN * spring(u - 0.06, 3.2, 0.6))
+    if (u < 0 || u > 1.0) continue
+    y = Math.min(y, u < 0.08 ? DOWN * (1 - Math.sin((u / 0.08) * (Math.PI / 2))) : DOWN * spring(u - 0.08, ...M3.bouncy))
   }
   return y
 }
@@ -36,8 +36,11 @@ export function buzzRig(root: HTMLElement, prefix: string) {
       const y = fingerY(t)
       finger.forEach((f) => f?.setAttribute('transform', `translate(0 ${y.toFixed(2)})`))
       // the button gives a little while the finger is fully in
+      // the button gives under the finger and wobbles back like jelly (M3 Expressive)
       const press = 1 - Math.min(1, y / 12)
-      button?.setAttribute('transform', around(960, 388, `scale(${(1 + press * 0.02).toFixed(4)} ${(1 - press * 0.035).toFixed(4)})`))
+      let jelly = 0
+      for (const p of PRESSES) jelly += wobble(t - p - 0.14, 0.04, 3.4, 6)
+      button?.setAttribute('transform', around(960, 388, `scale(${(1 + press * 0.03 - jelly * 0.6).toFixed(4)} ${(1 - press * 0.05 + jelly).toFixed(4)})`))
       lines.forEach((l, i) => {
         const dir = i % 2 ? -1 : 1
         let dx = 0, sy = 1

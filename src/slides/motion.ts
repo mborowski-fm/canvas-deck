@@ -15,6 +15,32 @@ export function spring(t: number, freq = 2, damping = 0.6) {
   return 1 - Math.exp(-z * w * t) * (Math.cos(wd * t) + ((z * w) / wd) * Math.sin(wd * t))
 }
 
+/**
+ * Material 3 Expressive motion: everything moves on springs. Presets as [freq Hz, damping ratio]
+ * for `spring()` (freq = sqrt(stiffness) / 2π). Spatial = position, size, rotation (may bounce);
+ * effects = opacity and color (no bounce). `bouncy` is the "bubble" feel of the eye on slide 02.
+ */
+export const M3 = {
+  fast: [4.5, 0.6], // spatial fast: stiffness 800, damping 0.6
+  default: [3.1, 0.8], // spatial default: stiffness 380, damping 0.8
+  slow: [2.25, 0.8], // spatial slow: stiffness 200, damping 0.8
+  bouncy: [2.2, 0.58], // soft and bubbly: clear overshoot, gentle settle
+  lazy: [1.2, 0.62], // big, slow travels that still bounce a little
+  effects: [3.1, 1], // opacity / color: no bounce
+} as const
+
+/** Speed of a spring (progress per second), for squash and stretch. */
+export function springVel(t: number, freq = 2, damping = 0.6) {
+  const h = 0.004
+  return (spring(t + h, freq, damping) - spring(t - h, freq, damping)) / (2 * h)
+}
+
+/** Squash and stretch from speed: longer along the motion, thinner across, about the same volume. */
+export function stretchBy(speed: number, k = 0.00025, max = 0.14) {
+  const s = Math.min(max, Math.abs(speed) * k)
+  return { along: 1 + s, across: 1 / (1 + s) }
+}
+
 /** Decaying wobble around 0 that starts at t = 0 (e.g. a knock). */
 export function wobble(t: number, amp: number, freq = 4, decay = 6) {
   if (t <= 0) return 0

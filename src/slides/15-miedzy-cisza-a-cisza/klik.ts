@@ -5,7 +5,7 @@
  * out when a new one lands. Deterministic (seeded), so every screen shows the same presses.
  * Rest pose = the Figma design.
  */
-import { around, clamp01, layerFinder, makeRig, rand, spring } from '../motion'
+import { around, clamp01, layerFinder, M3, makeRig, rand, spring, wobble } from '../motion'
 
 const FINGER = ['Rectangle 112', 'Rectangle 113', 'Line 13']
 const UP = -70 // finger raised (px; more would cover the title); 0 = pressed, as in the design
@@ -33,9 +33,9 @@ function pressesUntil(t: number) {
 /** finger offset for one press starting at p: snap down, tiny hold, spring back up */
 function pressOffset(u: number) {
   if (u < 0) return UP
-  if (u < 0.05) return UP * (1 - u / 0.05) // hard and fast down
+  if (u < 0.06) return UP * (1 - (u / 0.06) ** 2) // fast down, accelerating into the button
   if (u < 0.09) return 0
-  return UP * spring(u - 0.09, 4, 0.55)
+  return UP * spring(u - 0.09, ...M3.fast) // springs back up with a little bounce
 }
 
 export function klikRig(root: HTMLElement, prefix: string) {
@@ -84,7 +84,8 @@ export function klikRig(root: HTMLElement, prefix: string) {
       finger.forEach((f) => f?.setAttribute('transform', `translate(${shake.toFixed(2)} ${y.toFixed(2)})`))
       // button squashes as the nail pushes it
       const top = Math.min(BUTTON_BASE - BUTTON_PRESSED_H, Math.max(BUTTON_BASE - BUTTON_FULL_H, NAIL_BOTTOM + y + NAIL_GAP))
-      const sy = (BUTTON_BASE - top) / BUTTON_PRESSED_H
+      // ...and wobbles back like jelly once the finger lets go
+      const sy = (BUTTON_BASE - top) / BUTTON_PRESSED_H + (last >= 0 ? wobble(u - 0.09, 0.07, 3.2, 7) : 0)
       button?.setAttribute('transform', around(1392, BUTTON_BASE, `scale(1 ${sy.toFixed(4)})`))
       // labels: the last 12 presses; the 13th oldest fades out
       pool.forEach((g) => g.setAttribute('opacity', '0'))
@@ -97,8 +98,8 @@ export function klikRig(root: HTMLElement, prefix: string) {
         const X = left ? 1100 + rand(i * 13 + 6) * 130 : 1560 + rand(i * 13 + 7) * 150
         const Y = 690 + rand(i * 13 + 8) * 250
         const r = -45 + rand(i * 13 + 9) * 90
-        const s = spring(age, 3.5, 0.45) * (1 - leaving * 0.4)
-        g.setAttribute('opacity', (1 - leaving).toFixed(3))
+        const s = spring(age, 3.5, 0.45) * (1 - leaving * 0.7) // pops in big and bubbly, shrinks away
+        g.setAttribute('opacity', (1 - leaving * leaving).toFixed(3))
         g.setAttribute('transform', `translate(${X.toFixed(1)} ${Y.toFixed(1)}) rotate(${r.toFixed(1)}) scale(${s.toFixed(3)}) translate(${-LABEL.cx} ${-LABEL.cy})`)
       }
     },

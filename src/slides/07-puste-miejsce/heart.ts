@@ -27,8 +27,8 @@ const HOME = 6.7 // the heart returns to the middle
 const BEAT_FROM = 7.9 // alone from here on: lub-dub, looping
 const BEAT_EVERY = 1.0
 const OUT = 1300 // px a wall travels after the hit
-const PUSH_SPRING = [2.2, 0.92] as const // the wall gives way slower than the heart moves, no drift
-const GLIDE = [0.8, 0.88] as const // free movement of the heart
+const PUSH_SPRING = [2.2, 0.74] as const // the wall gives way slower than the heart moves, no drift
+const GLIDE = [1.25, 0.62] as const // free movement of the heart
 const WALLS = [
   { x: -40, w: C.x - HALF + 40, fill: '#E2F79A' }, // color/lime, left (from past the edge to the heart)
   { x: C.x + HALF, w: 1920 - C.x - HALF + 40, fill: '#E84ACF' }, // color/magenta, right
@@ -52,7 +52,7 @@ const wallPushed = (t: number, pushes: number[]) => pushes.reduce((d, p) => d + 
 const LEAD = 12 // px the heart presses into the wall ahead of it (visible push, no overlap)
 /** how far the heart has moved: it leads (faster, at most LEAD ahead of the wall) and pulls back a little before each push */
 const heartPushed = (t: number, pushes: number[]) => {
-  const raw = pushes.reduce((d, p) => d + STEP * spring(t - p, 3.4, 0.82) - 14 * windUp(t - p), 0)
+  const raw = pushes.reduce((d, p) => d + STEP * spring(t - p, 3.4, 0.62) - 14 * windUp(t - p), 0)
   return Math.min(raw, wallPushed(t, pushes) + LEAD)
 }
 /** the wall knocked out by the hit: fastest at the hit, slowing down until it is off the slide (fully opaque all the way) */

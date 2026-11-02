@@ -1,40 +1,23 @@
 /**
- * Hej UI! (loop): the smiling face in the middle now and then hops for joy, like it is
- * answering "Dobry?". Anticipation (small crouch), a quick hop with a little tilt, a soft
- * squash on landing that settles with a spring. Between hops everything stands still.
- * One cycle: a single hop, a pause, a double hop, a pause.
+ * Hej UI! (loop): once in a while the smiling face in the middle hops for joy, like it is
+ * answering "Dobry?". One smooth motion, no separate phases: it rises on a soft spring, floats
+ * back down on a second one, and where the fall would carry it below the floor it squashes
+ * instead, then wobbles back to round like jelly. Squash and stretch follow its speed, so every
+ * part flows into the next (M3 Expressive). Between hops it stands still.
  * Rest pose = the Figma design.
  */
-import { around, layerFinder, makeRig, wobble } from '../motion'
+import { around, layerFinder, makeRig, spring, springVel } from '../motion'
 
 const CX = 960 // the smiling face: center x
 const BOTTOM = 788 // its bottom edge (scale around the feet)
-const CROUCH = 0.12 // s
-const AIR = 0.4 // s
-// [start time, hop height, tilt in degrees]
-const HOPS = [
-  [0.8, 70, -5],
-  [3.6, 46, 4],
-  [4.2, 34, -3],
-] as const
-const LOOP = 6.4
-
-function hop(u: number, h: number, tilt: number) {
-  if (u < 0) return { y: 0, sx: 1, sy: 1, r: 0 }
-  if (u < CROUCH) {
-    const k = Math.sin((u / CROUCH) * (Math.PI / 2))
-    return { y: 0, sx: 1 + 0.06 * k, sy: 1 - 0.08 * k, r: 0 }
-  }
-  const a = u - CROUCH
-  if (a < AIR) {
-    const s = a / AIR
-    const lift = 4 * s * (1 - s)
-    return { y: -h * lift, sx: 1 - 0.03 * (1 - s), sy: 1 + 0.06 * (1 - s), r: tilt * Math.sin(s * Math.PI) }
-  }
-  const l = a - AIR // landed: soft squash that settles
-  const sq = wobble(l + 0.06, 0.09, 2.6, 7)
-  return { y: 0, sx: 1 + sq * 0.7, sy: 1 - sq, r: 0 }
-}
+const SIZE = 412
+const HOP_AT = 1.2 // s
+const HEIGHT = 80 // px
+const AIR = 0.38 // s between the rise and the fall
+const RISE = [1.5, 0.75] as const
+const FALL = [1.6, 0.42] as const // lands with a soft bounce into the floor (turned into squash)
+const TILT = -4 // degrees, at the top of the hop
+const LOOP = 7
 
 export function smileRig(root: HTMLElement, prefix: string) {
   const face = layerFinder(root, prefix)('Pattern / mood')
@@ -44,15 +27,18 @@ export function smileRig(root: HTMLElement, prefix: string) {
         face?.removeAttribute('transform')
         return
       }
-      let y = 0, sx = 1, sy = 1, r = 0
-      for (const [at, h, tilt] of HOPS) {
-        const p = hop(t - at, h, tilt)
-        y += p.y
-        sx *= p.sx
-        sy *= p.sy
-        r += p.r
-      }
-      face?.setAttribute('transform', `translate(0 ${y.toFixed(2)}) ${around(CX, BOTTOM, `rotate(${r.toFixed(2)}) scale(${sx.toFixed(4)} ${sy.toFixed(4)})`)}`)
+      const u = t - HOP_AT
+      // height above the floor: up on one spring, down on another (negative = pressed into the floor)
+      const lift = HEIGHT * (spring(u, ...RISE) - spring(u - AIR, ...FALL))
+      const v = HEIGHT * (springVel(u, ...RISE) - springVel(u - AIR, ...FALL)) // px/s, + = going up
+      const y = Math.max(0, lift)
+      // stretch with speed in the air; squash where the fall would go below the floor
+      const stretch = Math.min(0.12, Math.abs(v) * 0.00045) * (lift > 0 ? 1 : 0)
+      const squash = lift < 0 ? Math.min(0.2, (-lift / SIZE) * 6) : 0
+      const sy = 1 + stretch - squash
+      const sx = 1 / Math.sqrt(sy) // keep the volume
+      const r = TILT * Math.max(0, Math.min(1, lift / HEIGHT))
+      face?.setAttribute('transform', `translate(0 ${(-y).toFixed(2)}) ${around(CX, BOTTOM, `rotate(${r.toFixed(2)}) scale(${sx.toFixed(4)} ${sy.toFixed(4)})`)}`)
     },
     { loop: LOOP },
   )
